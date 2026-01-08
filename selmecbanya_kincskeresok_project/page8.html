@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>Vár ahonnan minden torony látszik - Kód bekérés</title>
+<script>
+function check() {
+    var v = document.getElementById("code").value.trim();
+    if (v === "1838") {
+        window.location.href = "content8.html";
+    } else {
+        alert("Hibás kód!");
+    }
+}
+</script>
+</head>
+
+<body>
+
+<h2>Vár ahonnan minden torony látszik</h2>
+
+<p>Add meg a kulcsot:</p>
+
+<input id="code" type="text" autocomplete="off">
+<button onclick="check()">Tovább</button>
+
+</body>
+</html>

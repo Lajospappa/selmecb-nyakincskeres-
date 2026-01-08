@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>2. PONT – Az Aranyrög Üzenete</title>
+
+<!-- Mobiloptimalizálás -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: 'Georgia', serif;
+    background: url('images/arany rog.png') center/cover no-repeat fixed;
+    color: #fff6db;
+    padding: 20px;
+    margin: 0;
+}
+
+.container {
+    max-width: 650px;
+    margin: auto;
+    background: rgba(0,0,0,0.65);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.7);
+}
+
+/* Cím */
+h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #ffd97f;
+}
+
+/* Szöveg */
+p {
+    line-height: 1.6;
+    font-size: 18px;
+    margin-bottom: 18px;
+}
+
+/* Kiemelő doboz */
+.codebox {
+    margin: 25px 0;
+    font-size: 22px;
+    text-align: center;
+    background: rgba(255,200,140,0.15);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,200,120,0.4);
+}
+
+/* Múzeum kép */
+.museum-photo {
+    display: block;
+    max-width: 100%;
+    border-radius: 10px;
+    margin: 16px auto 22px auto;
+    box-shadow: 0 0 18px rgba(0,0,0,0.7);
+}
+
+/* Távolság doboz */
+.distance-box {
+    margin: 10px 0 20px 0;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.45);
+    font-size: 16px;
+    text-align: center;
+}
+.distance-box button {
+    font-family: inherit;
+    font-size: 16px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: #ffd97f;
+    color: #2b1b0c;
+    margin-bottom: 8px;
+}
+.distance-box button:active {
+    transform: scale(0.98);
+}
+.distance-status {
+    display: block;
+    margin-top: 4px;
+    font-size: 15px;
+}
+
+/* gombsor */
+.btn-row {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Navigációs gomb – égkék */
+.nav-btn {
+    display: inline-block;
+    margin: 6px 4px;
+    padding: 9px 18px;
+    background: #68c7ff; /* égkék */
+    color: #033048;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    font-size: 15px;
+}
+.nav-btn:hover {
+    filter: brightness(1.05);
+}
+
+/* Főoldal gomb */
+.home-btn {
+    display: inline-block;
+    margin: 8px 4px 0 4px;
+    padding: 9px 18px;
+    background: #ffd97f;
+    color: #333;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    font-size: 15px;
+}
+.home-btn:hover {
+    filter: brightness(1.05);
+}
+
+/* Mobil finomhangolás */
+@media (max-width: 480px) {
+    h1 { font-size: 24px; }
+    p { font-size: 17px; }
+    .codebox { font-size: 20px; }
+    body { padding: 10px; }
+    .container { padding: 20px; }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>2. PONT – Az Aranyrög Üzenete</h1>
+
+<!-- MÚZEUM FOTÓ -->
+<img src="images/múzeum.jpg" alt="Bányamúzeum bejárata" class="museum-photo">
+
+<!-- TÁVOLSÁGMÉRÉS -->
+<div class="distance-box">
+    <button id="startNavBtn">Távolság mérése (GPS)</button>
+    <span id="distanceText" class="distance-status">
+        Engedélyezd a helymeghatározást a böngészőben.
+    </span>
+</div>
+
+<!-- NAVIGÁCIÓS GOMB -->
+<div class="btn-row">
+    <a href="https://maps.app.goo.gl/1oetM9fW25m7Q5VN9" 
+       target="_blank" 
+       class="nav-btn">
+        📍 Navigáció a Bányamúzeumhoz
+    </a>
+</div>
+
+<p>A következő állomásnál bepillantást kaptok abba, hogyan működött a bányászat Selmecbányán. A helyiek szerint a folyamat egyszerű volt: lementek a mélybe, ütöttek párat a kőre, majd hazamentek vacsorázni. A valóságban ez persze kicsit bonyolultabb volt, de mi most a szórakoztató verzióval dolgozunk.</p>
+
+<p>A ti feladatotok viszont sokkal hősiesebb:
+ki kell ásnotok egy aranyröget, mégpedig azt, amelyikre a legendák szerint maga a bányamester is azt mondta:
+„Ebbe aztán van lélek!”</p>
+
+<p>Ez a különleges rög őriz egy titkot.
+Egy számot.
+Egy olyan számot, amely nélkül a következő pálya zárva marad, mint a tárna, amikor a kanári gyanúsan köhögni kezd.</p>
+
+<p>Annyit már tudtok róla, hogy így kezdődik és így végződik:</p>
+
+<p class="codebox"><strong>2 … 0</strong></p>
+
+<p>A közepét viszont úgy elrejtették, hogy még a bánya térképe is csak annyit mond róla:
+„Hát… valahol ott van.”</p>
+
+<p>A dolgotok tehát ennyi:
+keressétek meg a legszebb, legfényesebb aranyröget, találjátok meg benne a hiányzó számjegyeket, és ha jól dolgoztatok, megnyílik előttetek a következő szint.</p>
+
+<p>Ha pedig rosszat ástok ki… akkor Selmecbánya nevében szeretnénk előre is megköszönni, hogy ilyen kitartóan próbálkoztok.</p>
+
+<p><strong>Bányászkalapra csapni, induljon a küldetés!</strong></p>
+
+<!-- FŐOLDAL GOMB -->
+<div class="btn-row">
+    <a href="index.html" class="home-btn">⬅ Vissza a főoldalra</a>
+</div>
+
+</div>
+
+<script>
+// Bányamúzeum / Aranyrög állomás koordinátái
+const targetLat = 48.45811285083666;
+const targetLon = 18.89569128465194;
+
+const startBtn = document.getElementById("startNavBtn");
+const distanceText = document.getElementById("distanceText");
+let watchId = null;
+
+// Haversine távolság méterben
+function distanceMeters(lat1, lon1, lat2, lon2) {
+    const R = 6371000;
+    const toRad = x => x * Math.PI / 180;
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
+}
+
+function formatDistance(m) {
+    if (m < 5) return "Nagyjából a bányamúzeumnál vagy.";
+    if (m < 1000) return m.toFixed(0) + " méter";
+    return (m / 1000).toFixed(2) + " km";
+}
+
+function onPosition(pos) {
+    const lat = pos.coords.latitude;
+    const lon = pos.coords.longitude;
+    const dist = distanceMeters(lat, lon, targetLat, targetLon);
+    distanceText.textContent =
+        "Jelenlegi távolság a bányamúzeumtól: " + formatDistance(dist);
+}
+
+function onError(err) {
+    distanceText.textContent =
+        "Nem sikerült lekérni a helyzetet. Ellenőrizd a GPS és a jogosultság beállításait.";
+}
+
+startBtn.addEventListener("click", function () {
+    if (!("geolocation" in navigator)) {
+        distanceText.textContent =
+            "A böngésző nem támogatja a helymeghatározást.";
+        return;
+    }
+
+    if (watchId !== null) {
+        // már fut, leállítjuk
+        navigator.geolocation.clearWatch(watchId);
+        watchId = null;
+        distanceText.textContent = "A távolságmérés szünetel.";
+        startBtn.textContent = "Távolság mérése (GPS)";
+        return;
+    }
+
+    distanceText.textContent = "Helyzet lekérése...";
+    startBtn.textContent = "Mérés leállítása";
+
+    watchId = navigator.geolocation.watchPosition(onPosition, onError, {
+        enableHighAccuracy: true,
+        maximumAge: 5000,
+        timeout: 10000
+    });
+});
+</script>
+
+</body>
+</html>
