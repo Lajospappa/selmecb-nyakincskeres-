@@ -3,14 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title>8. PONT – Vár ahonnan minden torony látszik</title>
+
 <style>
 body {
     font-family: 'Georgia', serif;
-    background: url('images/ovar.jpg') center/cover no-repeat fixed;
+    background: url('images/óvárháttér.jpg') center/cover no-repeat fixed;
     color: #f5f5f5;
     padding: 40px;
     margin: 0;
 }
+
 .container {
     max-width: 700px;
     margin: auto;
@@ -19,21 +21,25 @@ body {
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0,0,0,0.7);
 }
+
 h1 {
     font-size: 32px;
     margin-bottom: 10px;
     text-align: center;
     color: #ffe7a3;
 }
+
 p {
     line-height: 1.6;
     font-size: 18px;
     margin-bottom: 14px;
 }
+
 .highlight {
     color: #ffe7a3;
     font-weight: bold;
 }
+
 h2 {
     color: #ffe7a3;
     text-align: center;
@@ -41,13 +47,76 @@ h2 {
     margin-bottom: 10px;
 }
 
-/* képek a szövegben */
 .photo {
     display: block;
     max-width: 100%;
     border-radius: 10px;
     margin: 18px auto;
     box-shadow: 0 0 18px rgba(0,0,0,0.7);
+}
+
+.navbtn {
+    display:inline-block;
+    margin: 8px 0 10px 0;
+    padding: 8px 14px;
+    background:#68c7ff;
+    color:#033048;
+    font-weight:bold;
+    font-size:14px;
+    border-radius:7px;
+    text-decoration:none;
+    box-shadow:0 0 8px rgba(0,0,0,0.4);
+}
+
+.distance-box {
+    margin: 8px 0 22px 0;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 16px;
+    text-align: center;
+}
+
+.distance-box button {
+    font-family: inherit;
+    font-size: 16px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: #ffe7a3;
+    color: #2b1b0c;
+    margin-bottom: 6px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+
+.distance-status {
+    display: block;
+    margin-top: 4px;
+    font-size: 15px;
+}
+
+/* Felolvasó gombok az oldal alján */
+.tts-controls {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.tts-controls button {
+    margin: 6px;
+    padding: 10px 18px;
+    background: #ffe7a3;
+    color: #2b1b0c;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+
+.tts-controls button:active {
+    transform: scale(0.96);
 }
 
 /* Főoldal gomb */
@@ -62,87 +131,207 @@ h2 {
     text-decoration: none;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     font-size: 16px;
-    text-align: center;
 }
+
 .home-wrapper {
     text-align: center;
-    margin-top: 10px;
+}
+
+@media (max-width: 480px) {
+    body { padding: 20px 10px; }
+    .container { padding: 22px 16px; }
+    h1 { font-size: 26px; }
+    p { font-size: 17px; }
 }
 </style>
 </head>
 
 <body>
+
 <div class="container">
 
 <h1>8. PONT – Vár ahonnan minden torony látszik</h1>
 
-<p>Az <span class="highlight">Óvár</span>, vagyis a régi vár Selmecbánya egyik legősibb őrhelye.  
-Első pillantásra inkább tűnik templomnak, mint klasszikus várnak – nem véletlenül:  
-eredetileg <span class="highlight">Szűz Mária-plébániatemplomként</span> épült a 13. században, a hegygerincen,  
-ahonnan jól be lehetett látni a völgyben fekvő települést.</p>
+<a href="https://maps.app.goo.gl/PnuYSpeaQuLy6DPv7" target="_blank" class="navbtn">
+    📍 Navigáció az Óvár kapujához
+</a>
 
-<img src="images/ovar 4.jpg" alt="Óvár – panoráma" class="photo">
+<div class="distance-box">
+    <button id="distBtn">Távolság mérése (GPS)</button>
+    <span id="distText" class="distance-status">
+        Engedélyezd a helymeghatározást a böngészőben, hogy lásd, milyen messze vagytok az Óvártól.
+    </span>
+</div>
 
-<p>Később, amikor a környék bányavárosai egyre fontosabbá váltak, és egyre többször érkezett hír  
-török támadásokról, a város úgy döntött, hogy a templom köré <span class="highlight">erődítményt</span> épít.  
-Falak, bástyák, kaputorony és lőrések születtek – a templom lassan várrá nőtte ki magát.  
-Az Óvár így lett egyszerre a hit és a védelem helye: kőbe zárt krónikája Selmecbánya évszázadainak.</p>
+<!-- *************** BŐVEBB VÁRTÖRTÉNET *************** -->
 
-<img src="images/ovar 2.jpg" alt="Óvár – udvar" class="photo">
+<p>
+Képzeld el, ahogy a meredek dombon kapaszkodsz felfelé, és hirtelen előtted magasodik a város egyik legősibb őrzője: az 
+<span class="highlight">Óvár</span>. Nem egyszerű kőfalak ezek – minden köve évszázadok történeteit suttogja. A vár szíve 
+eredetileg egy <span class="highlight">háromhajós, román stílusú Mária-plébániatemplom</span> volt, amelyet a 13. század elején 
+építettek ide, a hegy oldalába. Akkor még senki sem gondolta, hogy egyszer ágyúkkal, bástyákkal és lőrésekkel megerősített 
+erőddé fog átalakulni.
+</p>
 
-<p>Ma már az erődben kiállítások, régi fegyverek, óraszerkezetek, kínzókamra és a bányaváros múltját  
-bemutató tárlatok várják a látogatókat. A vastag falak, a régi börtöncellák és a kilátást adó tornyok  
-mind arról mesélnek, hogy ez a hely egyszerre volt menedék, börtön és figyelőpont –  
-egy igazi „kőből faragott időutazás”.</p>
+<p>
+1443-ban egy nagy földrengés rázta meg a környéket, a templom pedig súlyosan megrongálódott. Az újjáépítés nemcsak javítás 
+volt: a 15–16. század fordulóján a városvezetők rájöttek, hogy a templomból <span class="highlight">védelmi központot</span> is lehetne 
+csinálni. A munkák során hozzácsatolták a közeli <span class="highlight">Szent Mihály-osszeáriumot</span> (csontkamrát) és egy lakótornyot, 
+falakat, bástyákat, lőréseket építettek. A templom lassan templom-vár keverékké vált.
+</p>
 
-<img src="images/ovar.jpg" alt="Óvár – kapu" class="photo">
+<img src="images/ovar 4.jpg" alt="Óvár – panoráma a város felett" class="photo">
+
+<p>
+A döntő fordulat a <span class="highlight">török hódítások</span> idején jött el, a mohácsi csata után. A Magyar Királyság nagy része 
+veszélybe került, a bányavárosok pedig különösen fontosak voltak, hiszen az arany, ezüst és réz innen töltötte fel a kincstárat. 
+Selmecbánya ezért úgy döntött, hogy az imént felújított templomot <span class="highlight">teljesen erőddé alakítja</span>: 
+a templomhajók boltozatát lebontották, a belső teret udvarrá nyitották, a falakat pedig egy emeletnyivel megemelték. 
+Így született meg a ma látható, <span class="highlight">négy szárnyas, belső udvaros vár</span>.
+</p>
+
+<p>
+És most jön a történetnek az a része, amin a gyerekek (és a felnőttek is) fel szoktak nevetni:  
+hiába építettek komoly falakat és bástyákat, az Óvár mögött magasodik a <span class="highlight">Paradicsom-hegy</span>.  
+Ha egy ostromló sereg feljutott oda, fentről <em>szinte „felülről lehetett ágyúzni”</em> a várat.  
+Katonai szempontból ez finoman szólva is <span class="highlight">balek döntés</span> volt:  
+olyan helyre építettek erődöt, amely fölé még magasabbról rá lehetett látni és lőni.  
+Szerencsére a törökök sosem vitték itt végig a nagy ostromot, de a helyszínt látva ma is jól látszik, milyen 
+kiszolgáltatott lett volna a vár, ha komoly támadás éri.
+</p>
+
+<img src="images/ovar 2.jpg" alt="Óvár – belső udvar" class="photo">
+
+<p>
+Az Óvár bejárása során összesen <span class="highlight">8 különleges pontot</span> fedezhetünk fel, amelyek együtt adják ki
+Selmecbánya egyik legizgalmasabb történelmi helyszínét.
+</p>
+
+<p>
+<span class="highlight">1. Szent Mihály ravatalozó kápolna és csontkamra</span><br>
+Az Óvár alatt és körül ott rejtőzik a Szent Mihály-kápolna és a hozzá tartozó csontkamra.  
+A középkorban, amikor a templom körüli temető betelt, a régi csontokat kihantolták, és az osszáriumba helyezték.
+A szűk, boltozatos tér ma is erős hangulatú: egyszerre hátborzongató és lenyűgöző emléke a középkori halálfelfogásnak.
+</p>
+
+<p>
+<span class="highlight">2. Himmelreich-bástya</span><br>
+A nyugati oldalon álló bástya eredetileg lakóépület volt, később azonban börtönné és kínzókamrává alakították.
+Nevét gúnyosan kapta: „Himmelreich”, azaz Mennyország-bástya, mert aki ide került, gyakran nem tért vissza.
+A vastag falak és az apró ablaknyílások ma is jól érzékeltetik a hely komorságát.
+</p>
+
+<p>
+<span class="highlight">3. Várkút</span><br>
+A sziklába vájt mély kút bővizű forrásból táplálkozott, a vízoszlop magassága elérte a 9–10 métert.
+A kút alján egy föld alatti járat indult, amely veszély esetén menekülőútként szolgált.
+Ez a megoldás jól mutatja, mennyire átgondoltan építették ki a vár védelmi rendszerét.
+</p>
+
+<p>
+<span class="highlight">4. Lapidárium – kőtár</span><br>
+A belső udvarban kialakított kőtár középkori és kora újkori építészeti töredékeket és sírköveket őriz.
+Itt láthatók román, gótikus, reneszánsz és barokk faragványok Selmecbánya templomaiból és temetőiből.
+Különösen figyelemre méltók az öntöttvas síremlékek, amelyek a város bányászati múltjához kapcsolódnak.
+</p>
+
+<p>
+<span class="highlight">5. Barokk szobrok a katonai kápolnában</span><br>
+A kápolnában elhelyezett barokk szobrok eredetileg a város Szentháromság-emlékművét díszítették.
+A pestisjárványok emlékére készültek, és különböző védőszenteket ábrázolnak.
+A restaurált szobrok ma közelről tanulmányozhatók, ami ritka lehetőség.
+</p>
+
+<p>
+<span class="highlight">6. MS mester oltárának bemutatása</span><br>
+Az Óvár egyik legértékesebb része az MS mesterhez köthető késő gótikus főoltár bemutatása.
+Az eredeti oltár táblái ma több európai múzeumban találhatók, itt pedig egy rekonstruált modell és fotódokumentáció látható.
+Ez segít elképzelni, milyen monumentális és gazdag lehetett az oltár Selmecbánya fénykorában.
+</p>
+
+<p>
+<span class="highlight">7. Kovácsmesterség és bányászati kiállítás</span><br>
+A nyugati bástyában berendezett kiállítás a selmecbányai kovácsok és kézművesek munkáját mutatja be.
+Lakatok, rácsok, szerszámok és egy eredeti kovácstűzhely is látható.
+A tárgyak jól érzékeltetik, mennyire összefonódott a bányászat és a kézművesség a város életében.
+</p>
+
+<p>
+<span class="highlight">8. Harangtorony</span><br>
+A késő gótikus kaputorony Selmecbánya egyik jellegzetes építménye.
+Felső szintjén különböző korokból származó harangok és régi toronyórák tekinthetők meg.
+A torony a város védelmi és vallási szerepét egyszerre testesíti meg. Fel kell menni a harangok magasságába, mert ott van az erkély, amiről ámulatba ejő kilátás nyílik a városra. 
+</p>
+
+<p>
+Érdemes <span class="highlight">időben beszerezni a belépőjegyet</span>, hogy ezt az igazán izgalmas várat nyugodtan be tudják járni.
+Az Óvár látogatása körülbelül <span class="highlight">1 órás program</span>, a belépő ára <span class="highlight">kb. 8 euró</span>,
+és a vár <span class="highlight">17:00 órakor zár</span>.
+</p>
+
+
+<p>
+A 18–19. századtól kezdve a vár már nem elsősorban katonai célokat szolgált. Volt itt <span class="highlight">városi levéltár</span>, 
+<span class="highlight">könyvtár</span>, sőt egy időben <span class="highlight">rendőrségi fogda</span> és még <span class="highlight">jégverem a henteseknek</span> is.  
+Ma az Óvár a szlovák bányamúzeum egyik központja: a kiállításokon régi fegyvereket, óraszerkezeteket,  
+kovácsműhelyt, barokk szobrokat, harangokat és egy apró, de nagyon látványos <span class="highlight">„kínzókamrát”</span> is láthatunk.  
+A falak között sétálva egyszerre érezni templom, vár, múzeum és szellemváros hangulatát – mintha a történelem 
+több rétege egymásra csúszott volna.
+</p>
+
+<img src="images/ovar.jpg" alt="Óvár – kapu és védművek" class="photo">
+
+<!-- *************** JÁTÉK / TORNYOS FELADVÁNY *************** -->
 
 <h2>Hol álljatok meg?</h2>
 
-<p>Az Óvárhoz felérve menjetek egészen a <span class="highlight">vár kapujáig</span>,  
-de ne lépjetek még be. A kapuval szembefordulva, a tér felé nézve  
-álljatok meg az <span class="highlight">első kandellábernél</span> (az első lámpaoszlopnál).</p>
-
-<p>Innen, ha a városra néztek, egy különleges panoráma tárul elétek:  
-<em>egy sor tornyos épület</em>, amelyek közül négy igazán szépen kirajzolódik egymás mögött.</p>
+<p>
+Az Óvárhoz felérve menjetek egészen a <span class="highlight">vár kapujáig</span>,  
+de ne lépjetek még be. <span class="highlight">Fordítsatok hátat a kapunak</span>,  
+nézzetek a város és a tér felé, és így sétáljatok előre a bal  
+<span class="highlight">első kandelláberig</span>, a lámpaoszlophoz.  
+Onnan figyeljétek meg – az összes a tornyot.
+</p>
 
 <h2>Tornyok, mint rejtett betűk</h2>
 
-<p>A feladatotok az, hogy <span class="highlight">nyugatról kelet felé</span> figyeljétek meg a látképet,  
-és sorban azonosítsátok a legjellegzetesebb tornyos épületeket.  
-A tornyokhoz tartozó épületek kezdőbetűi adják a kódsor alapját:</p>
+<p>
+Erről a pontról nézve több jellegzetes <span class="highlight">tornyos épület</span> rajzolódik ki a város felett.  
+Mindegyikkel találkoztatok már az előző állomásokon, de most nem a történetükre,  
+hanem a <span class="highlight">nevük első betűjére</span> lesz szükség.
+</p>
+
+<p>Feladat:</p>
 
 <p>
-<span class="highlight">K</span> – Kopogtató ház (Klopaczka, a régi bányász-ébredőtorony)  
-<br>
-<span class="highlight">U</span> – Újvár (a másik hegyen álló őrtorony  
-<br>
-<span class="highlight">V</span> – Városháza tornya  
-<br>
-<span class="highlight">S</span> – Szent Katalin templom tornya  
-<br>
-<span class="highlight">K</span> – Kálvária a domb tetején
+1. Figyeljétek meg azokat a tornyos épületeket, amelyek a látványban leginkább kiemelkednek erről a pontról.<br>
+2. Figyeljétek meg a pontos sorrendet nyugatról a keleti irány felé, ahogy ezeket az épületeket felsorakoznak.<br>
+3. Vegyétek ezeknek a neveknek csak az <span class="highlight">első betűjét</span> sorrendben.<br>
+4. Öt betűt kell kapnotok – ezekből fogtok majd egy pásztorkutya-nevet kirakni.
 </p>
 
-<p>Ha jól nézitek a panorámát, ezek a tornyok kirajzolják az útvonalat a bányaváros lelke fölött.  
-A kezdőbetűkből egy betűsort kaptok, amely így néz ki:</p>
+<h2>A feladvány</h2>
 
-<p class="highlight" style="font-size:20px; text-align:center; margin-top:20px;">
-K – U – V – S – K
-</p>
-
-<h2>A feladvány: mit őriznek a hegyek?</h2>
-
-<p>Selmecbánya környékén régen nem csak bányászok és diákok jártak:  
+<p>
+Selmecbánya környékén régen nem csak bányászok és diákok jártak:  
 a felvidéki hegyek <span class="highlight">juhnyájait</span> is őrizni kellett.  
 A helyiek szerint az ősi magyar <span class="highlight">fehér pásztorkutyák</span>  
-épp olyan elszántan vigyázták a nyájat, mint ahogy a várőrök figyelték a völgyet.</p>
+épp olyan elszántan vigyázták a nyájat, mint ahogy a várőrök figyelték a völgyet.
+</p>
 
-<p>A betűsorotok tehát: <span class="highlight">K U V S K</span>.  
-Ha egy kicsit tovább gondolkodtok, és „megszánjátok” ezt az öt betűt néhány magánhangzóval,  
-egy híres magyar pásztorkutya neve rajzolódik ki belőlük.  
-Ez a kutyafajta őrizte egykor a felvidéki hegyek juhait –  
-és most a ti következő kincsetek <em>jelszavát</em> is őrzi.</p>
+<p>
+Az öt betűt, amit a tornyokból szereztetek,  
+a lenti <span class="highlight">szórejtvény</span> üres helyeire kell elképzelnetek.
+</p>
+
+<img src="images/kuvaszok.jpg" alt="Szórejtvény – pásztorkutya" class="photo">
+
+<p>
+Ha ügyesen illesztitek be az öt betűt a megfelelő helyekre,  
+egy ősi magyar fehér pásztorkutya neve rajzolódik ki előttetek –  
+ugyanaz a fajta, amelyről azt mesélik, hogy a felvidéki hegyek juhnyáját is  
+éberen őrizte éjszaka.
+</p>
 
 <p class="highlight" style="font-size:20px; text-align:center; margin-top:25px;">
 A 9. pont, a „Luther rózsája” kapuját<br>
@@ -153,6 +342,108 @@ ennek a magyar fehér pásztorkutyának a neve nyitja.
     <a href="index.html" class="home-btn">⬅ Vissza a főoldalra</a>
 </div>
 
+</div> <!-- .container vége -->
+
+<!-- ====== FEL OLVASÓ VEZÉRLŐK AZ OLDAL ALJÁN ====== -->
+<div class="tts-controls">
+    <button onclick="felolvas()">🔊 Felolvasás</button>
+    <button onclick="leallit()">⛔ Stop</button>
 </div>
+
+<!-- ================================= -->
+<!--   EGYSZERŰ TTS + GPS SCRIPT       -->
+<!-- ================================= -->
+<script>
+// ======= EGYSZERŰ FELolvasó (play + stop) =======
+
+let currentUtterance = null;
+
+// teljes szöveg begyűjtése a containerből
+function getFullText() {
+    const container = document.querySelector(".container");
+    if (!container) return "";
+    let text = "";
+    container.querySelectorAll("h1, h2, p, li").forEach(el => {
+        text += el.innerText + " ";
+    });
+    return text;
+}
+
+function felolvas() {
+    // előző felolvasás leállítása
+    window.speechSynthesis.cancel();
+
+    const text = getFullText();
+    if (!text.trim()) return;
+
+    currentUtterance = new SpeechSynthesisUtterance(text);
+    currentUtterance.lang = "hu-HU";   // magyar nyelv kényszerítése, amennyire lehet
+    window.speechSynthesis.speak(currentUtterance);
+}
+
+function leallit() {
+    window.speechSynthesis.cancel();
+    currentUtterance = null;
+}
+
+// ======= GPS TÁVOLSÁG =======
+
+// Óvár kapujához közeli pont
+const targetLat = 48.459336407159405;
+const targetLon = 18.891808326726757;
+
+const distBtn  = document.getElementById("distBtn");
+const distText = document.getElementById("distText");
+
+// Haversine-távolság méterben (javított verzió)
+function distanceMeters(lat1, lon1, lat2, lon2) {
+    const R = 6371000; // Föld sugara méterben
+    const toRad = x => x * Math.PI / 180;
+
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+
+    const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
+}
+
+function formatDistance(m) {
+    if (m < 5)  return "Nagyjából az Óvár kapujánál vagytok.";
+    if (m < 1000) return m.toFixed(0) + " méter";
+    return (m / 1000).toFixed(2) + " km";
+}
+
+if (distBtn && distText) {
+    distBtn.addEventListener("click", function () {
+        if (!("geolocation" in navigator)) {
+            distText.textContent = "A böngésző nem támogatja a helymeghatározást.";
+            return;
+        }
+
+        distText.textContent = "Helyzet lekérése...";
+
+        navigator.geolocation.getCurrentPosition(function (pos) {
+            const lat = pos.coords.latitude;
+            const lon = pos.coords.longitude;
+            const dist = distanceMeters(lat, lon, targetLat, targetLon);
+            distText.textContent =
+                "Jelenlegi távolság az Óvártól: " + formatDistance(dist);
+        }, function () {
+            distText.textContent =
+                "Nem sikerült lekérni a helyzetet. Ellenőrizd a GPS és a jogosultság beállításait.";
+        }, {
+            enableHighAccuracy: true,
+            maximumAge: 5000,
+            timeout: 10000
+        });
+    });
+}
+</script>
+
 </body>
 </html>
