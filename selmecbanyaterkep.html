@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+  <!-- Leaflet GPX plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.7.0/gpx.min.js"></script>
+
   <style>
     :root {
       --bg: #161616;
@@ -24,19 +27,12 @@
       --red: #ff5a5a;
 
       --dockH: 36vh;
-      /* nyitott fül magassága */
       --handleH: 54px;
-      /* fül fogantyú */
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html,
-    body {
-      height: 100%;
-    }
+    html, body { height: 100%; }
 
     body {
       margin: 0;
@@ -103,9 +99,7 @@
       user-select: none;
     }
 
-    .btn:active {
-      transform: scale(0.99);
-    }
+    .btn:active { transform: scale(0.99); }
 
     .map-dock {
       position: fixed;
@@ -113,15 +107,12 @@
       right: 0;
       bottom: 0;
       z-index: 1100;
-
       transform: translateY(calc(var(--dockH) - var(--handleH)));
       transition: transform 220ms ease;
       will-change: transform;
     }
 
-    .map-dock.open {
-      transform: translateY(0);
-    }
+    .map-dock.open { transform: translateY(0); }
 
     .map-dock-handle {
       height: var(--handleH);
@@ -130,14 +121,11 @@
       justify-content: space-between;
       gap: 10px;
       padding: 10px 12px;
-
       background: var(--panel);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(8px);
-
       cursor: default;
-      /* fontos: ne a teljes sáv legyen kattintható */
     }
 
     .map-dock-title {
@@ -170,14 +158,11 @@
       color: var(--text);
       cursor: pointer;
       font-size: 16px;
-
       pointer-events: auto;
       touch-action: manipulation;
     }
 
-    .map-dock-btn:active {
-      transform: scale(0.99);
-    }
+    .map-dock-btn:active { transform: scale(0.99); }
 
     .dock-body {
       height: calc(var(--dockH) - var(--handleH));
@@ -199,7 +184,6 @@
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-
       padding: 10px 10px;
       border-radius: 12px;
       border: 1px solid var(--border);
@@ -208,9 +192,7 @@
       user-select: none;
     }
 
-    .poi-item:active {
-      transform: scale(0.995);
-    }
+    .poi-item:active { transform: scale(0.995); }
 
     .poi-left {
       display: flex;
@@ -250,21 +232,10 @@
     }
 
     @media (max-width: 520px) {
-      :root {
-        --dockH: 30vh;
-      }
-
-      .poi-name {
-        max-width: 62vw;
-      }
-
-      .chip {
-        font-size: 13px;
-      }
-
-      .btn {
-        padding: 9px 11px;
-      }
+      :root { --dockH: 30vh; }
+      .poi-name { max-width: 62vw; }
+      .chip { font-size: 13px; }
+      .btn { padding: 9px 11px; }
     }
 
     .leaflet-popup-content {
@@ -315,7 +286,6 @@
     </div>
   </div>
 
-
   <script>
     "use strict";
 
@@ -324,7 +294,7 @@
 
       {
         name: "Óvár Starý Zámok", lat: 48.45953070525097, lon: 18.891363766572848, desc:
-          `Román bazilikából hatszögletű erődítmény
+`Román bazilikából hatszögletű erődítmény
 
 
 Az UNESCO Világörökség része, Selmecbánya az egykori magyar királyság legjelentősebb bányavárosa volt, egyik fő látványossága és városképének meghatározó eleme a főtértől nem messze, egy magaslaton fekvő Óvár. Az eredetileg román stílusú bazilikaként épült templom az évszázadok során számos átalakuláson ment keresztül, a gótika, a reneszánsz és a barokk is nyomot hagyott rajta, de a legfőbb változás a török veszedelem idején történt, mikor az erődített templomot várrá alakították át. Napjainkban a Szlovák Bányászati Múzeum érdekes, változatos kiállításai, évszázadokon átívelő építészete és a tornyából nyíló páratlan panorámája révén elsőrangú turisztikai látványosság.
@@ -333,25 +303,28 @@ A vár története
 
 Az Óvár alapjainak számító templom építését háromhajós román stílusú bazilikaként a templomosok kezdték meg a város közepén magasodó meredek dombon a XIII. században. A Szűz Mária-plébániatemplomot a következő században védfallal kerítették, később bástyával és kaputoronnyal is bővült. A XVI. század elején gótikus köntöst öltött, majd néhány évtized múlva (1546-1559) a török veszély ellenében megerősítik, várrá alakítják át. A templom mennyezetét lebontották a főhajóból várudvart, a szentélyből várkápolnát, az oldalhajókból kaszárnyaszobákat és raktárakat alakítottak ki. A templomtorony őrtorony lett, a főfalak sarkaira kerek bástyákat emeltek.
 
-A török idők után megér még átalakításokat, a torony ekkor kapja máig látható jellegzetes, hagymakupolás barokk sisakját. A XIX. században igazi multifunkciós épületként működött, volt itt levéltár, jégverem, raktár, tornaterem, könyvtár és a városi rendőrség is használta az épületet. 1900-tól múzeum, folyamatosan bővülő kiállításokkal.` },
+A török idők után megér még átalakításokat, a torony ekkor kapja máig látható jellegzetes, hagymakupolás barokk sisakját. A XIX. században igazi multifunkciós épületként működött, volt itt levéltár, jégverem, raktár, tornaterem, könyvtár és a városi rendőrség is használta az épületet. 1900-tól múzeum, folyamatosan bővülő kiállításokkal.`
+      },
 
       {
         name: "Újvár, vagyis Leányvár Novy Zámok", lat: 48.45581448479778, lon: 18.89592915773392, desc:
-          `Havas Boldogasszony-templom
+`Havas Boldogasszony-templom
 
 A monda szerint Rössel Borbála építtette, mert nem akarta látni az ezen a helyen lévő városi akasztófát. Tehette, mert igen gazdag volt.
 
 A valóság azonban az, hogy a vár a török veszély idején, 1564 és 1571 között épült. A várost 24 olasz ágyúval védte a Léva és Bakabánya irányából várható támadásoktól. Ha ellenséges csapatokat láttak, akkor fekete lobogót tűztek ki. Ha viszont vendég közeledett, az őrség úgynevezett monettát fúvott.
 
 Ma az épületben a törökellenes harcokra emlékező kiállítás látható.
-A vár emeletéről a város teljes panorámája látható.` },
+A vár emeletéről a város teljes panorámája látható.`
+      },
 
       {
         name: "Kálvária", lat: 48.46166274822716, lon: 18.908905495657308, desc:
-          `Kálváriákat a középkorban Európa szerte építettek, Jézus szenvedéseit felelevenítendő.
+`Kálváriákat a középkorban Európa szerte építettek, Jézus szenvedéseit felelevenítendő.
 A Selmecbányán található kálváriát a város keleti oldalán emelkedő Scharfenberg-, vagy Kálváriahegy város felé néző oldalára építették a jezsuiták. Három templom és sok apró kápolna alkotja. A felső templomot német, a középsőt magyar, az alsót szlovák templomnak is hívták.
 
-A selmecbányai kálvária különlegessége, hogy a klasszikus 12 stáció helyett csak 7 mutatja Krisztus szenvedéseit, a másik 7 Mária szenvedéseit foglalja össze.` },
+A selmecbányai kálvária különlegessége, hogy a klasszikus 12 stáció helyett csak 7 mutatja Krisztus szenvedéseit, a másik 7 Mária szenvedéseit foglalja össze.`
+      },
 
       { name: "Szerelem bank", lat: 48.45917631746342, lon: 18.893011919083833, desc: "A selmecbányai Banka Lásky egy interaktív „élménymúzeum” a Marína házban (ott, ahol Marína Pischlová élt), és a központi látványeleme a „Love Vault”, vagyis egy trezor, amit Andrej Sládkovič Marína című szerelmi költeményének verssoraiból építettek fel. A „fiók bérlés” itt Love Box: egy apró rekesz a versben, amely egy betűt, írásjelet vagy szóközt jelképez, és a rekeszeken Sládkovič 1846-os kéziratának egy darabja is megjelenik. Love Box 1 évre 50 euró (utána 10 euró évente), Love Box örökre 100 euró, a csomaghoz ajándék Marína kiadás és belépési kedvezmények is járnak (az örök Love Boxnál élethosszig évi két ingyenes belépés). A sima látogatói belépő felnőtteknek 14 euró, és helyben lehet érdeklődni a lehetőségekről, illetve online is igényelhető Love Box." },
 
@@ -359,19 +332,19 @@ A selmecbányai kálvária különlegessége, hogy a klasszikus 12 stáció hely
 
       {
         name: "Tajch Velká Vodárenská tó 15 perc gyalog a Szentháromság térről", lat: 48.46687144459995, lon: 18.88865161687114, desc:
-          `A Tajch Velká Vodárenská habár egy parányi bányató, ám Szlovákia egyik legszebb tava. A tó gyönyörű kékes-zölden csillogó vize és a körülötte elterülő erdő a kirándulók és fürdőzni vágyók egyik kedvenc pontja. A tó eredetileg bányató volt, és létezéséről már 16. századi leletek is tanúskodnak.`
+`A Tajch Velká Vodárenská habár egy parányi bányató, ám Szlovákia egyik legszebb tava. A tó gyönyörű kékes-zölden csillogó vize és a körülötte elterülő erdő a kirándulók és fürdőzni vágyók egyik kedvenc pontja. A tó eredetileg bányató volt, és létezéséről már 16. századi leletek is tanúskodnak.`
       },
 
       {
         name: "Szitnya vár Hrad Sitno", lat: 48.40142941692598, lon: 18.88681190693367, desc:
-          `Szitnya vára (Hrad Sitno) a Selmeci-hegység legmagasabb csúcsán található, 1009 méter magasan. A várat a 13. században építették egy őskori vár-erődítmény helyén. A 18. század elejétől romokban hever.
+`Szitnya vára (Hrad Sitno) a Selmeci-hegység legmagasabb csúcsán található, 1009 méter magasan. A várat a 13. században építették egy őskori vár-erődítmény helyén. A 18. század elejétől romokban hever.
 
 A Szitnyához több monda és legenda fűződik. Talán a legismertebb arról szól, hogy méhében szitnyai lovagok rejtőznek. Amikor a Szitnya alatt lakók sorsa a legrosszabbra fordul, a hegycsúcs megnyílik és a lovagok megmentik őket.`
       },
 
       {
         name: "Bacsófalvi tó", lat: 48.4079546060909, lon: 18.854320049285892, desc:
-          `A Bacsófalvi tó (Počúvadlianske jazero, Počúvadlo) a selmeci tajchy, vagyis bányatavak vízgazdálkodási rendszerének része. Ezt a rendszert azért építették ki, mert a környéken kevés a biztos vízhozamú patak, ezért a csapadékot és hóolvadékot gyűjtötték össze, majd a tározókból szabályozottan vezették tovább, hogy vízenergiát adjanak a bányák gépeinek. :contentReference[oaicite:0]{index=0}
+`A Bacsófalvi tó (Počúvadlianske jazero, Počúvadlo) a selmeci tajchy, vagyis bányatavak vízgazdálkodási rendszerének része. Ezt a rendszert azért építették ki, mert a környéken kevés a biztos vízhozamú patak, ezért a csapadékot és hóolvadékot gyűjtötték össze, majd a tározókból szabályozottan vezették tovább, hogy vízenergiát adjanak a bányák gépeinek. :contentReference[oaicite:0]{index=0}
 
 A csúcskor közel 60 mesterséges tározó működött, ma kb. 24 maradt meg. A víz a hegyoldalakon, szintvonal mentén vezetett gyűjtőárkokba került, majd a tározók után szállítóárkokon és vízalagutakon át jutott a bányákhoz, ahol vízikerekeket hajtott. Ezek a vízikerekek szivattyúkat működtettek, amelyek a mélyebb szinteken felgyülemlő bányavizet emelték ki, így a fejtések nem fulladtak víz alá, és a termelés folytatható maradt. A vízenergiát később ércelőkészítő és kohászati berendezésekhez is használták. :contentReference[oaicite:1]{index=1}
 
@@ -384,30 +357,29 @@ A tó ma rekreációs hely, de a partján állva érdemes úgy nézni, mint egy 
 
       {
         name: "Selmecbányai Botanikus kert", lat: 48.460291, lon: 18.900524, desc:
-          `A Selmecbányai Botanikus kert a történelmi Selmecbánya egyik különleges helyszíne, amely szorosan kapcsolódik a Magyar Királyság bányászati felsőoktatásához. A kert a 18. század végén jött létre, a selmecbányai Bányászati és Erdészeti Akadémia oktatási céljait szolgálva.
+`A Selmecbányai Botanikus kert a történelmi Selmecbánya egyik különleges helyszíne, amely szorosan kapcsolódik a Magyar Királyság bányászati felsőoktatásához. A kert a 18. század végén jött létre, a selmecbányai Bányászati és Erdészeti Akadémia oktatási céljait szolgálva.
 
 A botanikus kert nem reprezentatív parkként született, hanem funkcionális oktatási térként. Feladata az volt, hogy a bányászat és kohászat számára fontos növényfajokat, az erdőgazdálkodás alapjait, valamint a talaj- és vízmegkötés szempontjából lényeges fafajokat élőben mutassa be.`
       },
 
       {
         name: "Belházy-ház", lat: 48.458399527301154, lon: 18.89094360172749, desc:
-          `A Belházy-ház egy 1616-ban emelt reneszánsz sarokház, amelyet a bányászati oktatás céljaira a selmeci akadémia 1770-ben vásárolt meg, és ettől kezdve kémiai laboratórium és gyűjteményi tér is működött benne. Itt kötődik össze Selmecbánya bányászati technológiája a „kémiával mint ipari eszközzel”: az ércvizsgálat, a kohászati folyamatok és az anyagismeret oktatása már nem céhes tapasztalat volt, hanem mérhető, kísérletekkel igazolt tudás. A házhoz több név is kapcsolódik: Giovanni Antonio Scopoli 1770 és 1776 között az akadémián tanított, Nikolaus Joseph von Jacquin pedig a selmeci akadémia első kémiaprofesszoraként innen indult tovább Bécsbe. A 19. század elején (1811 és 1818 között) a felsőoktatási kémia mellett bányavállalati gyűjtemények is helyet kaptak itt, később pedig a bányaiskola működése is kötődött az épülethez.`
+`A Belházy-ház egy 1616-ban emelt reneszánsz sarokház, amelyet a bányászati oktatás céljaira a selmeci akadémia 1770-ben vásárolt meg, és ettől kezdve kémiai laboratórium és gyűjteményi tér is működött benne. Itt kötődik össze Selmecbánya bányászati technológiája a „kémiával mint ipari eszközzel”: az ércvizsgálat, a kohászati folyamatok és az anyagismeret oktatása már nem céhes tapasztalat volt, hanem mérhető, kísérletekkel igazolt tudás. A házhoz több név is kapcsolódik: Giovanni Antonio Scopoli 1770 és 1776 között az akadémián tanított, Nikolaus Joseph von Jacquin pedig a selmeci akadémia első kémiaprofesszoraként innen indult tovább Bécsbe. A 19. század elején (1811 és 1818 között) a felsőoktatási kémia mellett bányavállalati gyűjtemények is helyet kaptak itt, később pedig a bányaiskola működése is kötődött az épülethez.`
       },
-
 
       {
         name: "Rubigall-ház",
         lat: 48.459451503204846,
         lon: 18.892359485868898,
         desc:
-          `1538-ban épült késő gótikus polgárház a Szentháromság téren. A Rubigall család Selmecbánya egyik jelentős ringbürger famíliája volt, címerük és jelmondatuk a kapu felett ma is olvasható: „Spe et patientia”, vagyis „Reménnyel és kitartással”. Később a házban működött a Selmeci Népbank és bányászati levéltár is.
+`1538-ban épült késő gótikus polgárház a Szentháromság téren. A Rubigall család Selmecbánya egyik jelentős ringbürger famíliája volt, címerük és jelmondatuk a kapu felett ma is olvasható: „Spe et patientia”, vagyis „Reménnyel és kitartással”. Később a házban működött a Selmeci Népbank és bányászati levéltár is.
 
 Balassi Bálint anekdotája ehhez a házhoz úgy kötődik, hogy egy selmeci fürdőzés alkalmával (a források a „fürdő szabadságát” emlegetik) összeszólalkozott valakivel, akiről azt írta, hogy ok nélkül csúfolta, ezért „helyretette”. A selmeciek és a Rubigall házhoz köthető befolyásos bányapolgárok emiatt elégtételt akartak, Balassi viszont egy kemény hangú levélben visszaírt, elismerte a dulakodást, de tagadta a város és a tekintélyek szidalmazását, majd provokatívan visszavágott a selmeci tanácsnak. A történet vége az lett, hogy a város és a Rubigall család végül elállt a királynál emelt panasz továbbvitelétől, így a konfliktus „levélcsörtével” zárult.`
       },
 
       {
         name: "Evangélikus Líceum", lat: 48.46067130299584, lon: 18.892141878604892, desc:
-          `A Szentháromság tér felső végén, a jobb oldalon található; 1827-1830 között klasszicista stílusban épült kétemeletes épület. Falai közt tanult többek között Petőfi Sándor és Mikszáth Kálmán is. Petőfiről emléktábla található a falán.`
+`A Szentháromság tér felső végén, a jobb oldalon található; 1827-1830 között klasszicista stílusban épült kétemeletes épület. Falai közt tanult többek között Petőfi Sándor és Mikszáth Kálmán is. Petőfiről emléktábla található a falán.`
       },
 
       {
@@ -415,69 +387,65 @@ Balassi Bálint anekdotája ehhez a házhoz úgy kötődik, hogy egy selmeci fü
         lat: 48.4595796845444,
         lon: 18.89279901981354,
         desc:
-          `A Berggericht Selmecbánya egykori bányabíróságának épülete a Szentháromság téren, itt működött a bányajogi és bányahatósági döntések központja, amikor a bányászat a város gazdasági motorja volt. Később oktatási és hivatali szerepe is volt, ma pedig a Szlovák Bányászati Múzeum mineralógiai kiállításához kötődik, több mint 400 ásványt mutatnak be a világ számos lelőhelyéről, rendszerezett gyűjteményként.
+`A Berggericht Selmecbánya egykori bányabíróságának épülete a Szentháromság téren, itt működött a bányajogi és bányahatósági döntések központja, amikor a bányászat a város gazdasági motorja volt. Később oktatási és hivatali szerepe is volt, ma pedig a Szlovák Bányászati Múzeum mineralógiai kiállításához kötődik, több mint 400 ásványt mutatnak be a világ számos lelőhelyéről, rendszerezett gyűjteményként.
 
 A ház udvarából nyílik a 16. századi Michal táró, patkó alakú, kb. 76 méter hosszú látogatói bányajárat, ami jó arányban ad ízelítőt a korabeli táróvezetésből és a föld alatti tér élményéből, anélkül hogy hosszú bányatúrává válna. Fontos frissítés, a múzeum hivatalos nyitvatartási oldala szerint a Berggericht mineralógiai expozíciója és a Michal táró jelenleg határozatlan ideig zárva lehet, ezért indulás előtt érdemes a hivatalos nyitvatartást ellenőrizni.`
       },
-
 
       {
         name: "Evangélikus templom",
         lat: 48.458540489882054,
         lon: 18.892898261547092,
         desc:
-          `1794 és 1796 között épült, F. Sivák selmeci építőmester kivitelezésében, a bécsi J. Thaller tervei alapján. A legérdekesebb benne, hogy kívülről szándékosan visszafogott: II. József 1781-es türelmi rendelete csak úgy engedte a protestáns templomot, ha nem „templomszerű”, vagyis nincs tornya, harangja, és nem lehet feltűnő utcai főbejárata. Ezért simul bele a házsorba, és ezért van az az érzésed, hogy egy polgárház mellett állsz, aztán egyszer csak kinyílik egy teljesen más világ.
+`1794 és 1796 között épült, F. Sivák selmeci építőmester kivitelezésében, a bécsi J. Thaller tervei alapján. A legérdekesebb benne, hogy kívülről szándékosan visszafogott: II. József 1781-es türelmi rendelete csak úgy engedte a protestáns templomot, ha nem „templomszerű”, vagyis nincs tornya, harangja, és nem lehet feltűnő utcai főbejárata. Ezért simul bele a házsorba, és ezért van az az érzésed, hogy egy polgárház mellett állsz, aztán egyszer csak kinyílik egy teljesen más világ.
 
 Belül viszont kifejezetten okos tér: elipszis alaprajz, oldalirányban kiszélesítve, körben három szint karzattal, ami tényleg olyan, mint egy miniatűr színházterem. Ennek nem „dísz” a célja, hanem a hallhatóság és a rálátás: a protestáns liturgiában az igehirdetés központi, ezért a tér úgy van megcsinálva, hogy a hang és a figyelem a szószékre álljon rá, és minél többen lássanak, halljanak jól. Emiatt akusztikailag is hálás hely, és emiatt van az, hogy a külső szigor mögött egy belső, mérnökileg megkomponált „közösségi tér” rejtőzik.
 
 Ha ezt a templomot úgy nézed, mint egy történelmi kompromisszumot kőbe írva, akkor minden részlet a helyére kerül: kívül beolvadás, belül maximalizált közösségi élmény.`
-      }, // :contentReference[oaicite:0]{index=0}
+      },
 
       {
         name: "Selmecbányai Városháza",
         lat: 48.458810097491856,
         lon: 18.89262880423087,
         desc:
-          `A városháza gyökerei a középkorig nyúlnak vissza, a mai barokk arculatát pedig a város 18. század végi fellendülése idején, 1787 és 1788 között kapta. Nem csak díszépület volt, hanem a bányaváros közigazgatási gépháza, itt futottak össze a városi ügyek, engedélyek, rendeletek, döntések, vagyis az a háttér, ami nélkül egy bányaváros nem tud működni.
+`A városháza gyökerei a középkorig nyúlnak vissza, a mai barokk arculatát pedig a város 18. század végi fellendülése idején, 1787 és 1788 között kapta. Nem csak díszépület volt, hanem a bányaváros közigazgatási gépháza, itt futottak össze a városi ügyek, engedélyek, rendeletek, döntések, vagyis az a háttér, ami nélkül egy bányaváros nem tud működni.
 
 Selmecbánya hét csodájából kettő is ehhez az épülethez kötődik. Az egyik a toronyóra, ahol fel vannak cserélve a mutatók: a nagy mutató az órákat mutatja, a kicsi a perceket, ezért első pillantásra mindig úgy tűnik, mintha rossz időt mutatna. A helyi legenda szerint a tanácsurak úgy okoskodtak, hogy az óra hosszabb, mint a perc, ezért a hosszabb mutatónak az órát illik mutatnia, és ezzel kész. Egy másik, szintén sokat mesélt változat szerint a város ezzel akarta megtréfálni azokat az átvonuló kereskedőket, akik nem akartak hozzájárulni a torony költségeihez, ezért „ne legyen nekik könnyű leolvasni az időt”.
 
 A másik selmeci csoda a bejárat helye. A városházának nem ott van a főbejárata, ahol a szem keresné, hanem hátul, ami elsőre tényleg zavarba ejtő. Erre is van egy tipikus selmeci magyarázat, ami már inkább humor, mint építészeti logika: a legenda szerint a tanács tagjai nem akarták, hogy az emberek lássák, mikor ér véget az ülés, nehogy rögtön rájuk szabaduljanak a kérvényezők, ezért hátul léptek ki, és szépen el tudtak tűnni a közeli kocsmák irányába.`
       },
 
-
       {
         name: "Szűz Mária v. Immaculata szoboregyüttes",
         lat: 48.45888585872504,
         lon: 18.892313539981846,
         desc:
-          `A tér egyik legbeszédesebb barokk kompozíciója, 1748-ban készült el, František, vagyis Franz Rössner kőfaragó és szobrász munkájaként. Közvetlenül a városháza mellett áll, és a források szerint egy korábbi városházi kápolna helyének hangsúlyát is átvette, vagyis nem véletlenül került pont ide: a város közepén akart „állandó üzenet” lenni. Fent az Immaculata, a Szeplőtelen Szűz Mária áll, és a szobor úgy ábrázolja, hogy a lába alatt egy legyőzött szörnyet, a bűn és a kísértés jelképes alakját tapossa le. Ez a barokk nyelvén nagyon direkt mondat: a rend, a tisztaság és az isteni oltalom a káosz fölött áll.
+`A tér egyik legbeszédesebb barokk kompozíciója, 1748-ban készült el, František, vagyis Franz Rössner kőfaragó és szobrász munkájaként. Közvetlenül a városháza mellett áll, és a források szerint egy korábbi városházi kápolna helyének hangsúlyát is átvette, vagyis nem véletlenül került pont ide: a város közepén akart „állandó üzenet” lenni. Fent az Immaculata, a Szeplőtelen Szűz Mária áll, és a szobor úgy ábrázolja, hogy a lába alatt egy legyőzött szörnyet, a bűn és a kísértés jelképes alakját tapossa le. Ez a barokk nyelvén nagyon direkt mondat: a rend, a tisztaság és az isteni oltalom a káosz fölött áll.
 
 A szoborcsoport nem csak Máriáról szól, hanem egy komplett „városi világrendről” is. Körülötte angyalok és hangsúlyosan három arkangyal jelenik meg. Mihály arkangyal mérleggel szerepel, ami az igazságosság és az ítélet képe, és a városháza szomszédságában ez különösen találó, mert itt tényleg a jog és a döntések háza áll. Gábor arkangyal a hírhozó, a közlés és az üzenet alakja, Ráfael pedig a gyógyító és az oltalmazó motívumokhoz kapcsolható. Ha így nézed, akkor a kompozíció szinte „városi program”: igazság, jó hír, védelem, mindez egy bányaváros főterén, ahol a mindennapi élet a kockázatról, a szerencséről és a fegyelemről szólt.
 
 Rössnernek ráadásul itt az volt a feladata, hogy messziről is olvasható legyen a történet, közelről pedig részletgazdag maradjon, ezért a figurák gesztusai, attribútumai, a mérleg, a testtartások mind tudatosan „kódolt” jelek. Érdemes úgy megnézni, hogy először csak a csúcsfigurát figyeled, aztán lefelé olvasod ki a szereplőket, mint egy kőbe faragott képregényt, ahol minden kelléknek jelentése van.`
-      }, // :contentReference[oaicite:2]{index=2}
+      },
 
       {
         name: "Klopacska (kopogó, lármafa, die Klopf)",
         lat: 48.45777017785092,
         lon: 18.892272241892492,
         desc:
-          `A Klopačka Selmecbánya bányászati „hangközpontja” volt: egy jeladó épület, ahonnan ritmusos kopogtatással hívták munkába a bányászokat, és ugyanígy lehetett riasztani is. A klasszikus jelenség az, hogy a bányavárosban nem csak a harangnak volt szerepe, hanem a műszaknak is, és a kopogó hangja a város mindennapi időmérője lett. Egyes leírások szerint nem csak a munka kezdetét jelezte, hanem külön alkalmakat is, például tűz esetén, temetéskor vagy ünnepi eseményeknél is megszólalt, tehát egy komplett „városi jelrendszert” hordozott.
+`A Klopačka Selmecbánya bányászati „hangközpontja” volt: egy jeladó épület, ahonnan ritmusos kopogtatással hívták munkába a bányászokat, és ugyanígy lehetett riasztani is. A klasszikus jelenség az, hogy a bányavárosban nem csak a harangnak volt szerepe, hanem a műszaknak is, és a kopogó hangja a város mindennapi időmérője lett. Egyes leírások szerint nem csak a munka kezdetét jelezte, hanem külön alkalmakat is, például tűz esetén, temetéskor vagy ünnepi eseményeknél is megszólalt, tehát egy komplett „városi jelrendszert” hordozott.
 
 A mai csavar a történetben az, hogy az épületben ma teaház működik, méghozzá a térség turisztikai anyagai szerint Szlovákia legrégebbi teaházaként is emlegetik. A hely különlegessége, hogy nem csak beülsz egy italra, hanem egy történelmi jeladó térben ülsz, ahol régen a hang „munkára állította” a várost. A kínálatot több forrás is kiemeli: nagy teaválaszték, friss teabetakarítások, arab kávé eredeti dzsezvában készítve, házi rétes, limonádék, jeges teák, és a vendégtérben társasjátékok, könyvek is előkerülhetnek. Sok helyen említik a vízipipát is, illetve hogy a hangulat kifejezetten barátságos, „el lehet időzni”, nem csak beugrós pont.
 
 A Klopačka ezért jó POI: egyetlen épületben összeér Selmecbánya bányászati fegyelme és a mai városi élet, és ráadásul úgy, hogy közben a funkció logikája megmarad. Régen a kopogás összehívott, ma a teázás hív össze, csak már nem műszakra, hanem beszélgetésre.`
-      }, // :contentReference[oaicite:3]{index=3}
-
-
+      },
 
       {
         name: "Hegybányai-kapu (vagy Szélaknai-, Piargi-kapu)",
         lat: 48.45551868851429,
         lon: 18.893223865048295,
         desc:
-          `Ez Selmecbánya egykori városi erődítésének legismertebb maradványa, és lényegében az egyetlen olyan városkapu, ami máig megmaradt. A kaput 1554-ben emelték a török fenyegetés idején, és a korabeli védelmi rendszer tervezését a császári szolgálatban álló itáliai erődítési szakember, Pietro Ferrabosco nevéhez kötik. A város domborzata miatt Selmec nem klasszikus “körfalas” várváros lett, inkább a beépítés, falak és bástyák együtt adtak védelmi hálót, ebben volt a kapu a forgalom és az ellenőrzés szűk keresztmetszete.
+`Ez Selmecbánya egykori városi erődítésének legismertebb maradványa, és lényegében az egyetlen olyan városkapu, ami máig megmaradt. A kaput 1554-ben emelték a török fenyegetés idején, és a korabeli védelmi rendszer tervezését a császári szolgálatban álló itáliai erődítési szakember, Pietro Ferrabosco nevéhez kötik. A város domborzata miatt Selmec nem klasszikus “körfalas” várváros lett, inkább a beépítés, falak és bástyák együtt adtak védelmi hálót, ebben volt a kapu a forgalom és az ellenőrzés szűk keresztmetszete.
 
 A Piargi kapu a városba vezető út védelmét a közeli Újvárral együtt látta el, vagyis nem magában álló “szép fotópont”, hanem egy összehangolt tűz és riasztási rendszer része volt. A leírások szerint a kapuszerkezet nem csak egy átjáró, hanem tornyos, bástyás elem volt, ahol egyszerre lehetett áthaladást szabályozni, őrséget elhelyezni és oldalirányból is védeni a bejáratot. A homlokzati fülkében látható Szent Flórián szobra nagyon selmeci üzenet: egy sűrűn beépített bányavárosban a tűz majdnem akkora ellenség volt, mint bármely hadsereg, Flórián pedig a tűzvészek elleni oltalmazó szentje.`
       },
@@ -487,9 +455,9 @@ A Piargi kapu a városba vezető út védelmét a közeli Újvárral együtt lá
         lat: 48.45861715157205,
         lon: 18.89398455619812,
         desc:
-          `A Krecsmáry-ház Selmecbánya “világszintű agytröszt” korszakának egyik kulisszája. A Bányászati Akadémia hivatalos akadémiai rangját Mária Terézia 1762-ben erősítette meg, és az oktatás 1764-ben indult el, elsőként a kémia és kohászat területén. A városban ekkor még nem egyetlen nagy kampuszépületben folyt minden, hanem több polgárházat is bevontak oktatásra és intézeti munkára, és a Krecsmáry-házat is azok között tartják számon, amelyeket az akadémia céljaira használtak.
+`A Krecsmáry-ház Selmecbánya “világszintű agytröszt” korszakának egyik kulisszája. A Bányászati Akadémia hivatalos akadémiai rangját Mária Terézia 1762-ben erősítette meg, és az oktatás 1764-ben indult el, elsőként a kémia és kohászat területén. A városban ekkor még nem egyetlen nagy kampuszépületben folyt minden, hanem több polgárházat is bevontak oktatásra és intézeti munkára, és a Krecsmáry-házat is azok között tartják számon, amelyeket az akadémia céljaira használtak.
 
-A helyi hagyomány szerint Nikolaus Joseph von Jacquin, az akadémia első professzora, 1764-ben itt kezdett vegytani és ásványtani előadásokat tartani. Ha úgy tetszik, ez a ház egy “kémiai startvonal”, ahol a bányászat nem csak lapáttal és csillével, hanem mérlegen, tégelyben és pontos megfigyeléssel is működni kezdett. A selmeci kémia nem dísz volt, hanem üzemi szükséglet: ércvizsgálat, kohósítási eljárások, fémek tisztítása, mind olyan tudás, ami közvetlenül pénzzé és technológiai előnnyé vált.
+A helyi hagyomány szerint Nikolaus Joseph von Jacquin, az akadémia első professzora, 1764-ben itt kezdett vegytani és ásványtani előadásokat tartani. Ha úgy tetszik, ez a ház egy “kémiai startvonal”, ahol a bányászat nem csak lapáttal és csillével, hanem mérlegen, tégelyben és pontos megfigyeléssel is működni kezdett. A selmeci kémia nem dísz volt, hanem üzemi szükséglet: ércvizsgálat, kohósítási eljárások, fémek tisztítása, mind olyan tudás, ami közvetlenül pénzzé és technológiai előnyé vált.
 
 Érdekességként érdemes úgy nézni ezt a házat, mint egy “korabeli laborhangulatú” városi szobát: Selmecben a tudomány nem elzárt torony volt, hanem beépült a városszövetbe. Ezért van az, hogy itt sétálsz a macskakövön, és közben szó szerint a modern műszaki felsőoktatás európai bölcsőjének ajtajai mellett mész el.`
       },
@@ -499,20 +467,19 @@ A helyi hagyomány szerint Nikolaus Joseph von Jacquin, az akadémia első profe
         lat: 48.45861939359901,
         lon: 18.894515633583072,
         desc:
-          `A “Terasz” Selmecbánya főutcájának megemelt járdaszakasza, helyi nevén trotuár. A szó francia eredetű, és a látvány is rájátszik erre: egy hosszú, enyhén kiemelt sétasáv, amely a főút mellett fut, mintha a városnak lenne egy saját, elegáns korzója a kocsiforgalom fölött. A megemelésnek praktikus értelme is van: meredek, vízlefolyós, télen csúszós utcákon a gyalogosnak életbiztosítás, ha van egy kis “szintkülönbséges” védett sávja, ahol kevésbé kapja el a sár, a víz és régen a kerekek fröcskölése.
+`A “Terasz” Selmecbánya főutcájának megemelt járdaszakasza, helyi nevén trotuár. A szó francia eredetű, és a látvány is rájátszik erre: egy hosszú, enyhén kiemelt sétasáv, amely a főút mellett fut, mintha a városnak lenne egy saját, elegáns korzója a kocsiforgalom fölött. A megemelésnek praktikus értelme is van: meredek, vízlefolyós, télen csúszós utcákon a gyalogosnak életbiztosítás, ha van egy kis “szintkülönbséges” védett sávja, ahol kevésbé kapja el a sár, a víz és régen a kerekek fröcskölése.
 
-A trotuár ugyanakkor társasági tér volt, nem csak közlekedési trükk. A helyi leírások kifejezetten említik, hogy egykor ismerkedőhely volt, diákok és helyi lányok találkozási, sétálgatási színtere, ami szinte kötelező kelléke egy “diákváros” ritmusának. Ma ugyanez a vonal tele van apró üzletekkel, kávézókkal és éttermekkel, vagyis a funkció megmaradt, csak a szereplők és a ruhák változtak. 
+A trotuár ugyanakkor társasági tér volt, nem csak közlekedési trükk. A helyi leírások kifejezetten említik, hogy egykor ismerkedőhely volt, diákok és helyi lányok találkozási, sétálgatási színtere, ami szinte kötelező kelléke egy “diákváros” ritmusának. Ma ugyanez a vonal tele van apró üzletekkel, kávézókkal és éttermekkel, vagyis a funkció megmaradt, csak a szereplők és a ruhák változtak.
 
 Fotós szemmel ez a város egyik legjobb “komponáló” pontja: a trotuár vonalvezetése szépen ráhúz a belvárosi látképre, és a helyi ajánlók szerint különösen jól mutat a háttérben a Szent Katalin templommal és a városháza környékével. Plusz selmeci fűszerként ott van a bányász Náco figurája is a közelben, a város legendás csibésze, akivel itt szokás “összefutni” képen és történetben is.`
       },
-
 
       {
         name: "Kammerhof múzeum",
         lat: 48.458106,
         lon: 18.895681,
         desc:
-          `A Kammerhof Selmecbánya egyik legfontosabb “hatalmi épülete” volt, nem templom és nem vár, hanem a bányászat irányításának adminisztratív központja. Itt működött a felső magyarországi bányakamara, vagyis az a hivatal, amelyik a bányászati jogokat, a kitermelést, a pénzügyeket, az engedélyezést, a beszolgáltatást és a bányavárosok fölötti ellenőrzést összefogta. Ha azt kérdezed, hol dőlt el, hogy egy érctelér megnyitása engedélyt kap e, milyen adót fizetnek, milyen műszaki előírások vonatkoznak a bányára, és hova megy a bevétel, akkor a válasz Selmecbányán sokszor pont ez az épület.
+`A Kammerhof Selmecbánya egyik legfontosabb “hatalmi épülete” volt, nem templom és nem vár, hanem a bányászat irányításának adminisztratív központja. Itt működött a felső magyarországi bányakamara, vagyis az a hivatal, amelyik a bányászati jogokat, a kitermelést, a pénzügyeket, az engedélyezést, a beszolgáltatást és a bányavárosok fölötti ellenőrzést összefogta. Ha azt kérdezed, hol dőlt el, hogy egy érctelér megnyitása engedélyt kap e, milyen adót fizetnek, milyen műszaki előírások vonatkoznak a bányára, és hova megy a bevétel, akkor a válasz Selmecbányán sokszor pont ez az épület.
 
 A Kammerhof ezért nem egyszerű múzeumi helyszín, hanem a “bányaváros agya” volt. A bányászat itt nem romantikus csillézés, hanem államszervezési kérdés: a nemesfém stratégiai nyersanyag, pénzveréshez és hadsereghez is kell, ezért a Habsburg Monarchiában ez keményen központi ügy lett. A kiállításokban pont az az érdekes, hogy nem csak eszközöket látsz, hanem a bányászat mögötti rendszert: hogyan lett a telérből bevétel, a bevételből állami erő, és a városból “ipari központ” évszázadokon át.
 
@@ -524,7 +491,7 @@ A Kammerhof ezért nem egyszerű múzeumi helyszín, hanem a “bányaváros agy
         lat: 48.458391195417036,
         lon: 18.896812945604324,
         desc:
-          `Ez Selmecbánya nagy, történelmi plébániatemploma, amely eredetileg a 13. században épült román kori alapokra, és kezdetben háromhajós bazilika jellegű volt. A város gazdagsága és a bányászati fellendülések miatt a templom többször átépült, ezért nem “tiszta stílus”, hanem időrétegek találkozása: román alap, gótikus korszaknyomok, későbbi barokk és végül a 19. század eleji klasszicizáló arculat.
+`Ez Selmecbánya nagy, történelmi plébániatemploma, amely eredetileg a 13. században épült román kori alapokra, és kezdetben háromhajós bazilika jellegű volt. A város gazdagsága és a bányászati fellendülések miatt a templom többször átépült, ezért nem “tiszta stílus”, hanem időrétegek találkozása: román alap, gótikus korszaknyomok, későbbi barokk és végül a 19. század eleji klasszicizáló arculat.
 
 A kulcsdátum 1806: a nagy selmeci tűzvész után a város sok épületéhez hasonlóan ezt is helyre kellett állítani, és a felújításkor kapott határozottabb klasszicista külsőt. Technikailag ez azért érdekes, mert a tűz után nem egyszerű “javítás” történt, hanem kényszerű újratervezés: szerkezetek, tetők, boltozatok, anyaghasználat, mind új logikát kapott, és a város arculata emiatt lett egységesebb, fegyelmezettebb. A templomot ezért érdemes úgy nézni, mint Selmecbánya “tűz előtti” és “tűz utáni” korszakának határkövét.
 
@@ -536,20 +503,19 @@ Ha figyeled a tömeget és az arányokat, látszik, hogy ez nem csak egy belvár
         lat: 48.46036849734661,
         lon: 18.892219136863364,
         desc:
-          `Egy 16. század első feléből származó reneszánsz polgárház, ami önmagában is ritkaság a városban, mert Selmec épületállománya sok tűzvészt és átépítést élt meg. A Joerges ház igazi érdekessége viszont a 20. század eleji szerepe: itt működött Joerges Ágost nyomdája, vagyis ez a ház lett a város “információs gépe”. Egy bányavárosban a papír nem mellékes: hirdetmények, tanulmányok, iskolai anyagok, bányászati jelentések, meghívók, sőt a mindennapi polgári élet nyomtatványai mind azt jelentették, hogy a város nem csak termel, hanem gondolkodik és kommunikál is.
+`Egy 16. század első feléből származó reneszánsz polgárház, ami önmagában is ritkaság a városban, mert Selmec épületállománya sok tűzvészt és átépítést élt meg. A Joerges ház igazi érdekessége viszont a 20. század eleji szerepe: itt működött Joerges Ágost nyomdája, vagyis ez a ház lett a város “információs gépe”. Egy bányavárosban a papír nem mellékes: hirdetmények, tanulmányok, iskolai anyagok, bányászati jelentések, meghívók, sőt a mindennapi polgári élet nyomtatványai mind azt jelentették, hogy a város nem csak termel, hanem gondolkodik és kommunikál is.
 
 A nyomda Selmecben különösen izgalmas, mert itt volt akadémiai és diákélet, tehát a szövegkultúra erős: könyvek, jegyzetek, röplapok, meghívók, mind a városi ritmus része. Ezt a házat ezért úgy érdemes felírni fejben, mint a “tinta és ólom betűk” korszakának jelét a bányák városában: miközben a hegyekben csillék jártak, a belvárosban a nyomdagép “csinálta a nyilvánosságot”.
 
 Ha van kedved, állj meg előtte úgy, hogy elképzeled, milyen lehetett, amikor az utcán friss nyomdafesték szagával jött ki egy új plakát vagy kiadvány, és a város ugyanúgy várta, mint ma a telefon értesítést.`
       },
 
-
       {
         name: "Glanzenberg tárna",
         lat: 48.457489,
         lon: 18.899254,
         desc:
-          `A Glanzenberg tárna Selmecbánya egyik legrégebbi, ma is járható bányajárata, a helyi hagyomány és a múzeumi leírások szerint a 13. századig visszanyúló bányászati korszak emléke. Ez nem “múzeumi díszlet”, hanem a középkori és kora újkori bányászat valódi, kőbe vágott infrastruktúrája: keskeny, alacsony szelvények, természetes sötétség, nedves falak, és az a tipikus érzés, hogy itt minden centi munkával lett kivájva. Pont ettől üt: a mai ember fejében a bánya gyakran nagy csarnok, gépek, fény, itt viszont a bányászat “kézi léptékű” és kíméletlenül közeli.
+`A Glanzenberg tárna Selmecbánya egyik legrégebbi, ma is járható bányajárata, a helyi hagyomány és a múzeumi leírások szerint a 13. századig visszanyúló bányászati korszak emléke. Ez nem “múzeumi díszlet”, hanem a középkori és kora újkori bányászat valódi, kőbe vágott infrastruktúrája: keskeny, alacsony szelvények, természetes sötétség, nedves falak, és az a tipikus érzés, hogy itt minden centi munkával lett kivájva. Pont ettől üt: a mai ember fejében a bánya gyakran nagy csarnok, gépek, fény, itt viszont a bányászat “kézi léptékű” és kíméletlenül közeli.
 
 Technikailag érdemes úgy nézni, mint egy sok funkciót egyszerre ellátó alagutat. A “tárna” nem csak kitermelésre szolgált: víztelenítésre, szellőztetésre, szállításra és feltárásra is. A víz a bányában mindig ellenség, ezért a tárnák egyik alapfeladata az volt, hogy gravitációval kivezessék a beszivárgó vizet a hegyből, minél kevesebb szivattyúzással. A másik alapfunkció a közlekedés: ahol lehetett, csillék, kézikocsik, később sínpálya szerű megoldások vitték az anyagot, de a Glanzenberg jellegében inkább a “kézi korszakot” érzed, amikor a szűk szelvény a gyors előrehaladást és a minimális földkiemelést szolgálta.
 
@@ -560,19 +526,9 @@ A látogatás élménye ezért nyers és őszinte. Sisak és lámpa után olyan 
         name: "Szent Katalin templom",
         lat: 48.45881836213337,
         lon: 18.893105828640103,
-        desc: `A Szent Katalin templom kívülről is jól olvasható késő gótikus városi épület, de az igazi ereje belül jön ki: a tér arányai feszesek, a boltozat bordázata pedig úgy szervezi a mennyezetet, mintha egy kőből rajzolt, geometrikus hálót feszítettek volna ki a fejed fölé. Érdemes kifejezetten a bordák találkozásait és a konzolokat nézni, mert itt látod, hogy a gótika nem „dísz”, hanem mérnöki logika, ami közben mégis látványos. A faragott tartóelemek és a részletek finomsága azt jelzi, hogy ez nem egy melléktemplom volt, hanem egy bányaváros öntudatos polgárságának reprezentatív tere, ahol a közösség nem csak imádkozott, hanem rangot és identitást is mutatott.
-
-A templom történetének egyik legerősebb rétege az, hogy Selmecbánya nem csak bányászváros volt, hanem tudásváros is. A környék bányászata mögött állandóan ott volt a számítás, a mérés, a kísérletezés, az akadémiai gondolkodás, és ennek a „tudás városának” különösen beszédes védőszentje Alexandriai Szent Katalin. A hagyományban ő a műveltség és a szellemi bátorság alakja, aki vitázik, érvel, és nem hátrál meg. Ez a patrónus Selmecben azért talál tökéletes helyre, mert a város mindennapjai is egyfajta folyamatos vita és kísérlet volt: hogyan lehet mélyebbre menni, hogyan lehet vizet emelni, hogyan lehet ércet feldolgozni, hogyan lehet a hegyet „értelmezni”. Itt a hit és a racionalitás nem feltétlenül ellentétként jelenik meg, hanem egymás mellett, ugyanabban a városi szövetben.
-
-A templom nem csak építészeti emlék, hanem egy kulturális csomópont is, mert ide kötődik Selmecbánya egyik legnagyobb művészettörténeti kincse: az a szárnyasoltár, amelyet a kutatás MS mester nevével kapcsol össze. MS mester személye rejtélyes, a monogramja miatt így nevezzük, és épp ez adja a történet nyomozós izgalmát. A lényeg túrázó szemmel az, hogy itt állt egykor egy olyan oltáregyüttes, amely a magyar késő középkori festészet csúcsteljesítményei közé tartozik, majd később a darabjai szétszóródtak, és az oltár egészként megszűnt. A templom így egyszerre „jelenlévő” és „hiányzó” emlékhely: a tér megvan, a nagy mű pedig ma már csak nyomokban köthető vissza ide, és ettől a hely különösen erős hangulatot kap.
-
-A legismertebb tábla a Vizitáció jelenete, Mária és Erzsébet találkozása. Ez a kép azért hat, mert nem puszta vallásos illusztráció: feszes kompozíció, erős arcok, tudatos gesztusok és olyan részletek, amelyekből érzed a festő szándékát, hogy ez nem dekoráció, hanem elmesélt dráma. Ha ezt a templomot úgy nézed, mint egy történeti koordinátát, akkor nagyon egyszerű mondatot kapsz: ezen a ponton egyszer egy kivételes minőségű mű állt a város közepén, és ez azt mutatja, hogy Selmecbánya nem csak gazdasági központ volt, hanem kulturális igényességben is magasra tette a lécet.
-
-A templom szerepét a városi társadalomban az is különlegessé teszi, hogy a későbbi századokban a város nem német ajkú lakosságának fontos lelki tere lett, vagyis nem egyetlen réteg privát temploma, hanem egy olyan hely, ahol identitások és korszakok egymásra rakódnak. Ezért jó megálló túrán: pár perc alatt át lehet érezni, hogy Selmecbánya története nem egyetlen vonal, hanem több nyelv, több közösség és több történelmi réteg egymásra írt térképe.
-
-Ha röviden használati utasítást is adsz magadnak: állj meg belül középen, nézz fel a boltozatra, majd nézz le a részletekre, konzolokra, és gondold végig, hogy itt egyszer MS mester oltára állt. Ettől a pont rögtön több lesz, mint egy szép templom a főtér mellett: egy olyan hely, ahol a bányaváros kőbe és festékbe is beírta a saját nagyságát.`
+        desc:
+`A Szent Katalin templom kívülről is jól olvasható késő gótikus városi épület, de az igazi ereje belül jön ki: a tér arányai feszesek, a boltozat bordázata pedig úgy szervezi a mennyezetet, mintha egy kőből rajzolt, geometrikus hálót feszítettek volna ki a fejed fölé. Érdemes kifejezetten a bordák találkozásait és a konzolokat nézni, mert itt látod, hogy a gótika nem „dísz”, hanem mérnöki logika, ami közben mégis látványos. A faragott tartóelemek és a részletek finomsága azt jelzi, hogy ez nem egy melléktemplom volt, hanem egy bányaváros öntudatos polgárságának reprezentatív tere, ahol a közösség nem csak imádkozott, hanem rangot és identitást is mutatott.`
       },
-
 
       {
         name: "Zsidó zsinagóga",
@@ -580,7 +536,6 @@ Ha röviden használati utasítást is adsz magadnak: állj meg belül középen
         lon: 18.89361637933154,
         desc: "Az egykori neológ zsinagóga 1893-ra készült el, és a helyi hitközség a 20. század közepéig használta. A bányavárosi korlátozások sokáig fékezték a letelepedést, a közösség igazán 1859 után tudott megerősödni, majd intézményeket is létrehozni. A holokauszt előtt a zsidó lakosság létszáma négyszáz fő felett volt, később szinte teljesen eltűnt a helyi közösség. 1949-ben a város megvette az épületet, majd hosszú ideig raktár és műhely jellegű funkciók váltották egymást. A 2010 utáni évtizedben felújították, ma a Pivovar ERB komplexum részeként működik, és emléktábla is utal az elpusztított közösségre."
       },
-
     ];
 
     function escapeHtml(s) {
@@ -600,11 +555,10 @@ Ha röviden használati utasítást is adsz magadnak: állj meg belül középen
         : `<p class="pop-desc">Nincs leírás a GPX-ben.</p>`;
 
       return `<div>
-    <div class="pop-title">${escapeHtml(title)}</div>
-    ${descHtml}
-  </div>`;
+        <div class="pop-title">${escapeHtml(title)}</div>
+        ${descHtml}
+      </div>`;
     }
-
 
     const MARKER_SHADOW = "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png";
     const IMG_GREEN = "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png";
@@ -663,13 +617,118 @@ Ha röviden használati utasítást is adsz magadnak: állj meg belül középen
     let userMarker = null;
     let watchId = null;
 
+    // GPX trackek
+    const TRACKS_INDEX_URL = "tracks/index.json";
+    const gpxLayers = [];
+    const gpxLabelMarkers = [];
+
+    function makeTrackLabelIcon(labelText) {
+      const safe = escapeHtml(String(labelText));
+      return L.divIcon({
+        className: "",
+        html:
+          '<div style="width:28px;height:28px;border-radius:999px;' +
+          'background:rgba(45,127,249,0.95);border:1px solid rgba(255,255,255,0.65);' +
+          'box-shadow:0 6px 14px rgba(0,0,0,0.35);' +
+          'display:flex;align-items:center;justify-content:center;' +
+          'font-weight:900;color:#fff;font-size:13px;line-height:1;">' +
+          safe +
+          '</div>',
+        iconSize: [28, 28],
+        iconAnchor: [14, 14]
+      });
+    }
+
+    function labelFromFilename(fn) {
+      const base = String(fn).split("/").pop().replace(/\.gpx$/i, "");
+      const m = base.match(/^\d+$/);
+      return m ? m[0] : base;
+    }
+
     function fitAll() {
-      const b = [];
-      for (let i = 0; i < POIS.length; i++) {
-        const p = POIS[i];
-        b.push([p.lat, p.lon]);
+      const bounds = L.latLngBounds();
+
+      // POI-k
+      if (Array.isArray(POIS)) {
+        POIS.forEach(p => bounds.extend([p.lat, p.lon]));
       }
-      if (b.length) map.fitBounds(b, { padding: [30, 30] });
+
+      // GPX trackek
+      if (Array.isArray(gpxLayers)) {
+        gpxLayers.forEach(layer => {
+          if (layer && layer.getBounds) {
+            const b = layer.getBounds();
+            if (b && b.isValid && b.isValid()) bounds.extend(b);
+          }
+        });
+      }
+
+      if (bounds.isValid()) {
+        map.fitBounds(bounds, { padding: [50, 50] });
+      }
+    }
+
+    function loadAllTracksFromIndex() {
+      fetch(TRACKS_INDEX_URL, { cache: "no-store" })
+        .then(r => {
+          if (!r.ok) throw new Error("Nem olvasható: " + TRACKS_INDEX_URL);
+          return r.json();
+        })
+        .then(files => {
+          if (!Array.isArray(files)) throw new Error("index.json nem tömb");
+          if (!files.length) { fitAll(); return; }
+
+          let pending = files.length;
+
+          files.forEach((fileName) => {
+            const url = "tracks/" + String(fileName).replace(/^\/+/, "");
+
+            const gpx = new L.GPX(url, {
+              async: true,
+              marker_options: {
+                startIconUrl: "",
+                endIconUrl: "",
+                shadowUrl: ""
+              },
+              polyline_options: {
+                color: "#2d7ff9",
+                opacity: 0.75,
+                weight: 5,
+                lineCap: "round"
+              }
+            });
+
+            gpx.on("loaded", function (e) {
+              try { e.target.bringToBack(); } catch (err) { }
+
+              const b = e.target.getBounds && e.target.getBounds();
+              if (b && b.isValid && b.isValid()) {
+                const center = b.getCenter();
+                const label = labelFromFilename(fileName);
+                const lm = L.marker(center, {
+                  icon: makeTrackLabelIcon(label),
+                  interactive: false
+                }).addTo(map);
+                gpxLabelMarkers.push(lm);
+
+                gpxLayers.push(e.target);
+              }
+
+              pending--;
+              fitAll();
+            });
+
+            gpx.on("error", function () {
+              pending--;
+              if (pending <= 0) fitAll();
+            });
+
+            gpx.addTo(map);
+          });
+        })
+        .catch(() => {
+          fitAll();
+        });
     }
 
     function setSelected(newIdx) {
@@ -698,6 +757,7 @@ Ha röviden használati utasítást is adsz magadnak: állj meg belül középen
       if (m) m.openPopup();
     }
 
+    // POI markerek
     for (let i = 0; i < POIS.length; i++) {
       const idx = i + 1;
       const p = POIS[i];
@@ -712,8 +772,7 @@ Ha röviden használati utasítást is adsz magadnak: állj meg belül középen
       poiMarkers.set(idx, m);
     }
 
-    fitAll();
-
+    // POI lista
     const listEl = document.getElementById("poiList");
     for (let i = 0; i < POIS.length; i++) {
       const idx = i + 1;
@@ -746,8 +805,11 @@ Ha röviden használati utasítást is adsz magadnak: állj meg belül középen
       listEl.appendChild(row);
     }
 
-    const statusChip = document.getElementById("statusChip");
+    // GPX betöltés (és a végén fitAll)
+    loadAllTracksFromIndex();
 
+    // GPS
+    const statusChip = document.getElementById("statusChip");
     function setGpsStatus(txt) {
       if (statusChip) statusChip.textContent = txt;
     }
@@ -778,7 +840,7 @@ Ha röviden használati utasítást is adsz magadnak: állj meg belül középen
           },
           { enableHighAccuracy: true, maximumAge: 5000, timeout: 10000 }
         );
-      } catch {
+      } catch (err) {
         setGpsStatus("GPS: hiba");
       }
     }
@@ -792,6 +854,7 @@ Ha röviden használati utasítást is adsz magadnak: állj meg belül középen
       userMarker.openPopup();
     });
 
+    // Dock nyitás csukás
     (function () {
       const dock = document.getElementById("mapDock");
       const btn = document.getElementById("mapDockToggle");
