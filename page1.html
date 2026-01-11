@@ -45,6 +45,7 @@ p {
 
 /* gomb */
 .btn {
+    box-sizing: border-box;
     display: block;
     width: 100%;
     padding: 12px 16px;
@@ -75,9 +76,28 @@ p {
         font-size: 24px;
     }
     p, .btn {
+    box-sizing: border-box;
         font-size: 17px;
     }
 }
+
+/* Navigációs gomb – égkék */
+.nav-btn {
+    box-sizing: border-box; /* padding beleszámít a 100%-ba */
+    display: inline-block;
+    width: 100%;
+    padding: 12px 16px;
+    margin: 0 0 10px 0;
+    background: #68c7ff;
+    color: #033048;
+    font-weight: bold;
+    border-radius: 10px;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    font-size: 18px;
+}
+.nav-btn:hover { filter: brightness(1.05); }
 </style>
 </head>
 
@@ -88,11 +108,16 @@ p {
 
     <p>Itt indul a selmecbányai kaland.  
     Ha készen álltok az első feladatra, lépjetek be a kávézó világába.</p>
+    <a href="https://maps.app.goo.gl/v3MMfonkRRDs3Hmv5" target="_blank" class="nav-btn">
+        📍 Navigáció a Moja Marína kávézóhoz
+    </a>
 
     <button class="btn" onclick="window.location.href='content1.html'">
-        ➜ Belépés az első állomásra
+        ➜ Belépés az első állomásra, ahogy oda értek a kávézóhoz
     </button>
 </div>
 
 </body>
 </html>
+
+
