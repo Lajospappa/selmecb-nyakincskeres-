@@ -102,7 +102,39 @@ p {
 .home-btn:hover {
     filter: brightness(1.05);
 }
+
+/* input + hibaüzenet (jelszó bekéréshez) */
+input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 4px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    box-sizing: border-box;
+}
+
+/* hibaüzenet */
+#error {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #ffb3b3;
+    text-align: center;
+}
 </style>
+
+<script>
+function check() {
+    var v = document.getElementById("code").value.trim().toLowerCase();
+    // kulcs ehhez a ponthoz: "avocado" (nem jelenik meg a szövegben)
+    if (v === "avocado") {
+        window.location.href = "content2.html";
+    } else {
+        document.getElementById("error").textContent =
+            "Ez most nem nyitotta ki a rög titkát. Próbáld újra.";
+    }
+}
+</script>
 </head>
 
 <body>
@@ -114,8 +146,7 @@ p {
     <button id="startNavBtn">Távolság mérése (GPS)</button>
     <span id="distanceText" class="distance-status">
         Engedélyezd a helymeghatározást a böngészőben.
-    </span>
-</div>
+    </span></div>
 
 <p>Ez Selmecbánya egyik legjobb kávézója: igyatok egy finom kávét vagy teát,  
 és élvezzétek a város nyugodt, mégis titkokkal teli hangulatát.  
@@ -145,13 +176,13 @@ Ez a gyümölcs nyitja meg előttetek az „Aranyrög” kaland kapuját.
 </p>
 
 <!-- Navigációs gomb – FŐOLDAL fölött -->
-<div class="btn-row">
-    <a href="https://maps.app.goo.gl/v3MMfonkRRDs3Hmv5" target="_blank" class="nav-btn">
-        📍 Navigáció a Moja Marína kávézóhoz
-    </a>
-</div>
+<div class="btn-row"></div>
 
 <div class="btn-row">
+    <p>Írd ide a gyümölcs nevét hogy eljussatok az aranyröghöz.</p>
+    <input id="code" type="text" autocomplete="off" placeholder="Írd ide a kulcsot">
+    <button class="btn" onclick="check()">➜ Tovább</button>
+    <div id="error"></div>
     <a href="index.html" class="home-btn">⬅ Vissza a főoldalra</a>
 </div>
 
@@ -228,3 +259,5 @@ startBtn.addEventListener("click", function () {
 
 </body>
 </html>
+
+
