@@ -155,17 +155,34 @@ p {
         Engedélyezd a helymeghatározást a böngészőben.
     </span>
 </div>
+<p>A városban élt <span class="highlight">Andrej Kmeť</span> (Kmety András) is,  
+aki Selmecbánya tudományos szellemében vált sokoldalú felfedezővé:  
+itt kezdett együtt dolgozni professzorokkal, új növényfajokat azonosított,  
+és olyan kutatóként vált ismertté, akinek minden selmeci ösvény újabb titkot rejtett.  
+Bár papként szolgált, a város kalandos és pezsgő világa formálta igazi tudós-kalandorrá.</p>
 
-<!-- NAVIGÁCIÓS GOMB -->
-<div class="btn-row">
-    <a href="https://maps.app.goo.gl/1oetM9fW25m7Q5VN9" 
-       target="_blank" 
-       class="nav-btn">
-        📍 Navigáció a Bányamúzeumhoz
-    </a>
+<h2 style="color:#ffe7a3; text-align:center; margin-top:30px;">Feladat</h2>
+
+<p>Keressétek meg, hol áll ma is <span class="highlight">Andrej Kmeť szobra</span>.  
+Álljatok meg vele szemben, majd nézzetek jobbra –  
+ott, egy nagy kapu mögött találjátok az első hivatalos állomást.</p>
+<!-- NAVIGÁCIÓS GOMB --><p><h2 style="color:#ffe7a3; text-align:center; margin-top:30px;">Kérdés</h2>
+<p style="text-align:center; margin-bottom:10px;"><strong>Mi az az épület amit láttok.</strong></p>
+
+<div class="codebox" style="font-size:18px;">
+  <input id="unlockInput" type="text" placeholder="Írd be a választ..."
+         style="width: 90%; max-width: 360px; padding: 10px 12px; border-radius: 8px; border: 1px solid rgba(255,200,120,0.4); background: rgba(0,0,0,0.35); color: #fff6db; font-family: inherit; font-size: 16px; outline: none;">
+  <div id="unlockHint" style="margin-top:10px; font-size:14px; opacity:0.9;"></div>
 </div>
+<div id="unlockContent" style="display:none;">
+A Kammerhof múzeum a történelmi Selmecbánya központjában található, és nem egy önálló „szlovák bányászat” történetét meséli el, hanem a Magyar Királyság és a Habsburg Monarchia egyik legfontosabb bányászati és közigazgatási központjának működését mutatja be. A Kammerhof eredetileg a felső magyarországi bányakamara (Ungarische Bergkammer) székhelye volt, amely közvetlenül a bécsi udvari kamarának volt alárendelve, és az egész régió arany, ezüst és rézbányászatát felügyelte.</p>
 
-<p>A következő állomásnál bepillantást kaptok abba, hogyan működött a bányászat Selmecbányán. A helyiek szerint a folyamat egyszerű volt: lementek a mélybe, ütöttek párat a kőre, majd hazamentek vacsorázni. A valóságban ez persze kicsit bonyolultabb volt, de mi most a szórakoztató verzióval dolgozunk.</p>
+<p>A kiállítás középpontjában a középkortól a 19. századig tartó magyar és osztrák bányairányítási rendszer áll. Eredeti oklevelek, latin és német nyelvű kamarai iratok, térképek, bányajogi szabályzatok, valamint bányamérnöki makettek mutatják be, miként működött Selmecbánya mint a Magyar Királyság egyik leggazdagabb és technológiailag legfejlettebb bányavárosa. A hangsúly az állami ellenőrzésen, az adóztatáson, a bányászati jogon és a műszaki innovációkon van, különös tekintettel a vízgazdálkodásra és az ún. tajchy rendszerére.</p>
+
+<p>A Kammerhof múzeum kifejezetten adminisztratív és történeti jellegű, ezért jól kiegészíti a föld alatti bányamúzeumokat. Itt nem a tárnák fizikai élménye dominál, hanem az a háttérrendszer, amely Selmecbányát évszázadokon át a magyar bányászat szellemi és gazdasági központjává tette, és amelynek hatása a Habsburg Birodalom egészére kiterjedt. A látogatás átlagosan körülbelül egy órát vesz igénybe.</p>
+
+<p>A nyitvatartás jellemzően hétfőn zárva, keddtől vasárnapig 9:00 és 17:00 között, az utolsó belépés általában 16:00 körül. A jegyárak tipikusan: felnőtt 8 euró, diák és nyugdíjas 4 euró, családi jegy (két felnőtt és két 18 év alatti gyermek) 20 euró, 0 és 4 év közötti gyermek 1 euró, valamint elérhető kibővített belépő is. A nyitvatartás és az árak szezonálisan változhatnak, ezért indulás előtt érdemes az aktuális adatokat ellenőrizni.</p>
+
 
 <p>A ti feladatotok viszont sokkal hősiesebb:
 ki kell ásnotok egy aranyröget, mégpedig azt, amelyikre a legendák szerint maga a bányamester is azt mondta:
@@ -189,9 +206,119 @@ keressétek meg a legszebb, legfényesebb aranyröget, találjátok meg benne a 
 
 <p><strong>Bányászkalapra csapni, induljon a küldetés!</strong></p>
 
+</div>
+
 <!-- FŐOLDAL GOMB -->
 <div class="btn-row">
-    <a href="index.html" class="home-btn">⬅ Vissza a főoldalra</a>
+    <!-- KÓD BEKÉRŐ BLOKK (beillesztve) -->
+<style>
+/* középső doboz */
+.codegate-container {
+    display: none; /* induláskor rejtve */
+
+    max-width: 600px;
+    margin: 40px auto 18px auto;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 24px 20px 30px 20px;
+    border-radius: 14px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+}
+
+/* cím */
+.codegate-container h2 {
+    font-size: 26px;
+    margin-top: 0;
+    margin-bottom: 14px;
+    text-align: center;
+    color: #ffe7a3;
+}
+
+/* szöveg */
+.codegate-container p {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+/* input + gomb */
+.codegate-container input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 4px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    box-sizing: border-box;
+}
+
+.codegate-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    margin-top: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: inherit;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: #ffe7a3;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+.codegate-btn:active { transform: scale(0.98); }
+
+/* hibaüzenet */
+#codegate_error {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #ffb3b3;
+    text-align: center;
+}
+
+/* Mobil finomhangolás */
+@media (max-width: 480px) {
+    .codegate-container {
+    display: none; /* induláskor rejtve */
+
+        margin: 20px 10px 14px 10px;
+        padding: 20px 14px 24px 14px;
+    }
+    .codegate-container h2 { font-size: 24px; }
+    .codegate-container p, .codegate-btn, .codegate-container input[type="text"] { font-size: 17px; }
+}
+</style>
+
+<div class="codegate-container">
+    <p>Az első két állomáson már kaptatok jeleket, számokat,
+    amelyek egy mélyebbre vezető ösvényre mutatnak.
+    Most egy láthatatlan kapu előtt álltok: csak az léphet tovább,
+    aki a megfelelő kódot hozta magával.</p>
+
+    <p>Írd be azt a számot,
+    amelyet az eddigi nyomokból fejtettetek meg –
+    és ha jól dolgoztatok, az út megnyílik a város szíve felé.</p>
+
+    <input id="codegate_code" type="text" autocomplete="off" placeholder="Írd ide a kódot">
+    <button class="codegate-btn" type="button" onclick="codegate_check()">➜ Tovább az ösvényen</button>
+    <div id="codegate_error"></div>
+</div>
+
+<script>
+function codegate_check() {
+    var v = document.getElementById("codegate_code").value.trim();
+    // kulcs ehhez a ponthoz: 22740
+    if (v === "22740") {
+        window.location.href = "content3.html";
+    } else {
+        document.getElementById("codegate_error").textContent = "Ez most nem nyitotta a kaput. Próbáld újra.";
+    }
+}
+</script>
+<!-- /KÓD BEKÉRŐ BLOKK -->
+<a href="index.html" class="home-btn">⬅ Vissza a főoldalra</a>
 </div>
 
 </div>
@@ -265,5 +392,46 @@ startBtn.addEventListener("click", function () {
 });
 </script>
 
+<script>
+(function () {
+  function normHu(s) {
+    if (!s) return "";
+    s = String(s).trim().toLowerCase();
+    try { s = s.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); } catch (e) {}
+    return s;
+  }
+
+  var input = document.getElementById("unlockInput");
+  var content = document.getElementById("unlockContent");
+  var hint = document.getElementById("unlockHint");
+  if (!input || !content) return;
+
+  function check() {
+    var v = normHu(input.value);
+    if (v === "muzeum") {
+      content.style.display = "";
+            var gate = document.querySelector(".codegate-container");
+      if (gate) gate.style.display = "block";
+if (hint) hint.textContent = "";
+    } else {
+      content.style.display = "none";
+            var gate = document.querySelector(".codegate-container");
+      if (gate) gate.style.display = "none";
+if (hint) hint.textContent = "Tipp: egyetlen szó.";
+    }
+  }
+
+  input.addEventListener("input", check);
+  check();
+})();
+</script>
+
 </body>
 </html>
+
+
+
+
+
+
+
