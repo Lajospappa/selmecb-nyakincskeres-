@@ -134,6 +134,15 @@ p {
     </span>
 </div>
 
+<!-- NAVIGÁCIÓ GOMB – LENT, KÉKEN -->
+<div class="btn-row">
+    <a href="https://maps.app.goo.gl/Pf5SjLUB84LBm3YAA"
+       target="_blank"
+       class="nav-btn">
+       📍 Útvonal a Reštaurácia Matejhez
+    </a>
+</div>
+
 <p>Ahogy kiléptek a Glanzenberg mélyének suttogó történeteiből, most beléptek a 
 <span class="highlight">Reštaurácia Matej</span> meleg, otthonos illatába, ahol a teák és kávék párája úgy kavarog, mintha maga a hegy mesélne tovább.  
 A selmeci öregek szerint nagyon régen, amikor a város még csak pár faházból és egy lelkes bányászcsapatból állt, egy különös éjszakán a hegy gyomra megmozdult.  
@@ -143,6 +152,7 @@ A föld finoman megremegett, mintha valami – vagy valakik – ébredeznének o
 
 <p>A városban gyorsan elterjedt a hír, hogy ezek a lények a föld alatti világ őrei, akik csak ritkán mutatkoznak, és mindig valami fontos változás előtt.  
 A lakók tiszteletük jeléül később több helyen is megörökítették őket, de a legfeltűnőbb és legszebb ábrázolás éppen itt, Matyi pincéjének közelében látható:</p>
+
 
 <p><span class="highlight">egy oszlop oldalán két hatalmas, színes mozaikból kirakott teremtmény kúszik felfelé.</span>  
 Aki itt megáll egy pillanatra, mintha még most is hallaná a hegy mélyének csendes morajlását.</p>
@@ -156,16 +166,130 @@ annak a neve, amit az oszlopon láttok.
 (A legendák szerint ők sosem tévednek el… ti se tegyétek.)
 </p>
 
-<!-- NAVIGÁCIÓ GOMB – LENT, KÉKEN -->
-<div class="btn-row">
-    <a href="https://maps.app.goo.gl/Pf5SjLUB84LBm3YAA"
-       target="_blank"
-       class="nav-btn">
-       📍 Útvonal a Reštaurácia Matejhez
-    </a>
-</div>
 
 <!-- FŐOLDAL GOMB -->
+
+
+
+
+
+
+
+
+<!-- KÓD BEKÉRŐ BLOKK – SZALAMANDRA -->
+<style>
+/* középső doboz */
+.codeask-container {
+    max-width: 600px;
+    margin: 40px auto 10px auto;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 24px 20px 30px 20px;
+    border-radius: 14px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+}
+
+/* cím */
+.codeask-container h2 {
+    font-size: 26px;
+    margin-top: 0;
+    margin-bottom: 14px;
+    text-align: center;
+    color: #ffe7a3;
+}
+
+/* szöveg */
+.codeask-container p {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+/* input + gomb */
+.codeask-container input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 4px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    box-sizing: border-box;
+}
+
+.codeask-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    margin-top: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: inherit;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: #ffe7a3;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+.codeask-btn:active {
+    transform: scale(0.98);
+}
+
+/* hibaüzenet */
+#codeask_error {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #ffb3b3;
+    text-align: center;
+}
+
+/* Mobil finomhangolás */
+@media (max-width: 480px) {
+    .codeask-container {
+        margin: 20px 10px 10px 10px;
+        padding: 20px 14px 24px 14px;
+    }
+    .codeask-container h2 {
+        font-size: 24px;
+    }
+    .codeask-container p,
+    .codeask-btn,
+    .codeask-container input[type="text"] {
+        font-size: 17px;
+    }
+}
+</style>
+
+<div class="codeask-container">
+    <p>Ha tudjátok milyen állat, akkor tovább juthattok</p>
+
+    <input id="codeask_code" type="text" autocomplete="off" placeholder="Írd ide a kulcsot">
+    <button class="codeask-btn" type="button" onclick="codeask_check()">➜ Tovább</button>
+    <div id="codeask_error"></div>
+</div>
+
+<script>
+function codeask_norm(s){
+    if(!s) return "";
+    s = String(s).trim().toLowerCase();
+    try { s = s.normalize("NFD").replace(/[\u0300-\u036f]/g,""); } catch(e){}
+    return s;
+}
+function codeask_check() {
+    var v = codeask_norm(document.getElementById("codeask_code").value);
+    // kulcs ehhez a ponthoz: szalamandra
+    if (v === "szalamandra") {
+        window.location.href = "content5.html";
+    } else {
+        document.getElementById("codeask_error").textContent =
+            "Ez most nem nyitotta ki a palota kapuját. Gondolj arra, milyen lények kúsztak az oszlopon az előző állomáson.";
+    }
+}
+</script>
+<!-- /KÓD BEKÉRŐ BLOKK – SZALAMANDRA -->
+
 <div class="btn-row">
     <a href="index.html" class="home-btn">
        ⬅ Főoldal
@@ -244,3 +368,10 @@ startBtn.addEventListener("click", function () {
 
 </body>
 </html>
+
+
+
+
+
+
+
