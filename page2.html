@@ -99,10 +99,21 @@ input[type="text"] {
 </style>
 
 <script>
+function normHu(s){
+    if(!s) return "";
+    s = String(s).trim().toLowerCase();
+
+    // ékezetek levétele (általános)
+    try { s = s.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); } catch(e) {}
+
+    return s;
+}
+
 function check() {
-    var v = document.getElementById("code").value.trim().toLowerCase();
-    // kulcs ehhez a ponthoz: "avocado" (nem jelenik meg a szövegben)
-    if (v === "avocado") {
+    var v = normHu(document.getElementById("code").value);
+
+    // kulcs: avocado (elfogadjuk az avokado / avokádó változatot is)
+    if (v === "avocado" || v === "avokado") {
         window.location.href = "content2.html";
     } else {
         document.getElementById("error").textContent =
@@ -133,3 +144,4 @@ function check() {
 
 </body>
 </html>
+
