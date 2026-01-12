@@ -15,6 +15,7 @@ body {
     padding: 40px;
     margin: 0;
 }
+
 .container {
     max-width: 700px;
     margin: auto;
@@ -22,27 +23,43 @@ body {
     padding: 28px 24px 30px 24px;
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    overflow: hidden; /* ne tudjon semmi kilógni a keretből */
 }
+
 h1 {
     font-size: 30px;
     margin-bottom: 10px;
     text-align: center;
     color: #ffe7a3;
 }
+
 p {
     line-height: 1.6;
     font-size: 18px;
     margin-bottom: 14px;
 }
+
 .highlight {
     color: #ffe7a3;
     font-weight: bold;
 }
+
 h2 {
     color: #ffe7a3;
     text-align: center;
     margin-top: 26px;
     margin-bottom: 10px;
+}
+
+/* KÉP – hogy biztosan ne lógjon ki */
+.photo {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 18px auto;
+    box-shadow: 0 0 18px rgba(0,0,0,0.7);
+    box-sizing: border-box;
 }
 
 /* távolságmérés doboz */
@@ -136,6 +153,13 @@ h2 {
     </span>
 </div>
 
+
+<div class="nav-wrapper">
+    <a href="https://maps.app.goo.gl/wMxBc6gUwCG2kMke6" target="_blank" class="navbtn">
+        📍 Navigáció a Dolná Ružová utcácskához
+    </a>
+</div>
+
 <p>A <span class="highlight">Dolná ružová ulička</span> Selmecbánya egyik legszebb,  
 legfinomabban díszített kis utcája. Nyáron a házfalakon színes rózsák futnak fel,  
 az ablakokból virágok lógnak, és a szűk utca úgy kanyarog lefelé,  
@@ -145,7 +169,8 @@ A lépcsők, a kovácsoltvas korlátok, a színes homlokzatok
 ami miatt az embernek kedve lenne itt leülni egy padra,  
 és csak nézni a várost.</p>
 
-<p>Ahogy lassan sétáltok az utca elején,  
+<p>
+Ahogy lassan sétáltok az utca elején,  
 néha érdemes megállni, hátranézni,  
 és észrevenni az apró részleteket:  
 a régi kapuk feletti díszeket, a kis erkélyeket,  
@@ -153,32 +178,56 @@ a falakba rejtett évszámokat.
 Itt már nem csak házak között mentek át,  
 hanem egy régi bányaváros emlékei között:  
 minden repedés, minden ablakkeret úgy néz ki,  
-mintha történetet őrizne.</p>
+mintha történetet őrizne.
+</p>
 
-<p>Most egy olyan házat kell megtalálnotok ezen az utcán,  
-amelynek a homlokzata <span class="highlight">nem csak szép, hanem jelent is valamit</span>.  
-Az előző feladatban már kaptatok egy kulcsot, ami segít:  
-nem itt, a szövegben fogjátok megkapni a választ,  
-hanem nektek kell rájönnötök,  
-<span class="highlight">milyen jelképet kell keresni</span>,  
-és melyik házhoz tartozik.</p>
+<img src="images/luterrozsaja.jpg" alt="Luther rózsája" class="photo">
 
-<p>Használjátok bátran mindazt, amit már tudtok,  
-kérdezzetek utána, nézzetek utána –  
-a lényeg, hogy <span class="highlight">ti magatok fedezzétek fel</span>,  
-melyik homlokzaton rejtőzik az a jelkép,  
-amelyhez a következő állomás kódja kapcsolódik.  
+<p>
+Most egy olyan házat kell megtalálnotok,  
+amelyen a <span class="highlight">Luther rózsája</span> látható.
+</p>
+
+<p>Ha felismeritek ezt rószát, akkor a következő állomás kódját is megtaláljátok.  
 Amikor rátaláltok, ne csak a díszt jegyezzétek meg,  
-hanem <span class="highlight">a házszámot is</span> –  
-még szükségetek lesz rá az igazi kincs kinyitásához.</p>
+hanem <span class="highlight">a kétjegyú számot is</span> –  
+mert erre lesz szükségetek az igazi kincs kinyitásához.</p>
 
-<div class="nav-wrapper">
-    <a href="https://maps.app.goo.gl/wMxBc6gUwCG2kMke6" target="_blank" class="navbtn">
-        📍 Navigáció a Dolná Ružová utcácskához
-    </a>
-    <br>
+<!-- KÓD BEKÉRŐ BLOKK – 10. pont kapuja -->
+<div class="container" style="max-width:600px; margin:28px auto 0 auto; background: rgba(0, 0, 0, 0.70); padding:24px 20px 30px 20px; border-radius:14px; box-shadow:0 0 20px rgba(0,0,0,0.7);">
+  <p style="font-size:18px; line-height:1.6; margin-bottom:16px; text-align:center;">
+    Írd be a kulcsot (szám formában):
+  </p>
+
+  <input id="code10" type="text" autocomplete="off" inputmode="numeric" placeholder="Kulcs..."
+         style="width:100%; padding:10px 12px; margin-top:6px; font-size:18px; border-radius:8px; border:none; box-sizing:border-box;">
+
+  <button type="button" onclick="check10()"
+          style="display:block; width:100%; padding:12px 16px; margin-top:12px; font-size:18px; font-weight:bold; font-family:inherit; text-align:center; border-radius:10px; border:none; cursor:pointer; background:#ffe7a3; color:#333; box-shadow:0 0 10px rgba(0,0,0,0.6);">
+    ➜ Tovább a végső tartalomhoz
+  </button>
+
+  <div id="error10" style="margin-top:10px; font-size:15px; color:#ffb3b3; text-align:center;"></div>
+</div>
+
+<script>
+function check10() {
+    var v = document.getElementById("code10").value.trim();
+    if (v === "10") {
+        window.location.href = "content10.html";
+    } else {
+        document.getElementById("error10").textContent =
+            "Hibás kód. Próbáld újra.";
+    }
+}
+</script>
+<!-- /KÓD BEKÉRŐ BLOKK – 10. pont kapuja -->
+
+
+<div class="nav-wrapper" style="margin-top:20px;">
     <a href="index.html" class="home-btn">⬅ Vissza a főoldalra</a>
 </div>
+
 
 </div>
 
@@ -224,7 +273,7 @@ distBtn.addEventListener("click", function () {
         const dist = distanceMeters(lat, lon, targetLat, targetLon);
         distText.textContent =
             "Jelenlegi távolság a keresett háztól: " + formatDistance(dist);
-    }, function (err) {
+    }, function () {
         distText.textContent =
             "Nem sikerült lekérni a helyzetet. Ellenőrizd a GPS és a jogosultság beállításait.";
     }, {
@@ -237,3 +286,7 @@ distBtn.addEventListener("click", function () {
 
 </body>
 </html>
+
+
+
+
