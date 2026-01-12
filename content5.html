@@ -145,6 +145,14 @@ h1 {
     </span>
 </div>
 
+<div class="btn-row">
+    <a href="https://maps.app.goo.gl/Gbgae78CLL6fsxVz8"
+       target="_blank"
+       class="nav-btn">
+        📍 Útvonal az Újvárhoz
+    </a>
+</div>
+
 <p><span class="initial">B</span>ár az Újvár falai a 16. században épültek fel, amikor Selmecbánya a törökök árnyékában védelemre szorult, a kőből rakott bástyák még ma is őrzik a hajdani őrszemek lépéseinek emlékét. A vár magasról tekint a városra, mint aki nemcsak a múlt felett vigyáz, hanem a benne megbújó történeteket is óvja.</p>
 
 <p><span class="initial">O</span>lyan időket is megélt, amikor az ágyúk készen álltak, a lőportoronyból füst szállt fel, és a katonák nap mint nap azon töprengtek, vajon mikor ér el ide az ellenség. De az erőd végül sosem vált csatatérré. Megmaradt egy különös, csendes helynek, ahol minden rezdülés mintha a hegy szívéből érkezne.</p>
@@ -171,16 +179,96 @@ h1 {
 <p><span class="initial">A</span> mai napig mondják a helyiek: aki elég figyelmesen jár az Újvár körül, az nemcsak a történeteket találja meg, hanem azt a rejtett kulcsot is, amely ott van a sorok elején. Aki látja, annak megnyílik a következő kapu. A többieknek pedig érdemes újra elolvasni a történetet – hiszen néha a legfontosabb dolgok csendben bújnak el.</p>
 
 <!-- NAVIGÁCIÓ – LENT KÉKKEL -->
-<div class="btn-row">
-    <a href="https://maps.app.goo.gl/Gbgae78CLL6fsxVz8"
-       target="_blank"
-       class="nav-btn">
-        📍 Útvonal az Újvárhoz
-    </a>
-</div>
+
 
 <!-- FŐOLDAL GOMB -->
 
+
+<!-- KÓD BEKÉRŐ BLOKK (content5 -> content6) -->
+<style>
+.codegate-container{
+  max-width:600px;
+  margin:24px auto 10px auto;
+  background:rgba(0,0,0,0.70);
+  padding:18px 18px 18px 18px;
+  border-radius:14px;
+  box-shadow:0 0 20px rgba(0,0,0,0.7);
+}
+.codegate-container h2{
+  font-size:22px;
+  margin:0 0 10px 0;
+  text-align:center;
+  color:#ffe7a3;
+}
+.codegate-container p{
+  font-size:18px;
+  line-height:1.6;
+  text-align:center;
+  margin:0 0 12px 0;
+}
+.codegate-container input[type="text"]{
+  width:100%;
+  padding:10px 12px;
+  margin-top:4px;
+  font-size:18px;
+  border-radius:8px;
+  border:none;
+  box-sizing:border-box;
+}
+.codegate-btn{
+  display:block;
+  width:100%;
+  padding:12px 16px;
+  margin-top:12px;
+  font-size:18px;
+  font-weight:bold;
+  font-family:inherit;
+  text-align:center;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  background:#ffe7a3;
+  color:#333;
+  box-shadow:0 0 10px rgba(0,0,0,0.6);
+}
+.codegate-btn:active{ transform:scale(0.98); }
+#codegate_error{
+  margin-top:10px;
+  font-size:15px;
+  color:#ffb3b3;
+  text-align:center;
+}
+</style>
+
+<div class="codegate-container">
+  <h2>Kód</h2>
+  <p>Ha tudjátok mi a név, akkor tovább juthattok.</p>
+  <input id="codegate_code" type="text" autocomplete="off" placeholder="Írd ide a nevet">
+  <button class="codegate-btn" type="button" onclick="codegate_check()">➜ Tovább</button>
+  <div id="codegate_error"></div>
+</div>
+
+<script>
+(function(){
+  function normHu(s){
+    if(!s) return "";
+    s = String(s).trim().toLowerCase();
+    try { s = s.normalize("NFD").replace(/[\u0300-\u036f]/g,""); } catch(e){}
+    return s;
+  }
+  window.codegate_check = function(){
+    var v = normHu(document.getElementById("codegate_code").value);
+    // helyes megoldás: BORBÁLA
+    if (v === "borbala") {
+      window.location.href = "content6.html";
+    } else {
+      document.getElementById("codegate_error").textContent =
+        "Ez most nem nyitotta ki a következő fejezetet.";
+    }
+  };
+})();
+</script>
+<!-- /KÓD BEKÉRŐ BLOKK -->
 
 <div class="btn-row">
     <a href="index.html" class="home">⬅ Főoldal</a>
@@ -258,6 +346,8 @@ startBtn.addEventListener("click", function () {
 
 </body>
 </html>
+
+
 
 
 
