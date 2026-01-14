@@ -123,18 +123,7 @@ input[type="text"] {
 }
 </style>
 
-<script>
-function check() {
-    var v = document.getElementById("code").value.trim().toLowerCase();
-    // kulcs ehhez a ponthoz: "avocado" (nem jelenik meg a szövegben)
-    if (v === "avocado") {
-        window.location.href = "content2.html";
-    } else {
-        document.getElementById("error").textContent =
-            "Ez most nem nyitotta ki a rög titkát. Próbáld újra.";
-    }
-}
-</script>
+
 </head>
 
 <body>
@@ -170,13 +159,8 @@ Ez a gyümölcs nyitja meg előttetek az „Aranyrög” kaland kapuját.
 </p>
 
 <!-- Navigációs gomb – FŐOLDAL fölött -->
-<div class="btn-row"></div>
-
 <div class="btn-row">
-    <p>Írd ide a gyümölcs nevét hogy eljussatok az aranyröghöz.</p>
-    <input id="code" type="text" autocomplete="off" placeholder="Írd ide a kulcsot">
-    <button class="btn" onclick="check()">➜ Tovább</button>
-    <div id="error"></div>
+    <a href="content2.html" class="home-btn">➜ Tovább</a><br>
     <a href="index.html" class="home-btn">⬅ Vissza a főoldalra</a>
 </div>
 
@@ -184,6 +168,7 @@ Ez a gyümölcs nyitja meg előttetek az „Aranyrög” kaland kapuját.
 
 </body>
 </html>
+
 
 
 
