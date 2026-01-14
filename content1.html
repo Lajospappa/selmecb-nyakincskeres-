@@ -2,7 +2,8 @@
 <html lang="hu">
 <head>
 <meta charset="UTF-8">
-<title>1.Állomás: Jó reggelt!</title>
+<title>1. Állomás: Jó reggelt!</title>
+
 <style>
 body {
     font-family: 'Georgia', serif;
@@ -11,6 +12,7 @@ body {
     padding: 40px;
     margin: 0;
 }
+
 .container {
     max-width: 650px;
     margin: auto;
@@ -19,77 +21,60 @@ body {
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0,0,0,0.6);
 }
-h1 {
-    font-size: 32px;
-    margin-bottom: 10px;
+
+/* FŐ CÍM */
+.station-title {
     text-align: center;
-    color: #ffe7a3;
+    color: #ffd97f;
+    font-size: 30px;
+    margin-bottom: 18px;
 }
+
 p {
     line-height: 1.55;
     font-size: 18px;
 }
+
 .highlight {
     color: #ffe7a3;
     font-weight: bold;
 }
 
-/* Távolság doboz */
-.distance-box {
-    margin: 20px 0 30px 0;
-    padding: 12px 16px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.07);
-    font-size: 16px;
+/* REJTVÉNY CÍM */
+.rejtvény-cím {
     text-align: center;
-}
-.distance-box button {
-    font-family: inherit;
-    font-size: 16px;
-    padding: 8px 14px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    background: #ffe7a3;
-    color: #2b1b0c;
-    margin-bottom: 8px;
-}
-.distance-box button:active {
-    transform: scale(0.98);
-}
-.distance-status {
-    display: block;
-    margin-top: 4px;
-    font-size: 15px;
+    color: #ffd97f;
+    margin-top: 30px;
 }
 
-/* gombsorok */
+/* KÓD DOBOZ */
+.codebox {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.codebox input {
+    width: 90%;
+    max-width: 360px;
+    padding: 10px 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,200,120,0.4);
+    background: rgba(0,0,0,0.35);
+    color: #fff6db;
+    font-family: inherit;
+    outline: none;
+}
+
+/* GOMBOK */
 .btn-row {
     text-align: center;
-    margin-top: 18px;
+    margin-top: 22px;
 }
 
-/* Navigációs gomb – égkék */
-.nav-btn {
-    display: inline-block;
-    margin: 6px 4px;
-    padding: 9px 18px;
-    background: #68c7ff; /* égkék */
-    color: #033048;
-    font-weight: bold;
-    border-radius: 8px;
-    text-decoration: none;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    font-size: 15px;
-}
-.nav-btn:hover {
-    filter: brightness(1.05);
-}
-
-/* Főoldal gomb */
 .home-btn {
     display: inline-block;
-    margin: 6px 4px 0 4px;
+    margin: 6px 4px;
     padding: 9px 18px;
     background: #ffe7a3;
     color: #333;
@@ -99,52 +84,37 @@ p {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     font-size: 15px;
 }
+
 .home-btn:hover {
     filter: brightness(1.05);
 }
-
-/* input + hibaüzenet (jelszó bekéréshez) */
-input[type="text"] {
-    width: 100%;
-    padding: 10px 12px;
-    margin-top: 4px;
-    font-size: 18px;
-    border-radius: 8px;
-    border: none;
-    box-sizing: border-box;
-}
-
-/* hibaüzenet */
-#error {
-    margin-top: 10px;
-    font-size: 15px;
-    color: #ffb3b3;
-    text-align: center;
-}
 </style>
-
-
 </head>
 
 <body>
 <div class="container">
 
-
-
-<p><strong>1. Állomás: Jó reggelt!</strong><br>
-Sétáljatok ki a kis hoteletek magasan fekvő kertjébe, és szippantsátok be az előttetek elterülő mesevilág hangulatát…<br>
-Selmecbánya belvárosát látjátok magatok előtt.</p>
+<h1 class="station-title">1. Állomás: Jó reggelt!</h1>
 
 <p>
-A nagy, zöld toronysipka az <span class="highlight">Óvár harangtornya</span>, Selmec emblematikus tornya.
+Sétáljatok ki a kis hoteletek magasan fekvő kertjébe,
+és szippantsátok be az előttetek elterülő mesevilág hangulatát…<br>
+Selmecbánya belvárosát látjátok magatok előtt.
+</p>
+
+<p>
+A nagy, zöld toronysipka az <span class="highlight">Óvár harangtornya</span>,
+Selmec emblematikus tornya.
 Az Óvár védelmezi észak felől a lábánál elterülő kicsiny várost.
 </p>
 
 <p>
-A hotel kertjének végében, közvetlen mellettetek áll a fehér falú, fekete fatornyos
-<span class="highlight">Klopácska</span> (klopácska = kalapács), Selmec „lármafája”.
+A hotel kertjének végében, közvetlen mellettetek áll a fehér falú,
+fekete fatornyos <span class="highlight">Klopácska</span>
+(klopácska = kalapács), Selmec „lármafája”.
 Ez szolgáltatta évszázadokon keresztül a hajnali ébresztőt az aranybányászoknak:
-minden munkanapon hajnal 2-kor megszólalt, és az egész városban hallatszott.
+minden munkanapon hajnal 2-kor megszólalt,
+és az egész városban hallatszott.
 </p>
 
 <p>
@@ -152,18 +122,16 @@ Ti is induljatok útnak az aranybányászok nyomában,
 és fedezzétek fel Selmecbánya igazi lelkét.
 </p>
 
-<h2 style="color:#ffe7a3; text-align:center; margin-top:30px;">Rejtvény</h2>
+<h2 class="rejtvény-cím">Rejtvény</h2>
+
 <p style="text-align:center;">
 Nézzetek fel a <span class="highlight">Klopácskára</span>…<br>
 <strong>Mit láttok a legtetején?</strong>
 </p>
 
 <div class="codebox">
-  <input id="unlockInput" type="text" placeholder="Írd be a választ..."
-         style="width:90%;max-width:360px;padding:10px 12px;border-radius:8px;
-         border:1px solid rgba(255,200,120,0.4);background:rgba(0,0,0,0.35);
-         color:#fff6db;font-family:inherit;font-size:16px;outline:none;">
-  <div id="unlockHint" style="margin-top:10px;font-size:14px;opacity:0.9;"></div>
+    <input id="unlockInput" type="text" placeholder="Írd be a választ…">
+    <div id="unlockHint" style="margin-top:10px;font-size:14px;"></div>
 </div>
 
 <div id="unlockContent" style="display:none;">
@@ -188,6 +156,13 @@ hogy nyitáskor beléphessetek.
 
 </div>
 
+<div class="btn-row">
+    <a href="content2.html" class="home-btn">➜ Tovább</a><br>
+    <a href="index.html" class="home-btn">⬅ Vissza a főoldalra</a>
+</div>
+
+</div>
+
 <script>
 (function () {
   function normHu(s) {
@@ -200,37 +175,20 @@ hogy nyitáskor beléphessetek.
   var input = document.getElementById("unlockInput");
   var content = document.getElementById("unlockContent");
   var hint = document.getElementById("unlockHint");
-  if (!input || !content) return;
 
   function check() {
-    var v = normHu(input.value);
-    if (v === "kalapacs") {
-      content.style.display = "";
-      if (hint) hint.textContent = "";
+    if (normHu(input.value) === "kalapacs") {
+      content.style.display = "block";
+      hint.textContent = "";
     } else {
       content.style.display = "none";
-      if (hint) hint.textContent = "Tipp: egyetlen szó.";
+      hint.textContent = "Tipp: egyetlen szó.";
     }
   }
 
   input.addEventListener("input", check);
-  check();
 })();
 </script>
 
-<!-- Navigációs gomb – FŐOLDAL fölött -->
-<div class="btn-row">
-    <a href="content2.html" class="home-btn">➜ Tovább</a><br>
-    <a href="index.html" class="home-btn">⬅ Vissza a főoldalra</a>
-</div>
-
-</div>
-
 </body>
 </html>
-
-
-
-
-
-
