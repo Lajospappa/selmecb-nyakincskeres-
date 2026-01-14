@@ -131,32 +131,92 @@ input[type="text"] {
 
 <h1>1. PONT – Moja Marína kávézó</h1>
 
-<p>Ez Selmecbánya egyik legjobb kávézója: igyatok egy finom kávét vagy teát,  
-és élvezzétek a város nyugodt, mégis titkokkal teli hangulatát.  
-Ha kinéztek az ablakon, az <span class="highlight">Árkádot</span> látjátok –  
-azt a főutca menti legendás sétányt, ahol a selmeci diákok egykor fel-alá járkáltak,  
-hogy a lányokkal ismerkedjenek.  
-A macskaköveken ma is visszhangzik a régi udvarlások játékos izgalma.</p>
+<p><strong>1. Állomás: Jó reggelt!</strong><br>
+Sétáljatok ki a kis hoteletek magasan fekvő kertjébe, és szippantsátok be az előttetek elterülő mesevilág hangulatát…<br>
+Selmecbánya belvárosát látjátok magatok előtt.</p>
 
-<p>A városban élt <span class="highlight">Andrej Kmeť</span> (Kmety András) is,  
-aki Selmecbánya tudományos szellemében vált sokoldalú felfedezővé:  
-itt kezdett együtt dolgozni professzorokkal, új növényfajokat azonosított,  
-és olyan kutatóként vált ismertté, akinek minden selmeci ösvény újabb titkot rejtett.  
-Bár papként szolgált, a város kalandos és pezsgő világa formálta igazi tudós-kalandorrá.</p>
-
-<h2 style="color:#ffe7a3; text-align:center; margin-top:30px;">Feladat</h2>
-
-<p>Keressétek meg, hol áll ma is <span class="highlight">Andrej Kmeť szobra</span>.  
-Álljatok meg vele szemben, majd nézzetek jobbra –  
-ott, egy nagy kapu mögött találjátok az első hivatalos állomást.</p>
-
-<p>Ahhoz, hogy a játékban tovább tudjatok menni, be kell gyüjteni a kulcsot,  
-derítsétek ki, <span class="highlight">milyen gyümölcsöt ettem itt ebben a kávézóban reggelire</span>,  
-amelyről olyan jó review-t írtam.</p>
-
-<p class="highlight" style="font-size:20px; text-align:center; margin-top:25px;">
-Ez a gyümölcs nyitja meg előttetek az „Aranyrög” kaland kapuját.
+<p>
+A nagy, zöld toronysipka az <span class="highlight">Óvár harangtornya</span>, Selmec emblematikus tornya.
+Az Óvár védelmezi észak felől a lábánál elterülő kicsiny várost.
 </p>
+
+<p>
+A hotel kertjének végében, közvetlen mellettetek áll a fehér falú, fekete fatornyos
+<span class="highlight">Klopácska</span> (klopácska = kalapács), Selmec „lármafája”.
+Ez szolgáltatta évszázadokon keresztül a hajnali ébresztőt az aranybányászoknak:
+minden munkanapon hajnal 2-kor megszólalt, és az egész városban hallatszott.
+</p>
+
+<p>
+Ti is induljatok útnak az aranybányászok nyomában,
+és fedezzétek fel Selmecbánya igazi lelkét.
+</p>
+
+<h2 style="color:#ffe7a3; text-align:center; margin-top:30px;">Rejtvény</h2>
+<p style="text-align:center;">
+Nézzetek fel a <span class="highlight">Klopácskára</span>…<br>
+<strong>Mit láttok a legtetején?</strong>
+</p>
+
+<div class="codebox">
+  <input id="unlockInput" type="text" placeholder="Írd be a választ..."
+         style="width:90%;max-width:360px;padding:10px 12px;border-radius:8px;
+         border:1px solid rgba(255,200,120,0.4);background:rgba(0,0,0,0.35);
+         color:#fff6db;font-family:inherit;font-size:16px;outline:none;">
+  <div id="unlockHint" style="margin-top:10px;font-size:14px;opacity:0.9;"></div>
+</div>
+
+<div id="unlockContent" style="display:none;">
+
+<p><strong>Megfejtettétek!</strong><br>
+Kinyílt az ajtó a következő célállomás felé…</p>
+
+<p>
+A következő állomás a <span class="highlight">Bányászati Múzeum</span>,
+a legendás <span class="highlight">Kammerhof</span> épületében.
+Itt működött évszázadokon át a felvidéki bányakamara,
+ahonnan a magyar arany- és ezüstbányászatot irányították.
+</p>
+
+<p>
+Sétáljatok le a hotel előtti utcán a főutcára,
+és <strong>9:00-ra</strong> érjetek a Kammerhofhoz,
+hogy nyitáskor beléphessetek.
+</p>
+
+<p><strong>Kalandra fel!<br>„JÓ SZERENCSÉT!”</strong></p>
+
+</div>
+
+<script>
+(function () {
+  function normHu(s) {
+    if (!s) return "";
+    s = String(s).trim().toLowerCase();
+    try { s = s.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); } catch (e) {}
+    return s;
+  }
+
+  var input = document.getElementById("unlockInput");
+  var content = document.getElementById("unlockContent");
+  var hint = document.getElementById("unlockHint");
+  if (!input || !content) return;
+
+  function check() {
+    var v = normHu(input.value);
+    if (v === "kalapacs") {
+      content.style.display = "";
+      if (hint) hint.textContent = "";
+    } else {
+      content.style.display = "none";
+      if (hint) hint.textContent = "Tipp: egyetlen szó.";
+    }
+  }
+
+  input.addEventListener("input", check);
+  check();
+})();
+</script>
 
 <!-- Navigációs gomb – FŐOLDAL fölött -->
 <div class="btn-row">
@@ -168,6 +228,7 @@ Ez a gyümölcs nyitja meg előttetek az „Aranyrög” kaland kapuját.
 
 </body>
 </html>
+
 
 
 
