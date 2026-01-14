@@ -313,6 +313,14 @@
   <script>
     "use strict";
 
+function trackColorFromFilename(fn) {
+  const name = String(fn).toLowerCase();
+  if (name.startsWith("1")) return "#7a3db8"; // lila
+  if (name.startsWith("2")) return "#ff3b3b"; // piros
+  if (name.startsWith("3")) return "#2d7ff9"; // kék
+  return "#888888";
+}
+
     const POIS = [
       { name: "Bányamúzeum", lat: 48.45167429331126, lon: 18.888022005558017, desc: "Bányászati skanzen az Ondrej-akna meddőhányóján, 1974 óta látogatható. Felszínen eredeti bányagépek, köztük az 1881-ben Vyhnében készült vízoszlopos aknagép. A látogatás rövidfilmmel indul, sisak, köpeny, lámpa után vezetővel lehet lemenni a tárnába, a túra kb. 90–100 perc, megfelelő cipő és melegebb ruha ajánlott. Igény esetén magyar nyelvű vezetés is kérhető felárért, és van oktató geológiai kiállítás is (Geopark, 2003)." },
 
@@ -742,7 +750,7 @@ A látogatás élménye ezért nyers és őszinte. Sisak és lámpa után olyan 
                 shadowUrl: ""
               },
               polyline_options: {
-                color: "#2d7ff9",
+                color: trackColorFromFilename(fileName),
                 opacity: 0.75,
                 weight: 5,
                 lineCap: "round"
