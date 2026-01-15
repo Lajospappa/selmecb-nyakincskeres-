@@ -68,10 +68,44 @@ h1 {
     background: #505050;
     transform: translateX(5px);
 }
+/* Főoldal gomb jobb felül */
+.home-top{
+  position: fixed;
+  top: calc(10px + env(safe-area-inset-top));
+  right: calc(10px + env(safe-area-inset-right));
+  z-index: 2000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid #f28824;
+  background: rgba(0,0,0,0.55);
+  color: #f5a623;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 1;
+  box-shadow: 0 0 12px rgba(0,0,0,0.6);
+  -webkit-tap-highlight-color: transparent;
+}
+.home-top:active{ transform: scale(0.98); }
+.home-top span{ font-size: 14px; }
+
+@media (max-width: 480px){
+  .home-top{
+    padding: 7px 9px;
+    border-radius: 9px;
+    font-size: 15px;
+  }
+  .home-top span{ display: none; }
+}
 </style>
 </head>
 
 <body>
+<a href="index.html" class="home-top" aria-label="Főoldalra">🏠<span>Főoldal</span></a>
+
 
 <h1>Selmecbánya – A Varázslók Térképe</h1>
 
@@ -158,3 +192,4 @@ if (navigator.geolocation) {
 
 </body>
 </html>
+
