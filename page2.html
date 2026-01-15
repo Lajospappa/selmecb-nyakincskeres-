@@ -2,7 +2,7 @@
 <html lang="hu">
 <head>
 <meta charset="UTF-8">
-<title>Aranyrög – Kód bekérés</title>
+<title>2. Állomás – Aranyrög</title>
 
 <!-- Mobil optimalizálás -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -102,22 +102,19 @@ input[type="text"] {
 function normHu(s){
     if(!s) return "";
     s = String(s).trim().toLowerCase();
-
-    // ékezetek levétele (általános)
     try { s = s.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); } catch(e) {}
-
     return s;
 }
 
 function check() {
     var v = normHu(document.getElementById("code").value);
 
-    // kulcs: avocado (elfogadjuk az avokado / avokádó változatot is)
-    if (v === "avocado" || v === "avokado") {
+    // ugyanaz a jelszó, mint az előző pályán
+    if (v === "kalapacs") {
         window.location.href = "content2.html";
     } else {
         document.getElementById("error").textContent =
-            "Ez most nem nyitotta ki a rög titkát. Próbáld újra.";
+            "Ez nem az előző pályán használt jelszó.";
     }
 }
 </script>
@@ -126,22 +123,17 @@ function check() {
 <body>
 
 <div class="container">
-    <h2>2. PONT – Aranyrög</h2>
+    <h2>2. Állomás – Aranyrög</h2>
 
-    <p>Az első állomáson már megszereztetek egy különös nyomot,  
-    amely egy fénylő kőhöz vezet.  
-    Most egy láthatatlan zár előtt álltok:  
-    csak az léphet tovább, aki a megfelelő szót hozta magával.</p>
+    <p>
+    Ide írd be azt a jelszót,  
+    amelyet az előző pályán már használtatok.
+    </p>
 
-    <p>Írd be a gyümölcs nevét,  
-    amit ha megtalálhatok az "adventure"-kén megírt értékelésben –  
-    akkor kinyílik az arany felé vezető út.</p>
-
-    <input id="code" type="text" autocomplete="off" placeholder="Írd ide a kulcsot">
-    <button class="btn" onclick="check()">➜ Tovább a föld alá</button>
+    <input id="code" type="text" autocomplete="off" placeholder="Írd ide a jelszót">
+    <button class="btn" onclick="check()">➜ Tovább</button>
     <div id="error"></div>
 </div>
 
 </body>
 </html>
-
