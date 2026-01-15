@@ -280,10 +280,44 @@
       line-height: 1.45;
       white-space: pre-wrap;
     }
-  </style>
+  /* Főoldal gomb jobb felül */
+.home-top{
+  position: fixed;
+  top: calc(10px + env(safe-area-inset-top) + 52px);
+  right: calc(10px + env(safe-area-inset-right));
+  z-index: 2500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--accent, #f28824);
+  background: rgba(0,0,0,0.55);
+  color: var(--accent, #f5a623);
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 1;
+  box-shadow: 0 0 12px rgba(0,0,0,0.6);
+  -webkit-tap-highlight-color: transparent;
+}
+.home-top:active{ transform: scale(0.98); }
+.home-top span{ font-size: 14px; }
+
+@media (max-width: 480px){
+  .home-top{
+    padding: 7px 9px;
+    border-radius: 9px;
+    font-size: 15px;
+  }
+  .home-top span{ display: none; }
+}
+</style>
 </head>
 
 <body>
+<a href="index.html" class="home-top" aria-label="Főoldalra">🏠<span>Főoldal</span></a>
+
 
   <div id="map"></div>
 
@@ -568,6 +602,26 @@ A látogatás élménye ezért nyers és őszinte. Sisak és lámpa után olyan 
         lon: 18.89361637933154,
         desc: "Az egykori neológ zsinagóga 1893-ra készült el, és a helyi hitközség a 20. század közepéig használta. A bányavárosi korlátozások sokáig fékezték a letelepedést, a közösség igazán 1859 után tudott megerősödni, majd intézményeket is létrehozni. A holokauszt előtt a zsidó lakosság létszáma négyszáz fő felett volt, később szinte teljesen eltűnt a helyi közösség. 1949-ben a város megvette az épületet, majd hosszú ideig raktár és műhely jellegű funkciók váltották egymást. A 2010 utáni évtizedben felújították, ma a Pivovar ERB komplexum részeként működik, és emléktábla is utal az elpusztított közösségre."
       },
+
+      { name: "Északi kilátópont", lat: 48.460641915693245, lon: 18.893999849498538 },
+
+      {
+        name: "Smitt-táró (Stolňa Šmítořeň)",
+        lat: 48.457915881949454,
+        lon: 18.88571580513007,
+        desc: `A Stolňa Šmítořeň, magyarul gyakran Smitt-táró, Selmecbánya környékének egyik történelmi bányavágata. A „stolňa” szlovákul vízszintes bányajáratot, tárót jelent. A név a selmeci német bányászok elnevezéseiből származik. A táró a város bányamezőjének részeként feltehetően vízkiemelési vagy szellőzési feladatot is szolgált. Sok régi táró bejárata mára eltűnt, beomlott vagy lezárták, ezért a terepen nehezen azonosítható.`
+      },
+
+      {
+        name: "Cherubin-táró (Stolňa Cherubín)",
+        lat: 48.46156352343605,
+        lon: 18.89111326942614,
+        desc: `A Stolňa Cherubín Selmecbánya egyik régi bányavágata volt, a történelmi bányarendszer részeként. A név a selmeci bányavidékre jellemző, német eredetű bányásznév használatát őrzi, gyakran egy bányamester vagy birtokos nevét. Vízszintes táró lehetett, és a 18–19. században még szerepel bányatérképeken és műszaki leírásokban. Ma már nem látogatható, sok régi táróhoz hasonlóan lezárták vagy beomlott, ezért a pontos bejárat a terepen nehezen azonosítható.`
+      },
+
+      { name: "Déli szépkilátó", lat: 48.45452936253544, lon: 18.891128522728856 },
+
+      { name: "Óvár kilátópont", lat: 48.457290156537745, lon: 18.88896843066904 },
     ];
 
     function escapeHtml(s) {
@@ -962,3 +1016,6 @@ A látogatás élménye ezért nyers és őszinte. Sisak és lámpa után olyan 
 </body>
 
 </html>
+
+
+
