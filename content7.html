@@ -179,6 +179,84 @@ hogy kinyissátok a következő állomást:<br>
   </iframe>
 </div>
 
+<!-- KÓD BEKÉRŐ BLOKK (content7 -> következő állomás) -->
+<style>
+.codegate-container{
+  max-width:600px;
+  margin:24px auto 10px auto;
+  background:rgba(0, 0, 0, 0.70);
+  padding:24px 20px 22px 20px;
+  border-radius:14px;
+  box-shadow:0 0 20px rgba(0,0,0,0.7);
+}
+.codegate-container p{
+  font-size:18px;
+  line-height:1.6;
+  text-align:center;
+  margin:0 0 14px 0;
+}
+.codegate-container label{
+  display:block;
+  margin:0 0 6px 0;
+  font-size:16px;
+  text-align:center;
+}
+.codegate-container input[type="text"]{
+  width:100%;
+  padding:10px 12px;
+  margin-top:4px;
+  font-size:18px;
+  border-radius:8px;
+  border:none;
+  box-sizing:border-box;
+}
+.codegate-btn{
+  display:block;
+  width:100%;
+  padding:12px 16px;
+  margin-top:12px;
+  font-size:18px;
+  font-weight:bold;
+  font-family:inherit;
+  text-align:center;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  background:#ffe7a3;
+  color:#333;
+  box-shadow:0 0 10px rgba(0,0,0,0.6);
+}
+.codegate-btn:active{ transform:scale(0.98); }
+#codegate_error{
+  margin-top:10px;
+  font-size:15px;
+  color:#ffb3b3;
+  text-align:center;
+}
+</style>
+
+<div class="codegate-container">
+  <label for="codegate_code">Írd be a táblán szereplő tanév kezdő évszámát:</label>
+  <input id="codegate_code" type="text" inputmode="numeric" autocomplete="off" placeholder="Írd ide az évszámot">
+  <button class="codegate-btn" type="button" onclick="codegate_check()">➜ Belépés a következő állomásra</button>
+  <div id="codegate_error"></div>
+</div>
+
+<script>
+(function(){
+  window.codegate_check = function(){
+    var v = (document.getElementById("codegate_code").value || "").trim();
+    // kulcs: 1838
+    if (v === "1838") {
+      window.location.href = "content8.html";
+    } else {
+      document.getElementById("codegate_error").textContent =
+        "Ez most nem nyitotta ki az állomást. Nézzétek meg újra az emléktáblán a tanév kezdő évszámát.";
+    }
+  };
+})();
+</script>
+<!-- /KÓD BEKÉRŐ BLOKK -->
 <div style="text-align:center; margin-top:28px;">
     <a href="index.html" class="home-btn">⬅ Vissza a Főoldalra</a>
 </div>
@@ -256,3 +334,4 @@ startBtn.addEventListener("click", function () {
 
 </body>
 </html>
+
