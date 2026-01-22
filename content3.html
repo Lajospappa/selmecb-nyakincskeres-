@@ -1,0 +1,386 @@
+﻿<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>3. ÁLLOMÁS: ÚT A VÁROS SZÍVÉBE - A GLANZENBERG TÁRÓ</title>
+
+<!-- Mobiloptimalizálás -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: 'Georgia', serif;
+    background: url('images/tarna.png') center/cover no-repeat fixed;
+    color: #f5f5f5;
+    padding: 20px;
+    margin: 0;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    background: rgba(0,0,0,0.65);
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.6);
+}
+
+/* Cím */
+h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #ffe7a3;
+}
+
+/* Szöveg */
+p {
+    line-height: 1.6;
+    font-size: 18px;
+    margin-bottom: 14px;
+}
+
+.highlight {
+    color: #ffe7a3;
+    font-weight: bold;
+}
+
+/* Távolság doboz */
+.distance-box {
+    margin: 10px 0 20px 0;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.45);
+    font-size: 16px;
+    text-align: center;
+}
+.distance-box button {
+    font-family: inherit;
+    font-size: 16px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: #ffe7a3;
+    color: #2b1b0c;
+    margin-bottom: 8px;
+}
+.distance-box button:active {
+    transform: scale(0.98);
+}
+.distance-status {
+    display: block;
+    margin-top: 4px;
+    font-size: 15px;
+}
+
+/* gombsor */
+.btn-row {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Navigációs gomb – égkék (lap alján) */
+.nav-btn {
+    display: inline-block;
+    margin: 6px 4px;
+    padding: 9px 18px;
+    background: #68c7ff; /* égkék */
+    color: #033048;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    font-size: 15px;
+}
+.nav-btn:hover {
+    filter: brightness(1.05);
+}
+
+/* Főoldal gomb */
+.home-btn {
+    display: inline-block;
+    margin: 8px 4px 0 4px;
+    padding: 9px 18px;
+    background: #ffe7a3;
+    color: #333;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    font-size: 15px;
+}
+.home-btn:hover {
+    filter: brightness(1.05);
+}
+
+/* Mobil finomhangolás */
+@media (max-width: 480px) {
+    body { padding: 10px; }
+    .container { padding: 22px; }
+    h1 { font-size: 26px; }
+    p { font-size: 17px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>3. ÁLLOMÁS: ÚT A VÁROS SZÍVÉBE<br><span style="font-size:20px;">A GLANZENBERG TÁRÓ</span></h1>
+
+<!-- TÁVOLSÁGMÉRÉS -->
+<div class="distance-box">
+    <button id="startNavBtn">Távolság mérése (GPS)</button>
+    <span id="distanceText" class="distance-status">
+        Engedélyezd a helymeghatározást a böngészőben.
+    </span>
+</div>
+
+<!-- NAVIGÁCIÓS GOMB – LAP ALJÁN -->
+<div class="btn-row">
+    <a href="https://maps.app.goo.gl/ZBj2kDkzA6FSphBV8"
+       target="_blank"
+       class="nav-btn">
+        📍 Útvonal a Glanzenberg-táróhoz
+    </a>
+</div>
+
+<!-- Ide jön ez a kép -->
+<div class="map-embed" style="margin:14px 0;">
+  <img
+    src="images/banya_terkep.jpg"
+    alt="Bánya térkép"
+    style="width:100%;height:auto;display:block;border:0;border-radius:14px;"
+    loading="lazy">
+</div>
+
+<p>Ha ügyesek voltatok, akkor a hely ahol álltok, nem hivalkodó, de annál fontosabb: Selmecbánya egyik legkorábbi ismert bányaműve húzódik a lábatok alatt. Pontosabban, itt kezdődik.</p>
+
+<p>A világ első táróját, a Glanzenberg tárót az 1200-as években már használták, és azt követően évszázadokon keresztül, egészen a múlt század elejéig használatban volt, folyamatosan bővítve.</p>
+
+<p>Vízszintesen halad végig felfelé pontosan a város főutcája alatt, abba az irányba amerről jöttetek. Példa nélküli, hogy egy bányajárat egy város főutcája alatt haladjon végig. Ehhez különösen gondos mérnöki munkára, járat-stabilitásra volt szükség a működtetése során.</p>
+
+<p>Az első időszakban kitermelő célú vágat volt. Ha visszanéztek felfelé a Bányamúzeum irányába, akkor a főutca vonalában jobbra előre (innen nem látjátok) magasodik a város fölé a Glanzenberg hegy. A benne húzódó Glanzenberg érctelér-rendszer feltárását és kitermelését szolgálta eredetileg a Glanzenberg táró, mely a város leggazdagabb ezüst és aranytartalmú érctelér rendszere volt.</p>
+
+<p>A táró az 1400-as évektől kezdve fokozatosan integrálódott a bányahálózatba, és a funkciója fokozatosan alakult át kitermelőből vízelvezető és szellőztető táróvá. Évszázadokon át működött vízvezető főtáróként, a nála magasabban fekvő, a hegyoldalban létesített bányaszintek vizét vezette el. Később mélyebb bányaszintek, tárók, és aknák csatlakoztak hozzá (az egyik akna lejárata, amelyen leereszkedve a táróba jutunk, pontosan Városház téren van, a neve Kaufhaus akna - majd ezt is megnézitek). Tehát a későbbi századokban szellőztető valamint közlekedő funkciót látott el, valamint összekötő táróként szolgált a Glanzenberg telepek és a város többi bányatelepe között.</p>
+
+<p>Ebből is látható, hogy Selmecbányán nem izolált (egymástól elkülönült) bányák működtek, hanem összefüggő bányamezők rendszerét építették ki – egyedülálló műszaki zsenialitással.</p>
+
+<p>A táró legrégebbi szakaszainak a kialakítása (geológiában úgy mondjuk: a táró kihajtása) kézi fejtéssel történt: ékkel, kalapácsokkal, vésőkkel. A kézi fejtés 800 éves nyomai végig láthatók a táró első párszáz méteres szakaszán, mely egyébként látogatható is időnként. A vágat későbbi szakaszaiban a kézi fejtés nyomait felváltják a fekete-lőporos fejtés nyomai. A lőporos fejtést itt Selmecbányán alkalmazták a bányászatban először a világon, az 1600-as években.</p>
+
+<p>A jelenlegi kijárat, ami a lábatok előtt van, nem a táró eredeti vízkifolyása, az lejjebb volt a város egy másik pontján, amikor még vízelvezetőként szolgált a táró. Később, mikor a táró szellőztető és összekötő szerepet töltött be, kialakították ezt a jelenlegi kijáratát. Ez a kijárat számos illusztris látogatót fogadott: Európa-szerte uralkodók, politikusok, tudósok, fontos személyek selmeci látogatásakor a Glanzenberg táró volt a látogatás fő attrakciója: a felségek kényelmesen tudtak besétálni a vízszintes táróba, hiszen a metszete éppen egy kicsivel magasabb és szélesebb, mint az ajtó amit láttok. Az illusztris vendégek által látogatott rész 500 méter hosszú, és pontosan az előbb említett Városház-téri Kaufhaus aknánál végződik 32 méter mélyen a tér felszíne alatt. Azon a ponton, a látogatható rész utolsó pontján kialakítottak a táróban egy “termet” is (kiszélesítették a tárót), ahol a látogatások emlékét korabeli márványtáblákon megörökítették. Ezek az emléktáblák mind ott vannak lent jelenleg is, a vezetett séta jelenleg is addig a „teremig” visz el - mi is láttuk a számos uralkodó és egyéb nevezetes látogató emlékét őrző többszáz éves márványtáblákat...</p>
+
+<p>A legkorábbi uralkodói emléktábla az 1700-as évek első feléből ered, Ferenc császár Habsburg uralkodó látogatását örökíti meg, a Rákóczi szabadságharc (és az akkor játszódó Tenkes kapitánya történet) után 50 évvel. Az Olvasókönyvben olvastatok a Ferenc császár táróról, amit az 1750-es években építettek – na annak az építése idején látogatott ide Ferenc császár 1751-ben, s megtekintette mind a Glanzenberg tárót, mind az épülő Ferenc császár tárót – amit akkor kereszteltek el, őfelségéről.</p>
+
+<p>Járt itt azután számos más uralkodó, hiszen a Selmeci bányászat messze földön híres volt: egész Európából a Selmeci Akadémiára jártak tanulni, és a selmeci bányákba jártak okulni a bányamérnökök – ezért aztán nevezetes látogatók ereszkedtek itt le a táróba azon az ajtón keresztül, mely előtt álltok.</p>
+
+<p class="highlight">Rejtvény</p>
+
+<p>A selmeciek úgy mesélik, hogy egy napon megjelent itt egy nagyon híres, nagyon fontos, és hát… nagyon bajuszos Úr is. Olyan bajsza volt, hogy ha a hegytetőn állt, bajsza árnyékot vetett a városra.</p>
+
+<p>Ő az, akinek a nevét ma az Alpok egyik leghíresebb kilátóhelye viseli: ahonnan egy másik vizitje alkalmával a Großglockner gleccsereit tekintette meg ez a nagybajuszú Úr…</p>
+
+<p>Nos, ez a tekintélyes bajusz-tulajdonos itt járt a Glanzenbergben is, és a bányászok akkora megtiszteltetésnek vették, hogy emléktáblát állítottak neki a táróban. Nem harsány, nem világít LED-fénnyel, de ott van, örök időkre kőbe vésve, ahogy illik - legközelebb talán Ti is lesétáltok hozzá…</p>
+
+<p>Kutassatok utána a világhálón, hogy melyik évben is volt ez a nevezetes látogatás!</p>
+
+<p>Bónusz, amiért idáig eljutottatok: egy apróságot találtok a táró lejáratánál lévő kereszt tövében. Ha már aranybánya, akkor aranyszínű apróság 😊</p>
+
+<p>Fejtsétek meg az alábbi rejtvényt, és a kulccsal megtudjátok, mi a következő célállomásotok…</p>
+
+<!-- FŐOLDAL GOMB -->
+<div class="btn-row">
+    <!-- KÓD BEKÉRŐ BLOKK – Matyi pincéje -->
+<style>
+/* középső doboz */
+.code4-container {
+    max-width: 600px;
+    margin: 22px auto 18px auto;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 24px 20px 30px 20px;
+    border-radius: 14px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+}
+
+/* cím */
+.code4-container h2 {
+    font-size: 26px;
+    margin-top: 0;
+    margin-bottom: 14px;
+    text-align: center;
+    color: #ffe7a3;
+}
+
+/* szöveg */
+.code4-container p {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+/* input + gomb */
+#code4_input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 4px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    box-sizing: border-box;
+}
+
+#code4_btn {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    margin-top: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: inherit;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: #ffe7a3;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+#code4_btn:active { transform: scale(0.98); }
+
+/* hibaüzenet */
+#code4_error {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #ffb3b3;
+    text-align: center;
+}
+
+/* Mobil finomhangolás */
+@media (max-width: 480px) {
+    .code4-container {
+        margin: 18px 10px 14px 10px;
+        padding: 20px 14px 24px 14px;
+    }
+    .code4-container h2 { font-size: 24px; }
+    .code4-container p, #code4_btn, #code4_input { font-size: 17px; }
+}
+</style>
+
+<div class="code4-container">
+    <h2>4. PONT – A diákok bázisa</h2>
+
+<p style="text-align:center; font-size:18px;">
+Nézzük meg, mi volt a diákok bázisa évszázadokon át…
+</p>
+
+<input id="code4_input" type="text" autocomplete="off" placeholder="Írd ide az évszámot">
+    <button id="code4_btn" type="button" onclick="code4_check()">➜ Belépés a következő állomásra</button>
+    <div id="code4_error"></div>
+    <div id="code4_success" style="display:none; margin-top: 18px; padding: 18px; background: rgba(255, 231, 163, 0.15); border-left: 4px solid #ffe7a3; border-radius: 8px; color: #ffe7a3; font-size: 17px; line-height: 1.7;">
+        <p style="font-weight: bold; font-size: 20px; margin-top: 0;">🎉 Megfejtettétek!</p>
+        <p style="margin-bottom: 14px;">Kinyílt az ajtó a következő célállomás felé…</p>
+        <p style="margin-bottom: 14px;">A föld alatti világból most a föld feletti világba tértek vissza… Immár bepillantást nyertetek abba, milyen, évszázadokon át épített, zseniális világ rejtőzik a város alatt a föld gyomrában… Selmecbánya valóban egy „kincsesbánya".</p>
+        <p style="margin-bottom: 14px;">Következő célállomásotokon megtudjátok és megláthatjátok, honnan is ered a „szalagavató", a „ballagás", kik is voltak valójában a „balekok", a „firmák" és a „filiszterek", honnan erednek a „Ballag már a vén diák" és a „Gaudeamus igitur" nóták, és honnan származik „szakestélyek" és a „krampampuli" hagyománya…</p>
+        <p style="margin-bottom: 0;">Irány az a nevezetes épület, ahol mindezek a hagyományok többszáz évvel ezelőtt megszülettek, és mostanra elterjedtek egész Magyarországon: a világ első műszaki felsőoktatási intézménye, melynek tananyagát a mai napig oktatják a bányászati és kohászati egyetemeken.</p>
+    </div>
+</div>
+
+<script>
+function code4_check() {
+    var v = document.getElementById("code4_input").value.trim();
+    // kulcs ehhez a ponthoz: 1852 (a tárnánál talált évszám)
+    if (v === "1852") {
+        document.getElementById("code4_success").style.display = "block";
+        document.getElementById("code4_input").style.display = "none";
+        document.getElementById("code4_btn").textContent = "➜ Tovább a következő állomásra";
+        document.getElementById("code4_btn").onclick = function() {
+            window.location.href = "content4.html";
+        };
+        document.getElementById("code4_error").textContent = "";
+    } else {
+        document.getElementById("code4_error").textContent =
+            "Ez most nem nyitotta ki a következő állomást. Gondolj a hegy gyomrában látott táblára.";
+    }
+}
+</script>
+<!-- /KÓD BEKÉRŐ BLOKK – Matyi pincéje -->
+
+<a href="index.html" class="home-btn">⬅ Vissza a főoldalra</a>
+</div>
+
+</div>
+
+<script>
+// Glanzenberg-táró távolságmérés célpontja
+const targetLat = 48.45706942700705;
+const targetLon = 18.90034850486971;
+
+const startBtn = document.getElementById("startNavBtn");
+const distanceText = document.getElementById("distanceText");
+let watchId = null;
+
+// Haversine távolság méterben
+function distanceMeters(lat1, lon1, lat2, lon2) {
+    const R = 6371000;
+    const toRad = x => x * Math.PI / 180;
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
+}
+
+function formatDistance(m) {
+    if (m < 5) return "Nagyjából a táró bejáratánál vagy.";
+    if (m < 1000) return m.toFixed(0) + " méter";
+    return (m / 1000).toFixed(2) + " km";
+}
+
+function onPosition(pos) {
+    const lat = pos.coords.latitude;
+    const lon = pos.coords.longitude;
+    const dist = distanceMeters(lat, lon, targetLat, targetLon);
+    distanceText.textContent =
+        "Jelenlegi távolság a táró bejáratától: " + formatDistance(dist);
+}
+
+function onError(err) {
+    distanceText.textContent =
+        "Nem sikerült lekérni a helyzetet. Ellenőrizd a GPS és a jogosultság beállításait.";
+}
+
+startBtn.addEventListener("click", function () {
+    if (!("geolocation" in navigator)) {
+        distanceText.textContent =
+            "A böngésző nem támogatja a helymeghatározást.";
+        return;
+    }
+
+    if (watchId !== null) {
+        // már fut, leállítjuk
+        navigator.geolocation.clearWatch(watchId);
+        watchId = null;
+        distanceText.textContent = "A távolságmérés szünetel.";
+        startBtn.textContent = "Távolság mérése (GPS)";
+        return;
+    }
+
+    distanceText.textContent = "Helyzet lekérése...";
+    startBtn.textContent = "Mérés leállítása";
+
+    watchId = navigator.geolocation.watchPosition(onPosition, onError, {
+        enableHighAccuracy: true,
+        maximumAge: 5000,
+        timeout: 10000
+    });
+});
+</script>
+
+</body>
+</html>

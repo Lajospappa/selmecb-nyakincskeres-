@@ -1,0 +1,423 @@
+﻿<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>2. PONT – Az Aranyrög Üzenete</title>
+
+<!-- Mobiloptimalizálás -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    font-family: 'Georgia', serif;
+    background: url('images/arany rog.png') center/cover no-repeat fixed;
+    color: #fff6db;
+    padding: 20px;
+    margin: 0;
+}
+
+.container {
+    max-width: 650px;
+    margin: auto;
+    background: rgba(0,0,0,0.65);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.7);
+}
+
+/* Cím */
+h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #ffd97f;
+}
+
+/* Szöveg */
+p {
+    line-height: 1.6;
+    font-size: 18px;
+    margin-bottom: 18px;
+}
+
+/* Kiemelő doboz */
+.codebox {
+    margin: 25px 0;
+    font-size: 22px;
+    text-align: center;
+    background: rgba(255,200,140,0.15);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,200,120,0.4);
+}
+
+/* Múzeum kép */
+.museum-photo {
+    display: block;
+    max-width: 100%;
+    border-radius: 10px;
+    margin: 16px auto 22px auto;
+    box-shadow: 0 0 18px rgba(0,0,0,0.7);
+}
+
+/* Távolság doboz */
+.distance-box {
+    margin: 10px 0 20px 0;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.45);
+    font-size: 16px;
+    text-align: center;
+}
+.distance-box button {
+    font-family: inherit;
+    font-size: 16px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: #ffd97f;
+    color: #2b1b0c;
+    margin-bottom: 8px;
+}
+.distance-box button:active {
+    transform: scale(0.98);
+}
+.distance-status {
+    display: block;
+    margin-top: 4px;
+    font-size: 15px;
+}
+
+/* gombsor */
+.btn-row {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Navigációs gomb – égkék */
+.nav-btn {
+    display: inline-block;
+    margin: 6px 4px;
+    padding: 9px 18px;
+    background: #68c7ff; /* égkék */
+    color: #033048;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    font-size: 15px;
+}
+.nav-btn:hover {
+    filter: brightness(1.05);
+}
+
+/* Főoldal gomb */
+.home-btn {
+    display: inline-block;
+    margin: 8px 4px 0 4px;
+    padding: 9px 18px;
+    background: #ffd97f;
+    color: #333;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    font-size: 15px;
+}
+.home-btn:hover {
+    filter: brightness(1.05);
+}
+
+/* Mobil finomhangolás */
+@media (max-width: 480px) {
+    h1 { font-size: 24px; }
+    p { font-size: 17px; }
+    .codebox { font-size: 20px; }
+    body { padding: 10px; }
+    .container { padding: 20px; }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>2. PONT – Az Aranyrög Üzenete</h1>
+
+<!-- (kép szándékosan nincs) -->
+
+<!-- TÁVOLSÁGMÉRÉS -->
+<div class="distance-box">
+    <button id="startNavBtn">Távolság mérése (GPS)</button>
+    <span id="distanceText" class="distance-status">
+        Engedélyezd a helymeghatározást a böngészőben.
+    </span>
+</div>
+
+<!-- INTRO (a régi Andrej Kmeť szöveg helyett) -->
+<p>Megérkeztetek a “Kammerhof”, a Kamarház épületéhez, ami egy hatalmas épületegyüttes, fehér és sárga épületei közül könnyű kiválasztani a főbejáratot: magyarul is érthető hatalmas felirat jelzi, hogy minek is ad most otthont. Keressétek meg ezt a feliratot a főbejáratnál, és mielőtt bementek, írjátok be ide, hogy megtudjátok, mi a küldetésetek a Kammerhof falai között:</p>
+<!-- KÉRDÉS + KÓDBEKÉRŐ (MARAD) -->
+<h2 style="color:#ffe7a3; text-align:center; margin-top:30px;">Kérdés</h2>
+<p style="text-align:center; margin-bottom:10px;"><strong>Mi az az épület amit láttok.</strong></p>
+
+<div class="codebox" style="font-size:18px;">
+  <input id="unlockInput" type="text" placeholder="Írd be a választ..."
+         style="width: 90%; max-width: 360px; padding: 10px 12px; border-radius: 8px; border: 1px solid rgba(255,200,120,0.4); background: rgba(0,0,0,0.35); color: #fff6db; font-family: inherit; font-size: 16px; outline: none;">
+  <div id="unlockHint" style="margin-top:10px; font-size:14px; opacity:0.9;"></div>
+</div>
+
+<!-- EZ A BLOKK NYÍLIK MEG HELYES VÁLASZRA -->
+<div id="unlockContent" style="display:none;">
+
+<p>Selmecbánya nektek nem csak egy város, és nem csak egy játékpálya. Anyai ükapátok, Stempel Gyula, a Selmecbányai Híradó című hetilap 1908. február 2-ai száma szerint addig Főbányabiztosként szolgált Selmecbányán, és azon a héten a magyar királyi pénzügyminiszter Bányakapitánnyá nevezte ki. Ez azt jelentette, hogy bizony nem a tárnában csákányozott, hanem a bányák rendjéért, szabályaiért és felügyeletéért felelt, s itt, a Kamaraházban valószínűleg naponta megfordult… Ti most nem csak a selmeci aranybányászok, hanem az Ő nyomdokaiban is jártok….</p>
+
+<p>A Kammerhof ugyanis a Felső Magyarországi Bányakamara székhelye volt, és az egész Felvidék arany, ezüst és rézérc bányászatát, az érckohókat, és az arany, ezüst és réz pénzverdéket felügyelte. Itt kapott helyet a bányaigazgató és a kamaragróf hivatala és lakása, a bányapénztár, és a bányászati szertár is.</p>
+
+<p>Ez a legendás épület ad otthont a Bányamúzeumnak. Eredeti oklevelek, magyar, latin és német nyelvű kamarai iratok, térképek, bánya szabályzatok, valamint izgalmas bányamérnöki makettek mutatják be, miként működött Selmecbánya mint a Magyar Királyság egyik leggazdagabb, és technológiailag Európában a legfejlettebb bányavárosa.</p>
+
+<p>A makettekből olyan izgalmas dolgozkat tudhattok meg, mint például:</p>
+
+<p>• Mátyás király idejében a bányjáratok vizének szivattyúzására több tucat mesterséges tavat létesítettek a Selmec környéki hegyekben, többezer ember munkájával, melyek ma csodás kirándulótavak (pl. a Bacsófalvi tó, ahol Marci már járt…). Így a világon egyedlálló módon vizienergiával működtették a bányajáratokban, tárnákban működő szivattyúkat, a folyamatosan beáramló víz kiemelésére.</p>
+
+<p>• Az 1600-as években világon először Selmecbányán alkalmaztak puskaport bányászati célokra, mely a kézi fejtéshez képest óriási technológiai előnyt jelentett.</p>
+
+<p>• Később, az 1700-as években a gőzgép feltalálásával, a világon először Selmecen használtak gőz hajtású ví szivattyúkat bányászati célra.</p>
+
+<p>• Mindez nem véletlen, hiszen a világ első műszaki felsőoktatási intézménye, a Selmeci Bányászati Akadémia ebben a városban létesült, és legendássá vált egész Európában… Szokásait, diák hagyományait a magyarországi egyetemeken a mai napig gyakorolják, őrzik. Az Akadémia gyönyörű épületét is megismeritek majd később.</p>
+
+<p>Most lépjetek be azon az ajtón, ahol 100 évvel ezelőtt néhai Stempel Gyula Bányakapitány lépett be minden reggel…</p>
+
+<p>Szánjatok a fantasztikus emlékekre legalább 2 órát, de közben legyetek szemfülesek, a következő küldetést kell teljesítenetek:</p>
+
+<p>Meg kell találnotok a legszebb és legértékesebb apró, valódi aranyrögöt azok közül, melyeket a Múzeum falai rejtenek.</p>
+
+<p>Annyit már tudtok róla, hogy a rejtjele így kezdődik és így végződik:</p>
+
+<p class="codebox"><strong>2 . . . 0</strong></p>
+
+<p>A közepét viszont úgy elrejtették, hogy még az aranybányászok lámpái is nehezen találnák meg… nektek mégis meg kell találnotok! Keressétek meg a legszebb, legfényesebb apró aranyrögöt, találjátok meg benne a hiányzó számjegyeket, és ha jól dolgoztatok, megnyílik előttetek az ajtó a következő célállomás felé!</p>
+
+<p><strong>Bányászkalapra csapni, induljon a küldetés!</strong></p>
+
+
+</div>
+<!-- /unlockContent -->
+
+<!-- FŐOLDAL GOMB + KÓDKAPU (MARAD) -->
+<div class="btn-row">
+
+<style>
+/* középső doboz */
+.codegate-container {
+    display: none; /* induláskor rejtve */
+    max-width: 600px;
+    margin: 40px auto 18px auto;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 24px 20px 30px 20px;
+    border-radius: 14px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+}
+
+/* cím */
+.codegate-container h2 {
+    font-size: 26px;
+    margin-top: 0;
+    margin-bottom: 14px;
+    text-align: center;
+    color: #ffe7a3;
+}
+
+/* szöveg */
+.codegate-container p {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+/* input + gomb */
+.codegate-container input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 4px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    box-sizing: border-box;
+}
+
+.codegate-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    margin-top: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: inherit;
+    text-align: center;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: #ffe7a3;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+.codegate-btn:active { transform: scale(0.98); }
+
+/* hibaüzenet */
+#codegate_error {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #ffb3b3;
+    text-align: center;
+}
+
+/* Mobil finomhangolás */
+@media (max-width: 480px) {
+    .codegate-container {
+        display: none; /* induláskor rejtve */
+        margin: 20px 10px 14px 10px;
+        padding: 20px 14px 24px 14px;
+    }
+    .codegate-container h2 { font-size: 24px; }
+    .codegate-container p, .codegate-btn, .codegate-container input[type="text"] { font-size: 17px; }
+}
+</style>
+
+<div class="codegate-container">
+    <p>Fejtsétek meg az aranyrög rejtjelét, és a kulccsal megtudjátok, mi a következő célállomásotok…</p>
+
+    
+
+    <input id="codegate_code" type="text" autocomplete="off" placeholder="Írd ide a kódot">
+    <button class="codegate-btn" type="button" onclick="codegate_check()">➜ Tovább az ösvényen</button>
+    <div id="codegate_error"></div>
+</div>
+
+<script>
+function codegate_check() {
+    var v = document.getElementById("codegate_code").value.trim();
+    // kulcs ehhez a ponthoz: 22740
+    if (v === "22740") {
+        window.location.href = "content3.html";
+    } else {
+        document.getElementById("codegate_error").textContent = "Ez most nem nyitotta a kaput. Próbáld újra.";
+    }
+}
+</script>
+
+<a href="index.html" class="home-btn">⬅ Vissza a főoldalra</a>
+</div>
+<!-- /btn-row -->
+
+</div>
+<!-- /container -->
+
+<script>
+// Bányamúzeum / Aranyrög állomás koordinátái
+const targetLat = 48.45811285083666;
+const targetLon = 18.89569128465194;
+
+const startBtn = document.getElementById("startNavBtn");
+const distanceText = document.getElementById("distanceText");
+let watchId = null;
+
+// Haversine távolság méterben
+function distanceMeters(lat1, lon1, lat2, lon2) {
+    const R = 6371000;
+    const toRad = x => x * Math.PI / 180;
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
+}
+
+function formatDistance(m) {
+    if (m < 5) return "Nagyjából a bányamúzeumnál vagy.";
+    if (m < 1000) return m.toFixed(0) + " méter";
+    return (m / 1000).toFixed(2) + " km";
+}
+
+function onPosition(pos) {
+    const lat = pos.coords.latitude;
+    const lon = pos.coords.longitude;
+    const dist = distanceMeters(lat, lon, targetLat, targetLon);
+    distanceText.textContent =
+        "Jelenlegi távolság a bányamúzeumtól: " + formatDistance(dist);
+}
+
+function onError(err) {
+    distanceText.textContent =
+        "Nem sikerült lekérni a helyzetet. Ellenőrizd a GPS és a jogosultság beállításait.";
+}
+
+startBtn.addEventListener("click", function () {
+    if (!("geolocation" in navigator)) {
+        distanceText.textContent =
+            "A böngésző nem támogatja a helymeghatározást.";
+        return;
+    }
+
+    if (watchId !== null) {
+        navigator.geolocation.clearWatch(watchId);
+        watchId = null;
+        distanceText.textContent = "A távolságmérés szünetel.";
+        startBtn.textContent = "Távolság mérése (GPS)";
+        return;
+    }
+
+    distanceText.textContent = "Helyzet lekérése...";
+    startBtn.textContent = "Mérés leállítása";
+
+    watchId = navigator.geolocation.watchPosition(onPosition, onError, {
+        enableHighAccuracy: true,
+        maximumAge: 5000,
+        timeout: 10000
+    });
+});
+</script>
+
+<script>
+(function () {
+  function normHu(s) {
+    if (!s) return "";
+    s = String(s).trim().toLowerCase();
+    try { s = s.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); } catch (e) {}
+    return s;
+  }
+
+  var input = document.getElementById("unlockInput");
+  var content = document.getElementById("unlockContent");
+  var hint = document.getElementById("unlockHint");
+  if (!input || !content) return;
+
+  function check() {
+    var v = normHu(input.value);
+    if (v === "muzeum") {
+      content.style.display = "";
+      var gate = document.querySelector(".codegate-container");
+      if (gate) gate.style.display = "block";
+      if (hint) hint.textContent = "";
+    } else {
+      content.style.display = "none";
+      var gate = document.querySelector(".codegate-container");
+      if (gate) gate.style.display = "none";
+      if (hint) hint.textContent = "Tipp: egyetlen szó.";
+    }
+  }
+
+  input.addEventListener("input", check);
+  check();
+})();
+</script>
+
+</body>
+</html>
+
+
+

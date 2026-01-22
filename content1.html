@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>1. Állomás: Jó reggelt!</title>
+
+<style>
+body {
+    font-family: 'Georgia', serif;
+    background: url('images/Klopacska.jpg') center/cover no-repeat fixed;
+    color: #f5f5f5;
+    padding: 40px;
+    margin: 0;
+}
+
+.container {
+    max-width: 650px;
+    margin: auto;
+    background: rgba(0,0,0,0.65);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+/* FŐ CÍM */
+.station-title {
+    text-align: center;
+    color: #ffd97f;
+    font-size: 30px;
+    margin-bottom: 22px;
+}
+
+p {
+    line-height: 1.6;
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.highlight {
+    color: #ffe7a3;
+    font-weight: bold;
+}
+
+/* REJTVÉNY */
+.rejtvény-cím {
+    text-align: center;
+    color: #ffd97f;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.codebox {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.codebox input {
+    width: 90%;
+    max-width: 360px;
+    padding: 10px 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,200,120,0.4);
+    background: rgba(0,0,0,0.35);
+    color: #fff6db;
+    font-family: inherit;
+    outline: none;
+}
+
+/* GOMBOK */
+.btn-row {
+    text-align: center;
+    margin-top: 22px;
+}
+
+.home-btn {
+    display: inline-block;
+    margin: 6px 4px;
+    padding: 9px 18px;
+    background: #ffe7a3;
+    color: #333;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    font-size: 15px;
+}
+.home-btn:hover {
+    filter: brightness(1.05);
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1 class="station-title">1. Állomás: Jó reggelt!</h1>
+
+<p>
+Sétáljatok ki a kis hoteletek magasan fekvő kertjébe, és szippantsátok be az előttetek elterülő mesevilág hangulatát…<br>
+Selmecbánya belvárosát látjátok magatok előtt.
+</p>
+
+<p>
+A nagy, zöld toronysipka az <span class="highlight">Óvár harangtornya</span>, Selmec emblematikus tornya.
+Majd ezt az épületet is megismeritek… Az Óvár védelmezi észak felől a lábánál elterülő kicsiny várost.
+</p>
+
+<p>
+A hotel kertjének végében, közvetlen mellettetek áll a fehér falú, fekete fatornyos
+<span class="highlight">„Klopácska”</span>, (klopácska = kalapács) a Selmeci „lármafa”.
+Méltóbb helyen nem kezdhetnétek a reggeli sétátokat: ez a lármafa szolgáltatta évszázadokon keresztül
+a hajnali ébresztőt a város aranybányászai számára.
+Minden munkanapon hajnal 2-kor jelezte a műszakkezdésre való ébresztőt:
+egy erre a célra kialakított hatalmas juharfa pallót,
+az úgynevezett lármafát kongatta meg a torony épületében lakó őr,
+hangja az egész városban hallatszott,
+s a bányászok útnak indultak,
+a hagyományos „Jó szerencsét!” bányász-köszöntéssel.
+</p>
+
+<p>
+Ti is induljatok útnak az aranybányászok nyomában korán reggel,
+és elsőként ismerjétek meg Selmecbánya lelkét:
+a föld mélyén rejtőző kincsek bányászatát,
+az arany és ezüst kitermelésének izgalmas történetét,
+a város lakóinak mindennapi életét jelentő aranybányászat rejtelmeit, érdekességeit.
+Ezáltal értitek majd meg Selmecbánya igazi varázslatát…
+</p>
+
+<p>
+Hogy hol?
+Fejtsétek meg az alábbi rejtvényt,
+és a kulccsal megtudjátok, mi a következő célállomásotok…
+</p>
+
+<h2 class="rejtvény-cím">Rejtvény</h2>
+
+<p style="text-align:center;">
+Nézzetek fel a <span class="highlight">„Klopácskára”</span>…<br>
+<strong>Mit láttok a legtetején?</strong>
+</p>
+
+<div class="codebox">
+    <input id="unlockInput" type="text" placeholder="Írd be a választ…">
+    <div id="unlockHint" style="margin-top:10px;font-size:14px;"></div>
+</div>
+
+<div id="unlockContent" style="display:none;">
+
+<p><strong>Megfejtettétek!</strong><br>
+Kinyílt az ajtó a következő célállomás felé…</p>
+
+<p>
+Szóval ti is induljatok útnak az aranybányászok nyomában korán reggel,
+és elsőként ismerjétek meg Selmecbánya lelkét:
+a föld mélyén rejtőző kincsek bányászatát,
+az arany és ezüst kitermelésének izgalmas történetét,
+a város lakóinak mindennapi életét jelentő aranybányászat rejtelmeit, érdekességeit
+a <span class="highlight">Bányászati Múzeum</span> sokszáz éves falai között.
+Ezáltal értitek majd meg Selmecbánya igazi varázslatát…
+</p>
+
+<p>
+Meg kell keresnetek a legendás <span class="highlight">Kammerhof (Kamaraház)</span> épületét,
+azaz a hajdani felvidéki Bánya-kamara székhelyét
+(Kammer = kamara/kincstár, Hof = udvar/hivatal):
+itt végezték évszázadokon át a bányászati tevékenység igazgatását, felügyeletét.
+Ez a legendás épület ad otthont a Bányászati Múzeumnak.
+</p>
+
+<p>
+Sétáljatok le a hotel előtti utcára,
+és azon lefelé a város főutcájára.
+Közben csodáljátok meg a hotel utcájáról nyíló reggeli kilátást a városra.
+</p>
+
+<p>
+<strong>9:00 órára</strong> érjetek oda a Kammerhof-hoz,
+hogy nyitáskor bemenjetek –
+hisz a bányászat varázslatos világának felfedezésére
+legalább 2 órát rá kell szánnotok…
+</p>
+
+<p><strong>Kalandra fel!<br>„JÓ SZERENCSÉT!”</strong></p>
+
+</div>
+
+<div class="btn-row">
+    <a href="content2.html" class="home-btn">➜ Tovább</a><br>
+    <a href="index.html" class="home-btn">⬅ Vissza a főoldalra</a>
+</div>
+
+</div>
+
+<script>
+(function () {
+  function normHu(s) {
+    if (!s) return "";
+    s = String(s).trim().toLowerCase();
+    try { s = s.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); } catch (e) {}
+    return s;
+  }
+
+  var input = document.getElementById("unlockInput");
+  var content = document.getElementById("unlockContent");
+  var hint = document.getElementById("unlockHint");
+
+  function check() {
+    if (normHu(input.value) === "kalapacs") {
+      content.style.display = "block";
+      hint.textContent = "";
+    } else {
+      content.style.display = "none";
+      hint.textContent = "Tipp: egyetlen szó.";
+    }
+  }
+
+  input.addEventListener("input", check);
+})();
+</script>
+
+</body>
+</html>
