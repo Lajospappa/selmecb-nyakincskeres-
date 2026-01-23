@@ -101,12 +101,14 @@ input[type="text"] {
 <script>
 function check() {
     var v = document.getElementById("code").value.trim().toLowerCase();
-    // kulcs ehhez a ponthoz: szalamandra (a 5. állomás mozaikos lényeinek neve)
-    if (v === "szalamandra") {
+    // Ékezet eltávolítás
+    try { v = v.normalize("NFD").replace(/[\u0300-\u036f]/g,""); } catch(e){}
+    // kulcs ehhez a ponthoz: gyík (a 5. állomás mozaikos lényeinek neve)
+    if (v === "gyik") {
         window.location.href = "content6.html";
     } else {
         document.getElementById("error").textContent =
-            "Ez most nem nyitotta ki a palota kapuját. Gondolj arra, milyen lények kúsztak az oszlopon az előző állomáson.";
+            "Ez most nem nyitotta ki a palota kapuját. Gondoljatok Sebnitz pásztorra és a két ragyogó teremtményre!";
     }
 }
 </script>

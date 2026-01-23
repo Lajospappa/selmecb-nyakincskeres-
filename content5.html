@@ -124,7 +124,7 @@ p {
 
 <div class="container">
 
-<h1>Matyi pincéje</h1>
+<h1>5. ÁLLOMÁS: MATYI PINCÉJE</h1>
 
 <!-- TÁVOLSÁGMÉRÉS -->
 <div class="distance-box">
@@ -143,27 +143,18 @@ p {
     </a>
 </div>
 
-<p>Ahogy kiléptek a Glanzenberg mélyének suttogó történeteiből, most beléptek a 
-<span class="highlight">Reštaurácia Matej</span> meleg, otthonos illatába, ahol a teák és kávék párája úgy kavarog, mintha maga a hegy mesélne tovább.  
-A selmeci öregek szerint nagyon régen, amikor a város még csak pár faházból és egy lelkes bányászcsapatból állt, egy különös éjszakán a hegy gyomra megmozdult.  
-A föld finoman megremegett, mintha valami – vagy valakik – ébredeznének odalent.</p>
+<p>A Kofola és Tátra-tea szürcsölése közben olvassátok el Selmecbánya legendáját:</p>
 
-<p>A bányászok azt hitték, új ércerekre bukkannak, de helyette két titokzatos lény bukkant elő a mélységből: karcsú, fénylő testű teremtmények, amelyek úgy csillogtak a fáklyafényben, mintha a hegy tüze rajtuk pihent volna.</p>
+<p>A régi időkben, 1000 évnél is régebben, mikor errefelé csak hegyi pászorok éltek az erdők szélén, városnak nyoma sem volt, s a környező hegyek még némán őrizték kincseiket, egy pásztor járta a hegykoszorú legmagasabb csúcsa, a Szitnya alatti legelőket. Ezt a pásztort <span class="highlight">Sebnitz-nek</span> hívták. Egy napon különös látvány állította meg: két csodás teremtmény bújt elő a sziklák közül, s mikor a nap rájuk esett, az egyik aranyként, a másik meg ezüstként ragyogott.</p>
 
-<p>A városban gyorsan elterjedt a hír, hogy ezek a lények a föld alatti világ őrei, akik csak ritkán mutatkoznak, és mindig valami fontos változás előtt.  
-A lakók tiszteletük jeléül később több helyen is megörökítették őket, de a legfeltűnőbb és legszebb ábrázolás éppen itt, Matyi pincéjének közelében látható:</p>
+<p>Sebnitz, a pásztor napokon át figyelte őket. Látta, hogy mindig ugyanabba a kőhasadékba térnek vissza, s mintha a föld méhéből hoznák magukkal az arany és ezüst ragyogást. Végül Sebnitz fogta magát, félrehengerítette a sziklát…. s akkor a két lelkes állat eltűnt — de helyükön <span class="highlight">arany- és ezüst ér csillant meg</span>.</p>
 
+<p>Így mutatta meg a pásztornak a Szitnya földje, hogy mit rejt magában ezen a vidéken. A két ragyogó teremtményt többé senki sem látta. Ám a történet fennmaradt örökre, s a később a mesés kis várost Sebnitz-ről nevezték el a bányászok: németül Sebnitz, később Semnitz, magyarul pedig <span class="highlight">Selmec</span> lett a neve.</p>
 
-<p><span class="highlight">egy oszlop oldalán két hatalmas, színes mozaikból kirakott teremtmény kúszik felfelé.</span>  
-Aki itt megáll egy pillanatra, mintha még most is hallaná a hegy mélyének csendes morajlását.</p>
+<p>A két csodás teremtmény legendája átszövi a várost… mindenfelé megtaláljátok őket, ha nyitva tartjátok a szemeteket. Még itt, a Mátyás vendéglőben is!</p>
 
 <p style="margin-top:25px;" class="highlight">
-A következő pálya titkos nyitókódja pedig egyszerű:<br>
-annak a neve, amit az oszlopon láttok.
-</p>
-
-<p style="text-align:center; margin-top:15px; font-style:italic;">
-(A legendák szerint ők sosem tévednek el… ti se tegyétek.)
+Fejtsétek meg az alábbi rejtvényt, és a kulccsal megtudjátok, mi a következő célállomásotok…
 </p>
 
 
@@ -263,7 +254,10 @@ annak a neve, amit az oszlopon láttok.
 </style>
 
 <div class="codeask-container">
-    <p>Ha tudjátok milyen állat, akkor tovább juthattok</p>
+    <h2>🔐 Rejtvény</h2>
+    <p style="font-size: 17px; line-height: 1.6;">
+        A két legendás teremtménynek hatalmas, ragyogó példányai kúsznak felfelé itt, a sziklába vájt Mátyás vendéglő egyik sokszáz éves tartóoszlopán. Mik voltak tehát ezek az állatok, melyek Sebnitz-nek a Selmeci hegyek kincseit megmutatták?
+    </p>
 
     <input id="codeask_code" type="text" autocomplete="off" placeholder="Írd ide a kulcsot">
     <button class="codeask-btn" type="button" onclick="codeask_check()">➜ Tovább</button>
@@ -279,12 +273,20 @@ function codeask_norm(s){
 }
 function codeask_check() {
     var v = codeask_norm(document.getElementById("codeask_code").value);
-    // kulcs ehhez a ponthoz: szalamandra
-    if (v === "szalamandra") {
-        window.location.href = "content6.html";
+    // kulcs ehhez a ponthoz: gyík
+    if (v === "gyik") {
+        document.getElementById("codeask_error").innerHTML =
+            '<div style="color: #90EE90; font-size: 16px; margin-top: 15px; line-height: 1.6;">' +
+            '✅ Megfejtettétek! Kinyílt az ajtó a következő célállomás felé… <br><br>' +
+            '…és mostmár azt is tudjátok, hogy a valétáló selmeci diákok lámpás felvonulásán miért kígyózó alakban vonulnak fel az utcákon, és miért „szalamander" a felvonulás neve. 😊<br><br>' +
+            'Most pedig irány a következő célállomás: fejtsétek meg a selmeci Leányvár legendáját!' +
+            '</div>';
+        setTimeout(function() {
+            window.location.href = "content6.html";
+        }, 6000);
     } else {
         document.getElementById("codeask_error").textContent =
-            "Ez most nem nyitotta ki a palota kapuját. Gondolj arra, milyen lények kúsztak az oszlopon az előző állomáson.";
+            "Ez most nem a helyes válasz. Gondoljatok Sebnitz pásztorra és a két ragyogó teremtményre, akik megmutatták neki a kincseket!";
     }
 }
 </script>

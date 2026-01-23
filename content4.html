@@ -7,10 +7,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+:root{
+    --gold:#ffe7a3;
+    --sky:#68c7ff;
+    --ink:#f5f5f5;
+    --panel:rgba(0,0,0,0.65);
+    --panel2:rgba(0,0,0,0.30);
+    --panel3:rgba(0,0,0,0.45);
+    --shadow:rgba(0,0,0,0.6);
+    --line:rgba(255,231,163,0.16);
+    --line2:rgba(255,231,163,0.10);
+}
+
 body {
     font-family: 'Georgia', serif;
     background: url('images/akademia_epulete.jpg') center/cover no-repeat fixed;
-    color: #f5f5f5;
+    color: var(--ink);
     padding: 20px;
     margin: 0;
 }
@@ -18,10 +30,11 @@ body {
 .container {
     max-width: 700px;
     margin: auto;
-    background: rgba(0,0,0,0.65);
+    background: var(--panel);
     padding: 30px;
     border-radius: 14px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    box-shadow: 0 0 25px var(--shadow);
+    backdrop-filter: blur(1px);
 }
 
 /* Cím */
@@ -29,7 +42,18 @@ h1 {
     font-size: 32px;
     margin-bottom: 15px;
     text-align: center;
-    color: #ffe7a3;
+    color: var(--gold);
+    letter-spacing: 0.4px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.55);
+    position: relative;
+}
+h1::after{
+    content:"";
+    display:block;
+    width: 78%;
+    height: 1px;
+    margin: 14px auto 0 auto;
+    background: linear-gradient(90deg, transparent, var(--line), transparent);
 }
 
 /* Szöveg */
@@ -40,7 +64,7 @@ p {
 }
 
 .highlight {
-    color: #ffe7a3;
+    color: var(--gold);
     font-weight: bold;
 }
 
@@ -49,9 +73,11 @@ p {
     margin: 10px 0 20px 0;
     padding: 12px 16px;
     border-radius: 8px;
-    background: rgba(0, 0, 0, 0.45);
+    background: var(--panel3);
     font-size: 16px;
     text-align: center;
+    border: 1px solid rgba(255,231,163,0.18);
+    box-shadow: 0 0 14px rgba(0,0,0,0.35) inset;
 }
 .distance-box button {
     font-family: inherit;
@@ -60,9 +86,10 @@ p {
     border-radius: 6px;
     border: none;
     cursor: pointer;
-    background: #ffe7a3;
+    background: var(--gold);
     color: #2b1b0c;
     margin-bottom: 8px;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.35);
 }
 .distance-box button:active {
     transform: scale(0.98);
@@ -71,6 +98,7 @@ p {
     display: block;
     margin-top: 4px;
     font-size: 15px;
+    opacity: 0.95;
 }
 
 /* gombsor */
@@ -84,13 +112,14 @@ p {
     display: inline-block;
     margin: 6px 4px;
     padding: 9px 18px;
-    background: #68c7ff;
+    background: var(--sky);
     color: #033048;
     font-weight: bold;
     border-radius: 8px;
     text-decoration: none;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
     font-size: 15px;
+    border: 1px solid rgba(3,48,72,0.15);
 }
 .nav-btn:hover {
     filter: brightness(1.05);
@@ -101,7 +130,7 @@ p {
     display: inline-block;
     margin: 8px 4px 0 4px;
     padding: 9px 18px;
-    background: #ffe7a3;
+    background: var(--gold);
     color: #333;
     font-weight: bold;
     border-radius: 8px;
@@ -121,6 +150,7 @@ p {
     border-radius: 10px;
     margin: 20px 0;
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    outline: 1px solid rgba(255,231,163,0.12);
 }
 
 /* Szó szerinti blokk */
@@ -129,10 +159,60 @@ p {
     line-height: 1.7;
     font-size: 18px;
     margin: 18px 0 0 0;
-    padding: 16px 14px;
-    background: rgba(0,0,0,0.30);
-    border-left: 4px solid #ffe7a3;
+    padding: 18px 16px;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.30),
+            rgba(0,0,0,0.30) 28px,
+            rgba(255,231,163,0.06) 29px,
+            rgba(0,0,0,0.30) 30px
+        );
+    border-left: 4px solid var(--gold);
     border-radius: 10px;
+    position: relative;
+    box-shadow: 0 0 18px rgba(0,0,0,0.35) inset;
+}
+.story-pre::before{
+    content:"";
+    position:absolute;
+    top: 10px;
+    right: 10px;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,231,163,0.22), transparent 60%);
+    pointer-events:none;
+}
+.story-pre::first-letter{
+    font-size: 42px;
+    line-height: 0.9;
+    font-weight: 800;
+    color: var(--gold);
+    text-shadow: 0 6px 18px rgba(0,0,0,0.55);
+}
+.story-pre::first-line{
+    color: rgba(255,231,163,0.95);
+}
+
+/* Kiemelések a történetben */
+.story-pre strong,
+.story-pre b{
+    color: var(--gold);
+    font-weight: 800;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.25);
+}
+.story-pre em{
+    color: rgba(200,240,255,0.95);
+    font-style: normal;
+    font-weight: 700;
+}
+.story-pre mark{
+    background: rgba(255,231,163,0.16);
+    color: var(--gold);
+    padding: 0 4px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,231,163,0.18);
 }
 
 /* Mobil finomhangolás */
@@ -141,7 +221,8 @@ p {
     .container { padding: 22px; }
     h1 { font-size: 26px; }
     p { font-size: 17px; }
-    .story-pre { font-size: 17px; }
+    .story-pre { font-size: 17px; padding: 16px 14px; }
+    .story-pre::first-letter{ font-size: 38px; }
 }
 </style>
 </head>
@@ -176,54 +257,64 @@ p {
 Menjetek be a kapun, mely mindig nyitva van.
 Az Akadémiához három épület tartozik, a főépület az, amelynél bejöttetek.
 Az épületeket hatalmas park övezi – sétáljatok körbe, és szippantsátok be azt a miliőt, amit a Selmeci diákok évszázadokon át. Ez bizony nem a Tóparti gimi…..
-Közben mesélek nektek a selmeci diákéletről – ugyanis az annyira nevezetes, és annyira meghatározó nem csak a magyarországi egyetemi hagyományokban, hanem még Európa más egyetemein is, hogy még az UNESCO szellemi világörökségi listájára is felkerült, „Selmeci diákhagyományok” néven.
+Közben mesélek nektek a selmeci diákéletről – ugyanis az annyira nevezetes, és annyira meghatározó nem csak a magyarországi egyetemi hagyományokban, hanem még Európa más egyetemein is, hogy még az <strong>UNESCO</strong> szellemi világörökségi listájára is felkerült, <strong>„Selmeci diákhagyományok”</strong> néven.
 Gondolatban repüljünk vissza az 1700-as évekbe…
-1735-ben alapították ugyanis az Akadémiát, elsőként a világon itt létesült műszaki felsőoktatási intézet. Bányászatot, kohászatot, géptant, matematikát, vegytant és fizikát oktattak itt az Európa minden tájáról meghívott nevezetes tudósok, professzorok. Páratlan volt az oktatás abban is, hogy itt Selmecen a gyakorlatban, működésben ismerték meg a hallgatók a selmecen alkalmazott világelső bányászati-kohászati műszaki megoldásokat és technológiákat.  Az 1800-as években az Akadémia kibővült az erdészeti oktatással, innentől Magyar Királyi Bányászati és Erdészeti Akadémia lett.
+<strong>1735-ben</strong> alapították ugyanis az Akadémiát, elsőként a világon itt létesült műszaki felsőoktatási intézet. Bányászatot, kohászatot, géptant, matematikát, vegytant és fizikát oktattak itt az Európa minden tájáról meghívott nevezetes tudósok, professzorok. Páratlan volt az oktatás abban is, hogy itt Selmecen a gyakorlatban, működésben ismerték meg a hallgatók a selmecen alkalmazott világelső bányászati-kohászati műszaki megoldásokat és technológiákat.  Az 1800-as években az Akadémia kibővült az erdészeti oktatással, innentől <strong>Magyar Királyi Bányászati és Erdészeti Akadémia</strong> lett.
 A hallgatók szerte Európából érkeztek, nagyjából a diákság kisebbik fele külföldi, elsősorban német, osztrák volt. 
-Selmecen nem volt kollégium, nem volt menza, vagy társadalombiztosítás – a diákok egy zárt közösséget építettek, és egymást támogatták, segítették mindenben. Ennek a diákközösségnek szigorú hagyományai alakultak ki az évszázadok során, melyet az utód-egyetemek (Miskolc, Sopron) a mai napig gyakorolnak.
+Selmecen nem volt kollégium, nem volt menza, vagy társadalombiztosítás – a diákok egy zárt közösséget építettek, és egymást támogatták, segítették mindenben. Ennek a diákközösségnek szigorú hagyományai alakultak ki az évszázadok során, melyet az utód-egyetemek (<strong>Miskolc</strong>, <strong>Sopron</strong>) a mai napig gyakorolnak.
 
-A hallgatók az alábbi ranglétrát járták végig diákéveik alatt: 
-Az egyetemre frissen bekerülő újoncok a „pogányok”.
-Őnekik ún. „keresztelkedésen” kellett átessenek, de csak miután az idősebbek próbára tették őket az ún. „balek-oktatáson” és ott megfeleltek az elvárásaiknak – ekkor balekká keresztelték őket, és az első éves hallgatók voltak a „balekok”.
-Az alapszigorlatok letétele után, legalább második éve az egyetemen tanuló, a selmeci hagyományok szellemében felavatott hallgatók a „firmák”. A végzős hallgató, aki tanulmányai végeztével elhagyja a campus területét, de örökké őrzi a selmeci hagyományokat, az a „filiszter” („filiszter leszek magam is”….)
+<strong>A hallgatók az alábbi ranglétrát járták végig diákéveik alatt:</strong> 
+Az egyetemre frissen bekerülő újoncok a <mark>„pogányok”</mark>.
+Őnekik ún. „keresztelkedésen” kellett átessenek, de csak miután az idősebbek próbára tették őket az ún. „balek-oktatáson” és ott megfeleltek az elvárásaiknak – ekkor balekká keresztelték őket, és az első éves hallgatók voltak a <mark>„balekok”</mark>.
+Az alapszigorlatok letétele után, legalább második éve az egyetemen tanuló, a selmeci hagyományok szellemében felavatott hallgatók a <mark>„firmák”</mark>. A végzős hallgató, aki tanulmányai végeztével elhagyja a campus területét, de örökké őrzi a selmeci hagyományokat, az a <mark>„filiszter”</mark> (<em>„filiszter leszek magam is”</em>….)
 
-A selmeci hagyományok nagyon fontos része az egyenruha, mely nagy becsben van tartva, és más-más módon viselhetik a balekok, firmák, és valétálók azaz végzősök. A Bányász és  Kohász hallgatók hétköznapi egyenruhája a gruben: fekete (mivel bányász-ruhából ered), derékba szabott zubbony aranygombokkal, és a szaknak megfelelő színű paszománnyal (azaz zsinóros díszítéssel), gallérral és válldísszel. Fekete nadrággal és csizmával hordták. Az Erdész hallgatók hétköznapi viselete a walden, aminek zubbonya őzbarna, és a paszomány, a gallér és a válldísz sötétzöld rajta. 
-A diákoknak a mindennapi élet során megkopott, elhasználódott az egyenruhájuk. Mivel másikra nem nagyon volt pénzük, ezért foltokat varrtak rá; eleinte a ruhával megegyező színű foltokat. Aztán fokozatosan kialakultak a színes, mókás feliratokat, rajzokat ábrázoló foltok – a mai napig tele vannak színes foltokkal a miskolci bányász és a soproni erdész egyenruhák. Selmecen ezeket a foltokat csak lányok varrhatták fel az egyenruhára. A folt lehetett évfolyamjelvény, becenév, nótacím stb. A legrangosabb folt a „tempus” folt volt (piros szívbe arany zsinórral hímzett tempus szó). Akinek ezt a menyasszonya vagy jegyese felvarrta, akkor arról mindenki tudta, hogy foglalt.
+A selmeci hagyományok nagyon fontos része az egyenruha, mely nagy becsben van tartva, és más-más módon viselhetik a balekok, firmák, és valétálók azaz végzősök. A Bányász és  Kohász hallgatók hétköznapi egyenruhája a <mark>gruben</mark>: fekete (mivel bányász-ruhából ered), derékba szabott zubbony aranygombokkal, és a szaknak megfelelő színű paszománnyal (azaz zsinóros díszítéssel), gallérral és válldísszel. Fekete nadrággal és csizmával hordták. Az Erdész hallgatók hétköznapi viselete a <mark>walden</mark>, aminek zubbonya őzbarna, és a paszomány, a gallér és a válldísz sötétzöld rajta. 
+A diákoknak a mindennapi élet során megkopott, elhasználódott az egyenruhájuk. Mivel másikra nem nagyon volt pénzük, ezért foltokat varrtak rá; eleinte a ruhával megegyező színű foltokat. Aztán fokozatosan kialakultak a színes, mókás feliratokat, rajzokat ábrázoló foltok – a mai napig tele vannak színes foltokkal a miskolci bányász és a soproni erdész egyenruhák. Selmecen ezeket a foltokat csak lányok varrhatták fel az egyenruhára. A folt lehetett évfolyamjelvény, becenév, nótacím stb. A legrangosabb folt a <mark>„tempus”</mark> folt volt (piros szívbe arany zsinórral hímzett tempus szó). Akinek ezt a menyasszonya vagy jegyese felvarrta, akkor arról mindenki tudta, hogy foglalt.
 
-A selmeci diákok nótái nagyon fontosak voltak: nótázás nélkül nem volt esemény, nem volt összeröffenés, minden alkalomra megvolt a bevett nóta. A nóták a selmeci daloskönyvekben is fennmaradtak. Talán nem is tudtátok, hogy a ballagásotokon a selmeci valétálók (azaz ballagók) hagyományos dalait énekeltétek: a „Ballag már a vén diák”, vagy a „Gaudeámus igitur” itt születtek, ezen a helyen …
+A selmeci diákok nótái nagyon fontosak voltak: nótázás nélkül nem volt esemény, nem volt összeröffenés, minden alkalomra megvolt a bevett nóta. A nóták a selmeci daloskönyvekben is fennmaradtak. Talán nem is tudtátok, hogy a ballagásotokon a selmeci valétálók (azaz ballagók) hagyományos dalait énekeltétek: a <strong>„Ballag már a vén diák”</strong>, vagy a <strong>„Gaudeámus igitur”</strong> itt születtek, ezen a helyen …
 
-A selmeci diákhagyomány fénypontjai a „szakestélyek”, ezek az ősi szokások szerinti, kötött menetű, leginkább tréfás hangnemben zajló összejövetelek. A szakestélyek eredete az Akadémia alapításáig, az 1700-as évekig nyúlik vissza - ennek megfelelően mindig gyertyafény mellett folytak (a mai napig), és kizárólag a szaknak megfelelő „szent italt”: sört vagy bort, valamint zsíros kenyeret szolgálnak fel. Jelentősebb szakestélyekre külön cserépkupa (cserép söröskorsó) készül. 
+A selmeci diákhagyomány fénypontjai a <strong>„szakestélyek”</strong>, ezek az ősi szokások szerinti, kötött menetű, leginkább tréfás hangnemben zajló összejövetelek. A szakestélyek eredete az Akadémia alapításáig, az 1700-as évekig nyúlik vissza - ennek megfelelően mindig gyertyafény mellett folytak (a mai napig), és kizárólag a szaknak megfelelő „szent italt”: sört vagy bort, valamint zsíros kenyeret szolgálnak fel. Jelentősebb szakestélyekre külön cserépkupa (cserép söröskorsó) készül. 
 A szakestélyeknek legtöbbször van egy meghatározott célja, ami a nevét is adja neki: a balekkeresztelő, a szalag-avató, a gyűrű- és kupa-avató, a valétáló (azaz ballagó), illetve a gyász-szakestély.
 A régi szakestélyeken szakmai jellegű dolgokat beszéltek meg (nótázással és tréfálkozással megspékelve), de a szakmai jelleg elég hamar háttérbe szorult, és egyre inkább előtérbe került a vidámság, a jókedv, a nótázás, a vicces felszólalások, egymás vagy a professzorok kifigurázása. 
 A szakestély mindig a szakok himnuszainak (Bányász, Kohász, Erdész) közös eléneklésével veszi kezdetét. A szakestélyre a diákok tisztségviselőket választanak maguk közül, a tisztséget a mellen átvetett vastag szalag színe is jelzi:
-Tisztségviselők:
-•	Praeses (prézesz): A szakestély elnöke. Az ő szava szent és sérthetetlen, amit ő mond, az úgy is van. Feladata a szakestély levezetése. A szalagja fehér színű, mert feddhetetlen.
-•	Major domus (major domusz): A szakestély háznagya, ő készíti el a házirendet, amit az elnök hitelesít. A házirendben foglaltakat mindenki köteles betartani. Az ő feladata elintézni, hogy legyen terem, ahol megtartják a szakestélyt, legyen zsíros kenyér és sör. Szalagja kék színű.
-•	Fuchsmajor (fuxmajor): A balekcsősz. Feladata a sötét balekság irányítása és terelgetése. Ha egy balek szólni kíván a szakestélyhez, először a balekcsősznek kell szólnia, és ő közvetíti az elnöknek, mint egy tolmács. Szalagja fekete színű, mint a tudatlan balekság „setétsége”. Feladata a rend- és csendfenntartás is, amelyben serital kupakjával kivert botjuk a legnagyobb segítség.
-•	Cantus praeses (kantusz prézesz): A nótabíró. Feladata a kellő nóta intonálása (azaz elő-éneklése) a szakestély folyamán. Szalagja piros színű, mert szívből énekel.
-•	Contrapunct (kontra-punkt): Az elnök visszhangja. Feladata az elnök szavának erősítése. Egy jó kontra remek hangulatot tud teremteni a helyzethez passzoló beszólásaival. Régen azért volt szükség rá, mert a kocsmák zegzugos helyeire nem mindig jutott el az elnök hangja. Szalagja sárga színű, mert az irigység színét jelképezi.
+<strong>Tisztségviselők:</strong>
+•	<strong>Praeses</strong> (<em>prézesz</em>): A szakestély elnöke. Az ő szava szent és sérthetetlen, amit ő mond, az úgy is van. Feladata a szakestély levezetése. A szalagja fehér színű, mert feddhetetlen.
+•	<strong>Major domus</strong> (<em>major domusz</em>): A szakestély háznagya, ő készíti el a házirendet, amit az elnök hitelesít. A házirendben foglaltakat mindenki köteles betartani. Az ő feladata elintézni, hogy legyen terem, ahol megtartják a szakestélyt, legyen zsíros kenyér és sör. Szalagja kék színű.
+•	<strong>Fuchsmajor</strong> (<em>fuxmajor</em>): A balekcsősz. Feladata a sötét balekság irányítása és terelgetése. Ha egy balek szólni kíván a szakestélyhez, először a balekcsősznek kell szólnia, és ő közvetíti az elnöknek, mint egy tolmács. Szalagja fekete színű, mint a tudatlan balekság „setétsége”. Feladata a rend- és csendfenntartás is, amelyben serital kupakjával kivert botjuk a legnagyobb segítség.
+•	<strong>Cantus praeses</strong> (<em>kantusz prézesz</em>): A nótabíró. Feladata a kellő nóta intonálása (azaz elő-éneklése) a szakestély folyamán. Szalagja piros színű, mert szívből énekel.
+•	<strong>Contrapunct</strong> (<em>kontra-punkt</em>): Az elnök visszhangja. Feladata az elnök szavának erősítése. Egy jó kontra remek hangulatot tud teremteni a helyzethez passzoló beszólásaival. Régen azért volt szükség rá, mert a kocsmák zegzugos helyeire nem mindig jutott el az elnök hangja. Szalagja sárga színű, mert az irigység színét jelképezi.
 A szalagos tisztségviselők mellett a következő szalag nélkülieket is kijelölik:
-•	Konzekvencia: A szakestély konzekvenciája. Feladata az elnök tévesztései után levonni a konzekvenciát egy sörrel teli kupa fenékig ürítésével, amelyet hangos „Vivát Praeses” kiáltás előz meg. Általában két konzekvenciát jelölnek ki.
-•	Garatőrök: A szakestély tisztségviselőinek „csaposai”. Feladatuk ügyelni arra, hogy a szakest hivatalos tisztségviselőinek mindig legyen ital a korsójában.
-•	Fuhrwerk (furverk): A szakestély „fuvarosai”. Feladatuk hazatámogatni a “spicces” Firmákat. Általában balekok látják el ezt a tisztséget.
-•	Ünnepi alkalmakkor a szakestélyeken „krampampulit” készítettek, aminek külön felelőse volt: a „Páter Crampampuli”. Innen Selmecről származik tehát a szilveszteri krampampuli szokása, melyet anyai ükapátok nyomán még őriz a családunk… 
+•	<strong>Konzekvencia</strong>: A szakestély konzekvenciája. Feladata az elnök tévesztései után levonni a konzekvenciát egy sörrel teli kupa fenékig ürítésével, amelyet hangos „Vivát Praeses” kiáltás előz meg. Általában két konzekvenciát jelölnek ki.
+•	<strong>Garatőrök</strong>: A szakestély tisztségviselőinek „csaposai”. Feladatuk ügyelni arra, hogy a szakest hivatalos tisztségviselőinek mindig legyen ital a korsójában.
+•	<strong>Fuhrwerk</strong> (<em>furverk</em>): A szakestély „fuvarosai”. Feladatuk hazatámogatni a “spicces” Firmákat. Általában balekok látják el ezt a tisztséget.
+•	Ünnepi alkalmakkor a szakestélyeken „krampampulit” készítettek, aminek külön felelőse volt: a <strong>„Páter Crampampuli”</strong>. Innen Selmecről származik tehát a szilveszteri krampampuli szokása, melyet anyai ükapátok nyomán még őriz a családunk… 
 
-Végezetül a leglátványosabb hagyomány, a valétálás és a szalamander.
-A végzős hallgatók a Valétálás során búcsúztak a társaiktól és az Akadémiától („Valete!” = Éljetek boldogul!, latinul). A valétálás része a híres-neves „szalamander”: a végzős diákok és társaik, a valétálás estéjén bányászlámpásokkal és fáklyákkal, énekelve, kígyózó vonalban vonultak végig Selmecbánya belvárosában, búcsúzva az Alma Matertől.
+Végezetül a leglátványosabb hagyomány, a <strong>valétálás</strong> és a <strong>szalamander</strong>.
+A végzős hallgatók a Valétálás során búcsúztak a társaiktól és az Akadémiától (<em>„Valete!” = Éljetek boldogul!</em>, latinul). A valétálás része a híres-neves <strong>„szalamander”</strong>: a végzős diákok és társaik, a valétálás estéjén bányászlámpásokkal és fáklyákkal, énekelve, kígyózó vonalban vonultak végig Selmecbánya belvárosában, búcsúzva az Alma Matertől.
 A valétálás után az öreg Firmát balekjai kivitték az egyik selmeci városkapuhoz, és kirugdalták a városból – jelképezve, hogy akadémiai pályafutása véget ért.
 A magyarországi ballagások mind-mind a selmecbányai valétálásból erednek…
-A Selmecbányai Magyar Királyi Bányászati és Erdészeti Akadémia 1920-ig működött. Akkor eljött Trianon… és az Akadémia professzorai és diákjai ládákban próbálták napok alatt menekíteni, amit lehetett. Az Akadémiát (illetve ami maradt belőle) Sopronba menekítették, majd a kommunizmus éveiben a Bányász-Kohász kart Miskolcra vitték, s az Erdész kar maradt Sopronban.
+A Selmecbányai Magyar Királyi Bányászati és Erdészeti Akadémia 1920-ig működött. Akkor eljött <strong>Trianon</strong>… és az Akadémia professzorai és diákjai ládákban próbálták napok alatt menekíteni, amit lehetett. Az Akadémiát (illetve ami maradt belőle) Sopronba menekítették, majd a kommunizmus éveiben a Bányász-Kohász kart Miskolcra vitték, s az Erdész kar maradt Sopronban.
 Ez a két utód-egyetem a mai napig őrzi és gyakorolja a selmeci hagyományokat, melyeknek nagy becsülete van.
 (Más egyetemek próbákat tesznek a hagyományok lemásolására, például Budapesten – de ezek semmiképp nem tekinthetők a selmeci hagyományok folytatásának.)</pre>
 
+<!-- FELOLVASÁS GOMBOK -->
+<div style="text-align: center; margin: 20px 0;">
+    <button id="speakBtn" class="nav-btn" style="display: inline-block; margin: 5px; background: rgba(104,199,255,0.9); color: #000;">
+        🔊 Felolvasás
+    </button>
+    <button id="stopBtn" class="nav-btn" style="display: inline-block; margin: 5px; background: rgba(255,100,100,0.9); color: #000; display: none;">
+        ⏹ Stop
+    </button>
+</div>
+
 <img src="images/egyetemistak.jpg" alt="Szakestély tisztségviselői Sopronban" class="content-image" loading="lazy">
 
-<pre class="story-pre">  Szakestély „tisztségviselői” Sopronban, az erdész kar barna egyenruhájában, a rávaló foltokkal, és a szakestély tisztségeihez dukáló szalagokkal.
+<pre class="story-pre">  <strong>Szakestély „tisztségviselői”</strong> Sopronban, az erdész kar barna egyenruhájában, a rávaló foltokkal, és a szakestély tisztségeihez dukáló szalagokkal.
 Sétáljatok körbe a Selmeci Akadémia kertjében, tegyétek tiszteleteteket ott, ahonnét annyi szép tradíció elszármazott….
 
-Fejtsétek meg az alábbi rejtvényt, és a kulccsal megtudjátok, mi a következő célállomásotok…
-Rejtvény:
-Az Akadémia főépületének bejáratához egy lépcsősor vezet, és ezt a lépcsősort 100 éves borókafenyők őrzik. Hány hatalmas borókafenyő őrködik a lépcsősor mentén?</pre>
+Fejtsétek meg az alábbi <strong>rejtvényt</strong>, és a kulccsal megtudjátok, mi a következő célállomásotok…
+<strong>Rejtvény:</strong>
+<strong>Az Akadémia főépületének bejáratához egy lépcsősor vezet, és ezt a lépcsősort 100 éves borókafenyők őrzik. Hány hatalmas borókafenyő őrködik a lépcsősor mentén?</strong></pre>
 
 <!-- FŐOLDAL GOMB -->
 <div class="btn-row">
@@ -237,6 +328,7 @@ Az Akadémia főépületének bejáratához egy lépcsősor vezet, és ezt a lé
     padding: 24px 20px 30px 20px;
     border-radius: 14px;
     box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    border: 1px solid rgba(255,231,163,0.16);
 }
 
 /* cím */
@@ -246,6 +338,7 @@ Az Akadémia főépületének bejáratához egy lépcsősor vezet, és ezt a lé
     margin-bottom: 14px;
     text-align: center;
     color: #ffe7a3;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.55);
 }
 
 /* szöveg */
@@ -265,6 +358,8 @@ Az Akadémia főépületének bejáratához egy lépcsősor vezet, és ezt a lé
     border-radius: 8px;
     border: none;
     box-sizing: border-box;
+    outline: 1px solid rgba(255,231,163,0.10);
+    background: rgba(255,255,255,0.92);
 }
 
 #code5_btn {
@@ -308,7 +403,7 @@ Az Akadémia főépületének bejáratához egy lépcsősor vezet, és ezt a lé
     <h2>5. PONT – Matyi pincéje</h2>
 
 <p style="text-align:center; font-size:18px;">
-Az Akadémia főépületének bejáratához egy lépcsősor vezet, és ezt a lépcsősort 100 éves borókafenyők őrzik. Hány hatalmas borókafenyő őrködik a lépcsősor mentén?
+<strong>Az Akadémia főépületének bejáratához egy lépcsősor vezet, és ezt a lépcsősort 100 éves borókafenyők őrzik. Hány hatalmas borókafenyő őrködik a lépcsősor mentén?</strong>
 </p>
 
 <input id="code5_input" type="text" autocomplete="off" placeholder="Írd ide a számot">
@@ -416,6 +511,56 @@ startBtn.addEventListener("click", function () {
         maximumAge: 5000,
         timeout: 10000
     });
+});
+</script>
+
+<!-- FELOLVASÁS SCRIPT -->
+<script>
+const speakBtn = document.getElementById('speakBtn');
+const stopBtn = document.getElementById('stopBtn');
+const storyPres = document.querySelectorAll('.story-pre');
+
+let utterance = null;
+
+speakBtn.addEventListener('click', function() {
+    if (!('speechSynthesis' in window)) {
+        alert('A böngésző nem támogatja a felolvasást.');
+        return;
+    }
+
+    // Összegyűjtjük a szöveget
+    let textToRead = '';
+    storyPres.forEach(pre => {
+        textToRead += pre.textContent + '\n\n';
+    });
+
+    utterance = new SpeechSynthesisUtterance(textToRead);
+    utterance.lang = 'hu-HU';
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
+
+    utterance.onstart = function() {
+        speakBtn.style.display = 'none';
+        stopBtn.style.display = 'inline-block';
+    };
+
+    utterance.onend = function() {
+        speakBtn.style.display = 'inline-block';
+        stopBtn.style.display = 'none';
+    };
+
+    utterance.onerror = function() {
+        speakBtn.style.display = 'inline-block';
+        stopBtn.style.display = 'none';
+    };
+
+    window.speechSynthesis.speak(utterance);
+});
+
+stopBtn.addEventListener('click', function() {
+    window.speechSynthesis.cancel();
+    speakBtn.style.display = 'inline-block';
+    stopBtn.style.display = 'none';
 });
 </script>
 
