@@ -177,9 +177,7 @@ Fejtsétek meg a balladát, és a kulccsal megtudjátok, mi a következő célá
 
 <!-- NAVIGÁCIÓ – LENT KÉKKEL -->
 
-
 <!-- FŐOLDAL GOMB -->
-
 
 <!-- KÓD BEKÉRŐ BLOKK (content5 -> content6) -->
 <style>
@@ -263,11 +261,17 @@ Fejtsétek meg a balladát, és a kulccsal megtudjátok, mi a következő célá
         '<div style="color: #90EE90; font-size: 16px; margin-top: 15px; line-height: 1.6;">' +
         '✅ Megfejtettétek!<br><br>' +
         'Kinyílt az ajtó a következő célállomás felé…<br><br>' +
-        'A leányvár alatt megtaláljátok a régi Városkaput. Azon keresztül érkezzetek a városba, mint a hajdani utazók…. és sétáljatok végig a főterén, egészen a következő állomásotokig. A séta közben megszámlálhatatlan szépség és középkori kincs kísér benneteket, melyeket megismerni visszavár Benneteket Selmecbánya…….' +
+        'Borbála várának, a Leányvárnak a hivatalos neve: Újvár. Ez ma még fontos lesz! 😊<br><br>' +
+        'Most sétáljatok lefelé: a Leányvár alatt megtaláljátok a régi Városkaput. Azon keresztül érkezzetek a városba, mint a hajdani utazók…. és sétáljatok végig a főterén, sorban a következő állomásotokhoz. A séta közben megszámlálhatatlan szépség és középkori kincs kísér benneteket, melyeket megismerni visszavár Benneteket Selmecbánya…….' +
         '</div>';
-      setTimeout(function() {
-        window.location.href = "content7.html";
-      }, 8000);
+
+      // nincs automatikus továbbirányítás – csak a gombbal
+      const btn = document.querySelector(".codegate-btn");
+      btn.textContent = "➜ Tovább";
+      btn.onclick = function() { window.location.href = "content7.html"; };
+
+      document.getElementById("codegate_code").style.display = "none";
+      document.getElementById("codegate_error").style.color = "";
     } else {
       document.getElementById("codegate_error").textContent =
         "Ez most nem a helyes válasz. Figyeljétek meg a bekezdések első betűit!";
@@ -353,8 +357,3 @@ startBtn.addEventListener("click", function () {
 
 </body>
 </html>
-
-
-
-
-
