@@ -103,7 +103,12 @@ function check() {
     var v = document.getElementById("code").value.trim();
     // kulcs ehhez a ponthoz: 22740
     if (v === "22740") {
-        window.location.href = "content3.html";
+        document.getElementById("error").textContent = "";
+        var post = document.getElementById("postCodeContent");
+        if (post) {
+            post.style.display = "block";
+            try { post.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) {}
+        }
     } else {
         document.getElementById("error").textContent = "Ez most nem nyitotta a kaput. Próbáld újra.";
     }
@@ -116,18 +121,24 @@ function check() {
 <div class="container">
     <h2>3. PONT – Út a város szívébe</h2>
 
-    <p>Az első két állomáson már kaptatok jeleket, számokat,  
-    amelyek egy mélyebbre vezető ösvényre mutatnak.  
-    Most egy láthatatlan kapu előtt álltok: csak az léphet tovább,  
-    aki a megfelelő kódot hozta magával.</p>
-
-    <p>Írd be azt a számot,  
-    amelyet az eddigi nyomokból fejtettetek meg –  
-    és ha jól dolgoztatok, az út megnyílik a város szíve felé.</p>
+    <p>írd be az aranyrög kódját, és ha jól dolgoztatok az út megnyílik a város szíve felé.</p>
 
     <input id="code" type="text" autocomplete="off" placeholder="Írd ide a kódot">
     <button class="btn" onclick="check()">➜ Tovább az ösvényen</button>
     <div id="error"></div>
+
+    <!-- KÓD BEÍRÁSA UTÁN LENYÍLÓ TARTALOM -->
+    <div id="postCodeContent" style="display:none; margin-top: 18px; background: rgba(0,0,0,0.6); padding: 18px; border-radius: 12px; box-shadow: 0 0 14px rgba(0,0,0,0.6);">
+        <p>A Bányászati Múzeum bejárása UTÁN lapozzatok ide vissza, és irány a következő célállomás!</p>
+        <p>A Selmeci Olvasókönyvben már bepillantást nyertetek abba, hogy Selmecbányán létesítették a világon egyedülálló „tárók” rendszerét, a bányavíz gravitációs úton való elvezetésére. A tárók sok kilométernyi földalatti hálózatával az emberi és állati erővel hajtott vízemelők és szivattyúk használata nélkül lehetett elvezetni a feltörő bányavizet, valamint a vízienergiához elhasznált tajch-vizeket.</p>
+        <p>A „táró” szó szlovákul: Štôlňa – 100 éve (átmenetileg és egyelőre) csak így olvashatók a táblákon, feliratokon…</p>
+        <p>A városban és az azt körülölelő hegyoldalakon számos régi, több százéves táró eredeti kijárata megtalálható a mai napig, és a tárók – bár a nagyközönség számára zártak - bejárhatók a kutatók, bányatörténészek számára.</p>
+        <p>Selmecbánya – és egyben a világ - első tárója, a selmeci bányák legrégebbi főtárója ma is létezik, és bizonyos időpontokban, tavasztól őszig még látogatható is.</p>
+        <p>Keressétek meg a táró kijáratát, mely magában a városban van…</p>
+        <p style="font-weight:bold;">Indulás a GLANZENBERG TÁRÓHOZ!</p>
+
+        <a href="content3.html" class="btn" style="margin-top: 10px;">Tovább a következő állomásra</a>
+    </div>
 </div>
 
 </body>

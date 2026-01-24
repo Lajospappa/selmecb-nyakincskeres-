@@ -242,13 +242,39 @@ Ha megvan a kulcs, írd be lent,<br>
   <div id="codegate_error"></div>
 </div>
 
+<!-- SIKER UTÁN MEGJELENŐ BLOKK -->
+<div id="postCodeContent" style="display:none; margin-top:18px; background: rgba(0,0,0,0.65); padding: 18px 16px; border-radius: 12px; box-shadow: 0 0 16px rgba(0,0,0,0.6);">
+    <p style="font-weight:bold; font-size:20px; margin-top:0;">Megfejtettétek!</p>
+    <p>Kinyílt az ajtó a következő célállomás felé…</p>
+    <p>Sétáljatok fel a következő állomásotokhoz, az Óvárhoz, az ódon macskaköveken…</p>
+    <p>Közben elhaladtok a kis fogadó mellett is, ahol Marci már megszállt 😊</p>
+    <p>Az Óvárba feltétlen menjetek be!</p>
+    <p><strong>FONTOS:</strong><br>
+    Az utolsó belépés az Óvárba 4:00 órakor van, és a vár 5:00-kor zár.<br>
+    A zöld tetejű harangtorony leges-legtetejéből csodás kilátás nyílik az esti fényekkel.<br>
+    Viszont a harangtorony ablakát hajlamosak bezárni már fél 5 körül, ha nincs ott látogató!<br>
+    Ezért <u>beszéljétek meg a jegyirodában</u>, hogy fél 5-kor fel akartok menni a harangtoronyba, fotózni a kilátást – és ne zárják be a harangtorony ablakát!</p>
+    <p>A harangtorony a helyi brossúrában a 8-as számú torony, a jegyiroda felett van. Egészen a harangok mellé fel kell menni!</p>
+    <p>A jegyirodában kérjetek magyar nyelvű ismertetőt.</p>
+    <p>Az Óvár látogatása kb 1 órás program, de nektek fél 5-ig be kell járnotok, hogy időben felmenjetek a harangtoronyba.</p>
+    <p>Az Óvárba a belépő ára kb. 8 euró</p>
+    <a href="content9.html" class="home-btn" style="display:inline-block; margin-top:12px;">Tovább a következő állomásra</a>
+</div>
+
 <script>
 (function(){
   window.codegate_check = function(){
     var v = (document.getElementById("codegate_code").value || "").trim();
     // kulcs: 1838
     if (v === "1838") {
-      window.location.href = "content9.html";
+            var post = document.getElementById("postCodeContent");
+            if (post) {
+                post.style.display = "block";
+                try { post.scrollIntoView({ behavior: "smooth", block: "start" }); } catch (e) {}
+            }
+            var gate = document.querySelector(".codegate-container");
+            if (gate) gate.style.display = "none";
+            document.getElementById("codegate_error").textContent = "";
     } else {
       document.getElementById("codegate_error").textContent =
         "Ez most nem nyitotta ki az állomást. Nézzétek meg újra az emléktáblán a tanév kezdő évszámát.";
@@ -257,32 +283,6 @@ Ha megvan a kulcs, írd be lent,<br>
 })();
 </script>
 <!-- /KÓD BEKÉRŐ BLOKK -->
-
-<p class="highlight" style="font-size:19px; text-align:center; margin-top:24px;">
-Megfejtettétek!<br>
-Kinyílt az ajtó a következő célállomás felé…
-</p>
-
-<p>Sétáljatok fel a következő állomásotokhoz, az <span class="highlight">Óvárhoz</span>, az ódon macskaköveken…</p>
-
-<p>Közben elhaladtok a kis fogadó mellett is, ahol Marci már megszállt 😊</p>
-
-<p><span class="highlight">Az Óvárba feltétlen menjetek be!</span></p>
-
-<p><span class="highlight">FONTOS:</span><br>
-Az utolsó belépés az Óvárba 4:00 órakor van, és a vár 5:00-kor zár.<br>
-A zöld tetejű harangtorony leges-legtetejéből csodás kilátás nyílik az esti fényekkel.<br>
-Viszont a harangtorony ablakát hajlamosak bezárni már fél 5 körül, ha nincs ott látogató!<br>
-<span class="highlight">Ezért BESZÉLJÉTEK MEG A JEGYIRODÁBAN, HOGY FÉL 5-KOR FEL AKARTOK MENNI A HARANGTORONYBA, FOTÓZNI A KILÁTÁST – ÉS NE ZÁRJÁK BE A HARANGTORONY ABLAKÁT!</span>
-</p>
-
-<p>A harangtorony a helyi brossúrában a 8-as számú torony, a jegyiroda felett van. Egészen a harangok mellé fel kell menni!</p>
-
-<p>A jegyirodában kérjetek magyar nyelvű ismertetőt.</p>
-
-<p>Az Óvár látogatása kb 1 órás program, de Nektek fél 5-ig be kell járnotok, hogy időben felmenjetek a harangtoronyba.</p>
-
-<p>Az Óvárba a belépő ára kb. 8 euró</p>
 
 <div style="text-align:center; margin-top:28px;">
     <a href="index.html" class="home-btn">⬅ Vissza a Főoldalra</a>
